@@ -2,7 +2,9 @@
 
 An open source redesign of **Coffee**, a WordPress + WooCommerce coffee shop site (Kadence theme, Elementor). This repo has the full process, from inspecting the live site to a clickable 10-page mockup that you can download and open in any browser.
 
-![Homepage mockup](docs/homepage.png)
+![Homepage mockup](docs/screenshots/index.png)
+
+**New here? Read the [Setup guide](SETUP-GUIDE.md)** for screenshots of every page and step-by-step WordPress instructions.
 
 ## Quick start
 
