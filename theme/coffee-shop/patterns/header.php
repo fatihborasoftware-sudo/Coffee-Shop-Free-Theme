@@ -9,37 +9,57 @@
  * @package coffee-shop
  */
 ?>
-<!-- wp:group {"className":"coffee-header","style":{"spacing":{"blockGap":"0","padding":{"left":"0","right":"0"}},"border":{"bottom":{"color":"var:preset|color|surface","width":"1px"}}},"backgroundColor":"ink","layout":{"type":"default"}} -->
-<div class="wp-block-group coffee-header has-ink-background-color has-background" style="border-bottom-color:var(--wp--preset--color--surface);border-bottom-width:1px;padding-left:0;padding-right:0">
-<!-- wp:group {"className":"coffee-topbar","style":{"spacing":{"padding":{"top":"0.5rem","bottom":"0.5rem"}},"typography":{"fontWeight":"500"}},"backgroundColor":"deep","textColor":"caramel","fontSize":"small","layout":{"type":"constrained"}} -->
-<div class="wp-block-group coffee-topbar has-caramel-color has-deep-background-color has-text-color has-background has-small-font-size" style="padding-top:0.5rem;padding-bottom:0.5rem;font-weight:500">
-<!-- wp:paragraph {"align":"center"} -->
-<p class="has-text-align-center">900,00 TL ve üzeri alışverişlerde kargo bedava</p>
+<!-- wp:group {"className":"coffee-header","style":{"spacing":{"blockGap":"0","padding":{"left":"0","right":"0"}}},"layout":{"type":"default"}} -->
+<div class="wp-block-group coffee-header" style="padding-left:0;padding-right:0">
+<!-- wp:group {"className":"coffee-topbar","style":{"spacing":{"padding":{"top":"0.55rem","bottom":"0.55rem"}}},"layout":{"type":"constrained","contentSize":"1200px"}} -->
+<div class="wp-block-group coffee-topbar" style="padding-top:0.55rem;padding-bottom:0.55rem">
+<!-- wp:group {"style":{"spacing":{"blockGap":"1rem"}},"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between"}} -->
+<div class="wp-block-group">
+<!-- wp:paragraph {"className":"coffee-topbar-side","style":{"layout":{"selfStretch":"fixed","flexSize":"240px"}}} -->
+<p class="coffee-topbar-side"><?php esc_html_e( 'Her gün 08:00 – 22:00', 'coffee-shop' ); ?></p>
+<!-- /wp:paragraph -->
+<!-- wp:group {"className":"coffee-ticker","layout":{"type":"default"}} -->
+<div class="wp-block-group coffee-ticker">
+<!-- wp:paragraph -->
+<p><?php echo wp_kses( __( '<strong>₺900</strong> ve üzeri siparişlerde kargo bedava', 'coffee-shop' ), array( 'strong' => array() ) ); ?></p>
+<!-- /wp:paragraph -->
+<!-- wp:paragraph -->
+<p><?php echo wp_kses( __( 'Her hafta <strong>taze kavrum</strong>, aynı gün kargoda', 'coffee-shop' ), array( 'strong' => array() ) ); ?></p>
+<!-- /wp:paragraph -->
+<!-- wp:paragraph -->
+<p><?php echo wp_kses( __( 'Kahve Kulübü üyelerine <strong>%10</strong> indirim', 'coffee-shop' ), array( 'strong' => array() ) ); ?></p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->
-
-<!-- wp:group {"style":{"spacing":{"padding":{"top":"1.125rem","bottom":"1.125rem","left":"var:preset|spacing|40","right":"var:preset|spacing|40"}}},"layout":{"type":"constrained","contentSize":"1200px"}} -->
-<div class="wp-block-group" style="padding-top:1.125rem;padding-right:var(--wp--preset--spacing--40);padding-bottom:1.125rem;padding-left:var(--wp--preset--spacing--40)">
-<!-- wp:group {"style":{"spacing":{"blockGap":"1.5rem"}},"layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between"}} -->
-<div class="wp-block-group">
-<!-- wp:group {"style":{"spacing":{"blockGap":"2rem"}},"layout":{"type":"flex","flexWrap":"wrap"}} -->
-<div class="wp-block-group">
-<!-- wp:site-logo {"width":168,"shouldSyncIcon":false} /-->
-<!-- wp:site-title {"level":0,"style":{"typography":{"fontWeight":"700","fontSize":"1.5rem"},"elements":{"link":{"color":{"text":"var:preset|color|light"}}}},"fontFamily":"display"} /-->
-<!-- wp:navigation {"textColor":"muted","overlayBackgroundColor":"ink","overlayTextColor":"light","layout":{"type":"flex","flexWrap":"wrap"},"style":{"spacing":{"blockGap":"1.75rem"}}} /-->
+<!-- wp:social-links {"iconColor":"white","iconColorValue":"#ffffff","size":"has-small-icon-size","className":"is-style-logos-only coffee-topbar-side","style":{"layout":{"selfStretch":"fixed","flexSize":"240px"}},"layout":{"type":"flex","justifyContent":"right"}} -->
+<ul class="wp-block-social-links has-small-icon-size has-icon-color is-style-logos-only coffee-topbar-side">
+<!-- wp:social-link {"url":"#","service":"instagram"} /-->
+<!-- wp:social-link {"url":"#","service":"facebook"} /-->
+<!-- wp:social-link {"url":"#","service":"x"} /-->
+<!-- wp:social-link {"url":"#","service":"youtube"} /-->
+</ul>
+<!-- /wp:social-links -->
+</div>
+<!-- /wp:group -->
 </div>
 <!-- /wp:group -->
 
-<!-- wp:group {"style":{"spacing":{"blockGap":"0.5rem"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+<!-- wp:group {"style":{"spacing":{"padding":{"top":"0.9rem","bottom":"0.9rem"}}},"layout":{"type":"constrained","contentSize":"1200px"}} -->
+<div class="wp-block-group" style="padding-top:0.9rem;padding-bottom:0.9rem">
+<!-- wp:group {"style":{"spacing":{"blockGap":"1.5rem"}},"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between"}} -->
 <div class="wp-block-group">
-<!-- wp:search {"label":"Ara","showLabel":false,"buttonText":"Ara","buttonPosition":"button-only","buttonUseIcon":true,"isSearchFieldHidden":true,"style":{"border":{"width":"0px","style":"none"}},"backgroundColor":"ink"} /-->
+<!-- wp:site-logo {"width":158,"shouldSyncIcon":false} /-->
+<!-- wp:site-title {"level":0,"style":{"typography":{"fontSize":"1.8rem"},"elements":{"link":{"color":{"text":"var:preset|color|white"}}}},"fontFamily":"display"} /-->
+<!-- wp:navigation {"textColor":"white","overlayBackgroundColor":"ink","overlayTextColor":"white","layout":{"type":"flex","justifyContent":"center","flexWrap":"nowrap"},"style":{"spacing":{"blockGap":"2.2rem"},"layout":{"selfStretch":"fill","flexSize":null}}} /-->
+<!-- wp:group {"style":{"spacing":{"blockGap":"0.4rem"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+<div class="wp-block-group">
+<!-- wp:search {"label":"Ara","showLabel":false,"buttonText":"Ara","buttonPosition":"button-only","buttonUseIcon":true,"isSearchFieldHidden":true,"style":{"border":{"width":"0px","style":"none"}}} /-->
 <!-- wp:woocommerce/customer-account {"displayStyle":"icon_only","iconStyle":"line","iconClass":"wc-block-customer-account__account-icon"} /-->
 <!-- wp:woocommerce/mini-cart {"hasHiddenPrice":true} /-->
-<!-- wp:buttons -->
-<div class="wp-block-buttons">
-<!-- wp:button {"className":"is-style-outline","style":{"border":{"color":"var:preset|color|caramel"},"spacing":{"padding":{"top":"0.65rem","bottom":"0.65rem","left":"1.25rem","right":"1.25rem"}},"typography":{"fontSize":"0.875rem","fontWeight":"500"},"color":{"text":"var:preset|color|caramel"}}} -->
-<div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-text-color has-border-color wp-element-button" href="<?php echo esc_url( home_url( '/iletisim/' ) ); ?>" style="border-color:var(--wp--preset--color--caramel);color:var(--wp--preset--color--caramel);padding-top:0.65rem;padding-right:1.25rem;padding-bottom:0.65rem;padding-left:1.25rem;font-size:0.875rem;font-weight:500">İletişim</a></div>
+<!-- wp:buttons {"className":"coffee-cta"} -->
+<div class="wp-block-buttons coffee-cta">
+<!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( home_url( '/iletisim/' ) ); ?>"><?php esc_html_e( 'İletişim', 'coffee-shop' ); ?></a></div>
 <!-- /wp:button -->
 </div>
 <!-- /wp:buttons -->

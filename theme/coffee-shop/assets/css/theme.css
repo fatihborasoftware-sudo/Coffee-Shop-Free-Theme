@@ -1,54 +1,106 @@
 /* Small additions that theme.json cannot express. */
 
+:root {
+	--coffee-hh: 0px; /* header height, set by theme.js */
+	--coffee-ease: cubic-bezier(.2, .7, .2, 1);
+}
+
+body {
+	overflow-x: clip;
+	-webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+	text-wrap: balance;
+}
+
+/* Sections touch each other; spacing lives inside each section. */
+.wp-site-blocks > * + *,
+main.wp-block-group > * + * {
+	margin-block-start: 0;
+}
+
+.has-rose-color,
+h1 .rose,
+h2 .rose,
+h1 em,
+h2 em {
+	color: var(--wp--preset--color--rose);
+	font-style: normal;
+}
+
 .is-style-card {
-	border-radius: 2px;
+	border-radius: 3px;
 	overflow: hidden;
 }
 
-.is-style-placeholder-frame img {
-	border-radius: 2px;
-}
-
+/* Eyebrow: letter-spaced label with a short rule. */
 .coffee-eyebrow {
-	letter-spacing: 0.28em;
+	display: inline-flex;
+	align-items: center;
+	gap: .7rem;
+	letter-spacing: .22em;
 	text-transform: uppercase;
-	font-weight: 600;
-	font-size: 0.75rem !important;
+	font-weight: 500;
+	font-size: .78rem !important;
 }
 
-/* A short gold rule before section eyebrows. */
-p.coffee-eyebrow::before {
+.coffee-eyebrow::before {
 	content: "";
-	display: inline-block;
-	width: 2.25rem;
-	height: 1px;
-	margin-right: 0.9rem;
-	vertical-align: middle;
+	width: 28px;
+	height: 2px;
 	background: currentColor;
-	opacity: 0.8;
+}
+
+.has-text-align-center.coffee-eyebrow {
+	justify-content: center;
 }
 
 .has-text-align-center.coffee-eyebrow::before {
 	display: none;
 }
 
-h1 em,
-h2 em {
-	font-style: italic;
-	color: var(--wp--preset--color--caramel);
+/* Buttons: a light sweep on hover. */
+.wp-element-button,
+.wp-block-button__link {
+	position: relative;
+	overflow: hidden;
+	isolation: isolate;
+	transition: transform .2s ease, background-color .2s ease;
 }
 
-.coffee-topbar a {
-	color: inherit;
+.wp-block-button__link::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: -60%;
+	width: 40%;
+	background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .35), transparent);
+	transform: skewX(-20deg);
+	transition: left .6s ease;
+	z-index: -1;
+	pointer-events: none;
 }
 
-.coffee-topbar {
-	letter-spacing: clamp(0.06em, 1vw, 0.18em);
-	text-transform: uppercase;
-	font-size: 0.7rem !important;
+.wp-block-button__link:hover {
+	transform: translateY(-2px);
 }
 
-/* The header stays on top while scrolling. */
+.wp-block-button__link:hover::before {
+	left: 130%;
+}
+
+.is-style-brown .wp-block-button__link {
+	background: var(--wp--preset--color--brown);
+	color: #fff;
+}
+
+.is-style-brown .wp-block-button__link:hover {
+	background: #7A4C32;
+}
+
+/* ===== Header ===== */
 header.wp-block-template-part {
 	position: sticky;
 	top: 0;
@@ -59,47 +111,111 @@ header.wp-block-template-part {
 	top: var(--wp-admin--admin-bar--height, 32px);
 }
 
-.coffee-header .wp-block-navigation-item__content:hover {
+/* The blur sits on a pseudo-element: a backdrop-filter on the header itself
+   would trap the fixed mini-cart drawer and mobile menu inside it. */
+.coffee-header {
+	position: relative;
+	isolation: isolate;
+	color: #fff;
+	background: rgba(21, 24, 31, .94);
+	border-bottom: 1px solid rgba(255, 255, 255, .07);
+	transition: background .35s ease, box-shadow .35s ease;
+}
+
+.coffee-header::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	backdrop-filter: blur(14px) saturate(1.2);
+	-webkit-backdrop-filter: blur(14px) saturate(1.2);
+	pointer-events: none;
+}
+
+body.coffee-overlay:not(.coffee-scrolled) .coffee-header {
+	background: linear-gradient(180deg, rgba(10, 8, 6, .6), rgba(10, 8, 6, 0));
+	border-bottom-color: rgba(255, 255, 255, .12);
+}
+
+body.coffee-overlay:not(.coffee-scrolled) .coffee-header::before {
+	display: none;
+}
+
+body.coffee-scrolled .coffee-header {
+	box-shadow: 0 12px 30px rgba(0, 0, 0, .28);
+}
+
+/* Pages that start with a full-width photo or video slide under the header. */
+body.coffee-overlay main > .wp-block-cover:first-child,
+body.coffee-overlay main > .entry-content > .wp-block-cover:first-child,
+body.coffee-overlay main > .wp-block-post-content > .wp-block-cover:first-child {
+	margin-top: calc(-1 * var(--coffee-hh));
+	padding-top: calc(var(--coffee-hh) + clamp(2.5rem, 6vw, 4.5rem)) !important;
+}
+
+.coffee-topbar {
+	background: var(--wp--preset--color--deep);
+	color: rgba(255, 255, 255, .78);
+	font-size: .72rem !important;
+	letter-spacing: .12em;
+	text-transform: uppercase;
+	border-bottom: 1px solid rgba(184, 177, 123, .22);
+	max-height: 60px;
+	overflow: hidden;
+	transition: max-height .35s ease, opacity .35s ease;
+}
+
+body.coffee-scrolled .coffee-topbar {
+	max-height: 0;
+	opacity: 0;
+	border-bottom-width: 0;
+}
+
+.coffee-topbar p {
+	margin: 0;
+}
+
+.coffee-topbar .coffee-ticker {
+	color: #fff;
+	font-weight: 500;
+	height: 1.3em;
+	overflow: hidden;
+	text-align: center;
+	flex: 1;
+	min-width: 0;
+}
+
+.coffee-ticker > * {
+	display: block;
+	animation: coffee-tick 12s infinite;
+}
+
+.coffee-ticker strong {
 	color: var(--wp--preset--color--caramel);
 }
 
-/* Hero: soft light behind the art. */
-.coffee-hero {
-	background: radial-gradient(60% 70% at 78% 45%, rgba(198, 161, 91, 0.12), transparent 70%);
+@keyframes coffee-tick {
+	0%, 28% { transform: translateY(0); }
+	33%, 61% { transform: translateY(-100%); }
+	66%, 94% { transform: translateY(-200%); }
+	100% { transform: translateY(0); }
 }
 
-.coffee-hero h1 {
-	letter-spacing: -0.02em;
+.coffee-topbar .wp-block-social-links {
+	gap: .9rem;
 }
 
-/* Value strip: hairline gold rule over each item. */
-.coffee-values h3.wp-block-heading {
-	font-size: 1.4rem !important;
+.coffee-topbar .wp-block-social-links .wp-social-link svg {
+	width: 14px;
+	height: 14px;
 }
 
-.coffee-values .wp-block-group.is-layout-grid > .wp-block-group {
-	border-top: 1px solid rgba(198, 161, 91, 0.45);
-	padding-top: 1.1rem;
+.coffee-header .wp-block-site-logo img {
+	transition: transform .3s ease;
 }
 
-/* Framed illustrations used in place of photos. */
-.coffee-framed-art img {
-	display: block;
-	width: 100%;
-	height: auto;
-	border-radius: 2px;
-}
-
-/* Header icons and the account / cart blocks sit on the dark header. */
-.coffee-header .wc-block-mini-cart__button,
-.coffee-header .wp-block-woocommerce-customer-account a,
-.coffee-header .wp-block-search__button {
-	color: var(--wp--preset--color--light);
-}
-
-.coffee-header .wc-block-mini-cart__badge {
-	background: var(--wp--preset--color--caramel);
-	color: var(--wp--preset--color--ink);
+.coffee-header .wp-block-site-logo:hover img {
+	transform: rotate(-2deg) scale(1.03);
 }
 
 /* The logo already carries the name; show the site title only without a logo. */
@@ -107,238 +223,1170 @@ header.wp-block-template-part {
 	display: none;
 }
 
-/* Phones: logo, menu button and icons on one row. */
-@media (max-width: 781px) {
-	.coffee-header .wp-block-group.is-layout-flex {
-		flex-wrap: nowrap;
-		gap: 0.75rem;
-	}
+.coffee-header .wp-block-navigation .wp-block-navigation-item__content {
+	position: relative;
+	color: rgba(255, 255, 255, .88);
+	padding-block: .6rem;
+}
 
-	.coffee-header .wp-block-site-logo img {
-		width: 120px;
-		height: auto;
-	}
+.coffee-header .wp-block-navigation .wp-block-navigation-item__content:hover,
+.coffee-header .wp-block-navigation .current-menu-item > .wp-block-navigation-item__content {
+	color: #fff;
+}
 
-	.coffee-header .wp-block-buttons {
+.coffee-header .wp-block-navigation-item:not(.has-child) > .wp-block-navigation-item__content::after {
+	content: "";
+	position: absolute;
+	left: 50%;
+	right: 50%;
+	bottom: 0;
+	height: 2px;
+	background: var(--wp--preset--color--caramel);
+	transition: left .25s ease, right .25s ease;
+}
+
+.coffee-header .wp-block-navigation-item:hover > .wp-block-navigation-item__content::after,
+.coffee-header .current-menu-item > .wp-block-navigation-item__content::after {
+	left: 0;
+	right: 0;
+}
+
+/* Dropdowns: white card with an arrow. */
+.coffee-header .wp-block-navigation .wp-block-navigation__submenu-container {
+	background: #fff !important;
+	color: var(--wp--preset--color--body-dark) !important;
+	border: 0 !important;
+	border-radius: 4px;
+	padding: .5rem !important;
+	min-width: 220px !important;
+	box-shadow: 0 24px 60px rgba(0, 0, 0, .35);
+	transform: translateY(8px);
+	transition: opacity .2s ease, transform .2s ease, visibility .2s !important;
+}
+
+.coffee-header .wp-block-navigation .has-child:hover > .wp-block-navigation__submenu-container,
+.coffee-header .wp-block-navigation .has-child:focus-within > .wp-block-navigation__submenu-container {
+	transform: none;
+}
+
+.coffee-header .wp-block-navigation__submenu-container .wp-block-navigation-item__content {
+	color: var(--wp--preset--color--body-dark) !important;
+	font-family: var(--wp--preset--font-family--display);
+	font-size: 1.1rem;
+	letter-spacing: .02em;
+	text-transform: none;
+	padding: .7rem .85rem !important;
+	border-radius: 3px;
+}
+
+.coffee-header .wp-block-navigation__submenu-container .wp-block-navigation-item__content:hover {
+	background: var(--wp--preset--color--light);
+	color: var(--wp--preset--color--brown) !important;
+}
+
+/* Header icons: round hover rings. */
+.coffee-header .wc-block-mini-cart__button,
+.coffee-header .wp-block-woocommerce-customer-account a,
+.coffee-header .wp-block-search__button {
+	color: #fff;
+	width: 42px;
+	height: 42px;
+	border-radius: 50%;
+	border: 1px solid transparent;
+	display: grid;
+	place-items: center;
+	padding: 0;
+	background: none;
+	transition: border-color .2s, background .2s;
+}
+
+.coffee-header .wc-block-mini-cart__button:hover,
+.coffee-header .wp-block-woocommerce-customer-account a:hover,
+.coffee-header .wp-block-search__button:hover {
+	border-color: rgba(255, 255, 255, .3);
+	background: rgba(255, 255, 255, .06);
+}
+
+.coffee-header .wc-block-mini-cart__badge {
+	background: var(--wp--preset--color--rose);
+	color: var(--wp--preset--color--body-dark);
+	font-weight: 700;
+}
+
+.coffee-header .coffee-cta .wp-block-button__link {
+	background: transparent;
+	color: #fff;
+	border: 1px solid var(--wp--preset--color--caramel);
+	box-shadow: none;
+	font-family: var(--wp--preset--font-family--body);
+	font-size: .74rem;
+	font-weight: 500;
+	letter-spacing: .18em;
+	text-transform: uppercase;
+	padding: .75rem 1.2rem;
+	border-radius: 2px;
+}
+
+.coffee-header .coffee-cta .wp-block-button__link:hover {
+	background: var(--wp--preset--color--caramel);
+	color: var(--wp--preset--color--body-dark);
+}
+
+/* Scroll progress line under the header. */
+.coffee-progress {
+	position: absolute;
+	left: 0;
+	bottom: -1px;
+	height: 2px;
+	width: 100%;
+	background: linear-gradient(90deg, var(--wp--preset--color--caramel), var(--wp--preset--color--rose));
+	transform-origin: left;
+	transform: scaleX(0);
+	pointer-events: none;
+}
+
+/* Mobile menu overlay: big Anton links. */
+.coffee-header .wp-block-navigation__responsive-container.is-menu-open {
+	background: var(--wp--preset--color--ink) !important;
+	color: #fff !important;
+	padding: 2rem max(22px, env(safe-area-inset-right, 0px)) 2rem 22px;
+}
+
+.coffee-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item__content {
+	font-family: var(--wp--preset--font-family--display);
+	font-size: 2rem;
+	letter-spacing: .01em;
+	text-transform: none;
+	color: #fff !important;
+}
+
+.coffee-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__submenu-container {
+	background: transparent !important;
+	box-shadow: none;
+	transform: none;
+}
+
+.coffee-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__submenu-container .wp-block-navigation-item__content {
+	color: var(--wp--preset--color--caramel) !important;
+	font-size: 1.35rem;
+}
+
+@media (max-width: 1100px) {
+	.coffee-header .coffee-cta {
 		display: none;
 	}
 }
 
-/* Steps list on the about page. */
-.coffee-step {
-	border-top: 2px solid var(--wp--preset--color--caramel);
-	padding-top: 1.25rem;
+@media (max-width: 781px) {
+	.coffee-topbar .coffee-topbar-side {
+		display: none !important;
+	}
+
+	.coffee-header .wp-block-group.is-layout-flex {
+		flex-wrap: nowrap;
+		gap: .4rem;
+	}
+
+	.coffee-header .wp-block-site-logo img {
+		width: 124px;
+		height: auto;
+	}
+
+	.coffee-header .wp-block-woocommerce-customer-account {
+		display: none;
+	}
 }
 
-/* Product cards on light backgrounds. */
-.coffee-products .wc-block-components-product-sale-badge,
-.coffee-products .wc-block-grid__product-onsale {
-	background: var(--wp--preset--color--ink);
-	color: var(--wp--preset--color--light);
-	border: 0;
+/* ===== Hero and full-width bands ===== */
+.coffee-hero {
+	overflow: hidden;
+}
+
+.coffee-hero .wp-block-cover__video-background,
+.coffee-hero .coffee-slide {
+	animation: coffee-kb 18s ease-in-out infinite alternate;
+}
+
+.coffee-hero .coffee-slide {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	opacity: 0;
+	transition: opacity 1.4s ease;
+	z-index: 0;
+}
+
+.coffee-hero .coffee-slide.is-on {
+	opacity: 1;
+}
+
+.coffee-hero .wp-block-cover__background {
+	background: linear-gradient(100deg, rgba(10, 8, 6, .86) 0%, rgba(10, 8, 6, .55) 48%, rgba(10, 8, 6, .15) 100%) !important;
+	opacity: 1 !important;
+	z-index: 1;
+}
+
+.coffee-hero .wp-block-cover__inner-container {
+	z-index: 2;
+}
+
+/* Hero and banner copy lines up with the header: a 1200px column, text on its left. */
+.coffee-hero,
+.coffee-banner {
+	padding-left: clamp(1.25rem, 4vw, 2rem) !important;
+	padding-right: clamp(1.25rem, 4vw, 2rem) !important;
+}
+
+.coffee-hero > .wp-block-cover__inner-container,
+.coffee-banner > .wp-block-cover__inner-container {
+	width: min(1200px, 100%) !important;
+	margin-inline: auto !important;
+}
+
+.coffee-hero > .wp-block-cover__inner-container > *,
+.coffee-banner > .wp-block-cover__inner-container > * {
+	margin-left: 0 !important;
+	margin-right: auto !important;
+}
+
+.coffee-banner h1 {
+	font-size: clamp(2.8rem, 7vw, 5rem);
+}
+
+.coffee-banner .coffee-lead {
+	max-width: 50ch;
+	color: rgba(255, 255, 255, .85);
+}
+
+.coffee-hero h1 {
+	max-width: 11ch;
+	font-size: clamp(3rem, 7.2vw, 6.4rem);
+}
+
+.coffee-hero .coffee-lead {
+	max-width: 46ch;
+	color: rgba(255, 255, 255, .85);
+}
+
+@keyframes coffee-kb {
+	from { transform: scale(1); }
+	to { transform: scale(1.08); }
+}
+
+.coffee-counter {
+	position: absolute;
+	right: max(16px, calc((100% - 1200px) / 2));
+	bottom: clamp(8rem, 13vw, 10rem);
+	z-index: 3;
+	display: flex;
+	align-items: center;
+	gap: .8rem;
+	font: 400 1rem/1 var(--wp--preset--font-family--display);
+	letter-spacing: .1em;
+	color: rgba(255, 255, 255, .8);
+}
+
+.coffee-counter i {
+	width: 70px;
+	height: 2px;
+	background: rgba(255, 255, 255, .3);
+	position: relative;
+	overflow: hidden;
+}
+
+.coffee-counter i::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	width: 35%;
+	background: var(--wp--preset--color--caramel);
+	animation: coffee-prog 8s linear infinite;
+}
+
+@keyframes coffee-prog {
+	from { transform: translateX(-100%); }
+	to { transform: translateX(290%); }
+}
+
+.coffee-cue {
+	position: absolute;
+	left: 50%;
+	bottom: clamp(8.5rem, 14vw, 10.5rem);
+	z-index: 3;
+	translate: -50% 0;
+	display: grid;
+	justify-items: center;
+	gap: .5rem;
+	color: rgba(255, 255, 255, .7);
+	font: 500 .66rem/1 var(--wp--preset--font-family--body);
+	letter-spacing: .25em;
+	text-transform: uppercase;
+}
+
+.coffee-cue i {
+	width: 22px;
+	height: 34px;
+	border: 2px solid rgba(255, 255, 255, .6);
+	border-radius: 12px;
+	position: relative;
+}
+
+.coffee-cue i::after {
+	content: "";
+	position: absolute;
+	left: 50%;
+	top: 6px;
+	width: 3px;
+	height: 7px;
+	margin-left: -1.5px;
 	border-radius: 2px;
+	background: var(--wp--preset--color--caramel);
+	animation: coffee-wheel 1.6s ease-in-out infinite;
 }
 
-.coffee-products .wc-block-grid__product .wp-block-button__link {
-	background: var(--wp--preset--color--ink);
-	color: var(--wp--preset--color--light);
+@keyframes coffee-wheel {
+	0% { opacity: 0; transform: translateY(0); }
+	30% { opacity: 1; }
+	100% { opacity: 0; transform: translateY(12px); }
+}
+
+@media (max-width: 760px) {
+	.coffee-cue,
+	.coffee-counter {
+		display: none;
+	}
+}
+
+/* Page banners: dark photo band with a left-to-right shade. */
+.coffee-banner .wp-block-cover__background {
+	background: linear-gradient(90deg, rgba(10, 8, 6, .85), rgba(10, 8, 6, .35)) !important;
+	opacity: 1 !important;
+}
+
+/* Parallax layers are oversized so the shift never shows an edge. */
+.coffee-banner .wp-block-cover__image-background,
+.coffee-banner .wp-block-cover__video-background,
+.coffee-market .wp-block-cover__image-background,
+.coffee-follow .wp-block-cover__image-background,
+.coffee-vband .wp-block-cover__video-background {
+	scale: 1.14;
+}
+
+.coffee-crumbs {
+	font-size: .85rem;
+	color: rgba(255, 255, 255, .7);
+}
+
+.coffee-crumbs a {
+	color: var(--wp--preset--color--caramel);
+	text-decoration: none;
+}
+
+/* Video band: coffee brown shade. */
+.coffee-vband .wp-block-cover__background {
+	background: linear-gradient(90deg, rgba(150, 96, 65, .92) 0%, rgba(150, 96, 65, .75) 45%, rgba(20, 15, 10, .25) 100%) !important;
+	opacity: 1 !important;
+}
+
+/* ===== Tilted photo cards ===== */
+.coffee-tilts {
+	position: relative;
+	z-index: 2;
+	margin-top: clamp(-8rem, -12vw, -6rem) !important;
+}
+
+.coffee-tilt {
+	--r: -2deg;
+	border: 7px solid #fff;
+	box-shadow: 0 22px 45px rgba(0, 0, 0, .35);
+	transform: rotate(var(--r));
+	transition: transform .35s ease, box-shadow .35s ease;
+	overflow: hidden;
+	aspect-ratio: 4 / 3;
+	min-height: 0 !important;
+	align-items: flex-end !important;
+}
+
+.coffee-tilt:nth-child(2) { --r: 1.5deg; }
+.coffee-tilt:nth-child(3) { --r: -1deg; }
+
+.coffee-tilt:hover {
+	transform: rotate(0) translateY(-6px) scale(1.02);
+	box-shadow: 0 30px 60px rgba(0, 0, 0, .4);
+}
+
+.coffee-tilt .wp-block-cover__image-background {
+	transition: transform .6s ease;
+}
+
+.coffee-tilt:hover .wp-block-cover__image-background {
+	transform: scale(1.06);
+}
+
+.coffee-tilt .wp-block-cover__background {
+	background: linear-gradient(180deg, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, .7)) !important;
+	opacity: 1 !important;
+}
+
+.coffee-tilt h3 {
+	text-shadow: 0 2px 12px rgba(0, 0, 0, .5);
+}
+
+@media (max-width: 781px) {
+	.coffee-tilts .wp-block-group.is-layout-grid {
+		grid-template-columns: 1fr !important;
+	}
+}
+
+/* Framed, tilted photos (about, contact). */
+.coffee-framed img {
+	border: 8px solid #fff;
+	box-shadow: 0 25px 50px rgba(0, 0, 0, .2);
+	transform: rotate(-2deg);
+}
+
+.coffee-framed.is-tilt-right img {
+	transform: rotate(2.5deg);
+}
+
+/* Journey steps */
+.coffee-step {
+	background: #fff;
+	box-shadow: 0 14px 30px rgba(60, 35, 20, .1);
+	transition: transform .3s ease;
+	height: 100%;
+}
+
+.coffee-step:hover {
+	transform: translateY(-6px);
+}
+
+.coffee-step .wp-block-image img {
+	aspect-ratio: 4 / 3;
+	object-fit: cover;
 	width: 100%;
 }
 
-/* Forms (Contact Form 7, WooCommerce) on light cards. */
+.coffee-step .coffee-num {
+	font: 400 2rem/1 var(--wp--preset--font-family--display);
+	color: var(--wp--preset--color--caramel);
+}
+
+/* ===== Online Market ===== */
+.coffee-market .wp-block-cover__image-background {
+	filter: blur(2px);
+}
+
+.coffee-market .wp-block-cover__background {
+	background: rgba(12, 10, 8, .72) !important;
+	opacity: 1 !important;
+}
+
+.coffee-cup {
+	position: relative;
+	max-width: 260px;
+	margin-inline: auto;
+}
+
+.coffee-cup img {
+	filter: drop-shadow(0 25px 35px rgba(0, 0, 0, .5));
+	animation: coffee-float 6s ease-in-out infinite;
+}
+
+.coffee-cup::before {
+	content: "";
+	position: absolute;
+	left: 22%;
+	right: 22%;
+	top: -16%;
+	height: 30%;
+	background: url("../images/steam.svg") center / contain no-repeat;
+	animation: coffee-steam 3.2s ease-in-out infinite;
+	pointer-events: none;
+}
+
+@keyframes coffee-float {
+	50% { transform: translateY(-12px) rotate(-2deg); }
+}
+
+@keyframes coffee-steam {
+	0% { opacity: 0; transform: translateY(20px) scaleY(.8); }
+	35% { opacity: .9; }
+	100% { opacity: 0; transform: translateY(-25px) scaleY(1.1); }
+}
+
+/* Product rail on the dark market band. */
+.coffee-rail .wc-block-grid__products {
+	display: grid !important;
+	grid-auto-flow: column;
+	grid-auto-columns: minmax(200px, 1fr);
+	gap: 1rem;
+	overflow-x: auto;
+	scroll-snap-type: x mandatory;
+	padding-bottom: 1rem;
+	margin: 0 !important;
+	scrollbar-width: thin;
+}
+
+.coffee-rail .wc-block-grid__product {
+	scroll-snap-align: start;
+	background: rgba(255, 255, 255, .06);
+	border: 1px solid rgba(255, 255, 255, .12) !important;
+	padding: 1rem !important;
+	max-width: none !important;
+	margin: 0 !important;
+	text-align: left;
+	transition: background .25s ease, transform .25s ease;
+}
+
+.coffee-rail .wc-block-grid__product:hover {
+	background: rgba(255, 255, 255, .12);
+	transform: translateY(-4px);
+}
+
+.coffee-rail .wc-block-grid__product-image img {
+	aspect-ratio: 1;
+	object-fit: contain;
+}
+
+.coffee-rail .wc-block-grid__product-title {
+	font-family: var(--wp--preset--font-family--display);
+	font-size: 1.35rem;
+	font-weight: 400;
+	color: #fff;
+}
+
+.coffee-rail .wc-block-grid__product-price {
+	color: var(--wp--preset--color--caramel);
+	font-weight: 700;
+}
+
+.coffee-rail .wc-block-grid__product-price del {
+	color: rgba(255, 255, 255, .5);
+	font-weight: 400;
+}
+
+.coffee-rail .wc-block-grid__product-onsale {
+	background: var(--wp--preset--color--rose);
+	color: var(--wp--preset--color--body-dark);
+	border: 0;
+	border-radius: 2px;
+	transform: rotate(-4deg);
+}
+
+.coffee-rail .wc-block-grid__product-add-to-cart .wp-block-button__link {
+	width: 100%;
+	font-size: 1rem;
+	padding: .7rem 1rem;
+}
+
+.coffee-rail-btns button {
+	width: 44px;
+	height: 44px;
+	border: 2px solid rgba(255, 255, 255, .5);
+	background: none;
+	color: #fff;
+	cursor: pointer;
+	font-size: 1.1rem;
+}
+
+.coffee-rail-btns button:hover {
+	background: var(--wp--preset--color--caramel);
+	border-color: var(--wp--preset--color--caramel);
+	color: var(--wp--preset--color--body-dark);
+}
+
+/* ===== Value strip ===== */
+.coffee-values svg {
+	width: 44px;
+	height: 44px;
+	flex: none;
+	stroke: var(--wp--preset--color--brown);
+	fill: none;
+	stroke-width: 1.6;
+}
+
+/* ===== Marquee bands ===== */
+.coffee-marquee {
+	overflow: hidden;
+	padding-block: clamp(1.4rem, 3vw, 2.2rem);
+	user-select: none;
+}
+
+.coffee-marquee > p {
+	margin: 0;
+	white-space: nowrap;
+}
+
+.coffee-marquee .coffee-mq-track {
+	display: flex;
+	width: max-content;
+	animation: coffee-mq 38s linear infinite;
+}
+
+.coffee-marquee.is-reverse .coffee-mq-track {
+	animation-direction: reverse;
+	animation-duration: 30s;
+}
+
+.coffee-marquee:hover .coffee-mq-track {
+	animation-play-state: paused;
+}
+
+.coffee-mq-track > div {
+	display: flex;
+	align-items: center;
+	gap: clamp(1.5rem, 3vw, 2.6rem);
+	padding-right: clamp(1.5rem, 3vw, 2.6rem);
+}
+
+.coffee-marquee span.w {
+	font: 400 clamp(3rem, 8vw, 6.4rem)/1 var(--wp--preset--font-family--display);
+	text-transform: uppercase;
+	white-space: nowrap;
+	color: transparent;
+	-webkit-text-stroke: 1.5px rgba(150, 96, 65, .45);
+	transition: color .3s;
+}
+
+.coffee-marquee span.w:hover {
+	color: var(--wp--preset--color--brown);
+}
+
+.coffee-marquee i {
+	width: clamp(22px, 3vw, 34px);
+	height: clamp(22px, 3vw, 34px);
+	flex: none;
+	border-radius: 50%;
+	border: 1.5px solid rgba(150, 96, 65, .45);
+}
+
+.coffee-marquee i.bean {
+	border: 0;
+	border-radius: 50% / 60%;
+	background: var(--wp--preset--color--brown);
+	position: relative;
+	rotate: 30deg;
+}
+
+.coffee-marquee i.bean::after {
+	content: "";
+	position: absolute;
+	left: 47%;
+	top: 12%;
+	bottom: 12%;
+	width: 2px;
+	background: var(--wp--preset--color--light);
+	border-radius: 2px;
+}
+
+.coffee-marquee.is-dark span.w {
+	color: var(--wp--preset--color--caramel);
+	-webkit-text-stroke: 0;
+	font-size: clamp(2rem, 5vw, 3.6rem);
+}
+
+.coffee-marquee.is-dark span.w.o {
+	color: transparent;
+	-webkit-text-stroke: 1.2px rgba(255, 255, 255, .4);
+}
+
+.coffee-marquee.is-dark i {
+	border-color: var(--wp--preset--color--rose);
+	background: var(--wp--preset--color--rose);
+	width: 12px;
+	height: 12px;
+}
+
+@keyframes coffee-mq {
+	to { transform: translateX(-50%); }
+}
+
+/* ===== Blog cards ===== */
+.coffee-posts .wp-block-post {
+	background: #fff;
+	color: var(--wp--preset--color--body-dark);
+	display: flex;
+	flex-direction: column;
+	box-shadow: 0 14px 30px rgba(60, 35, 20, .18);
+	transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.coffee-posts .wp-block-post:hover {
+	transform: translateY(-6px);
+	box-shadow: 0 24px 45px rgba(60, 35, 20, .28);
+}
+
+.coffee-posts .wp-block-post-featured-image {
+	overflow: hidden;
+	margin: 0;
+	background: var(--wp--preset--color--light-2);
+}
+
+/* Any featured image fills its frame, PNGs included. */
+.wp-block-post-featured-image img {
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
+}
+
+.coffee-posts .wp-block-post-featured-image img {
+	transition: transform .6s ease;
+}
+
+.coffee-posts .wp-block-post:hover .wp-block-post-featured-image img {
+	transform: scale(1.06);
+}
+
+.coffee-posts .wp-block-post > *:not(.wp-block-post-featured-image) {
+	padding-inline: 1.4rem;
+}
+
+.coffee-posts .wp-block-post > :last-child {
+	padding-bottom: 1.5rem;
+}
+
+.coffee-posts .wp-block-post-terms a {
+	color: var(--wp--preset--color--brown);
+	text-decoration: none;
+	font-weight: 700;
+	font-size: .72rem;
+	letter-spacing: .18em;
+	text-transform: uppercase;
+}
+
+.coffee-posts .wp-block-post-title a {
+	color: var(--wp--preset--color--body-dark);
+	text-decoration: none;
+}
+
+.coffee-posts .wp-block-post-excerpt {
+	color: #6B6460;
+	font-size: .92rem;
+}
+
+.coffee-posts .wp-block-post-excerpt__more-link {
+	font-family: var(--wp--preset--font-family--display);
+	color: var(--wp--preset--color--body-dark);
+	text-decoration: none;
+	letter-spacing: .04em;
+}
+
+/* ===== Follow band ===== */
+.coffee-follow .wp-block-cover__image-background {
+	object-position: right center;
+}
+
+.coffee-follow .wp-block-cover__background {
+	background: linear-gradient(90deg, rgba(26, 32, 44, .9) 0%, rgba(26, 32, 44, .55) 55%, rgba(26, 32, 44, 0) 100%) !important;
+	opacity: 1 !important;
+}
+
+.coffee-follow .wp-block-social-links .wp-social-link {
+	background: transparent !important;
+	border: 2px solid rgba(255, 255, 255, .6);
+	transition: background .2s, border-color .2s;
+}
+
+.coffee-follow .wp-block-social-links .wp-social-link:hover {
+	background: var(--wp--preset--color--caramel) !important;
+	border-color: var(--wp--preset--color--caramel);
+	transform: none;
+}
+
+/* ===== Footer ===== */
+.coffee-footer {
+	position: relative;
+	overflow: hidden;
+}
+
+.coffee-news {
+	position: relative;
+	min-height: 0 !important;
+	box-shadow: 0 30px 60px rgba(0, 0, 0, .35);
+}
+
+.coffee-news .wp-block-cover__image-background {
+	opacity: .16;
+	mix-blend-mode: luminosity;
+}
+
+.coffee-news .coffee-eyebrow,
+.coffee-news em {
+	color: #FFD9A8;
+}
+
+.coffee-news .wp-block-button__link {
+	background: var(--wp--preset--color--body-dark);
+	color: #fff;
+}
+
+.coffee-trust {
+	border-bottom: 1px solid rgba(255, 255, 255, .09);
+}
+
+.coffee-trust > .wp-block-group + .wp-block-group {
+	border-left: 1px solid rgba(255, 255, 255, .09);
+	padding-left: 1.4rem;
+}
+
+.coffee-trust svg {
+	width: 30px;
+	height: 30px;
+	flex: none;
+	stroke: var(--wp--preset--color--caramel);
+	fill: none;
+	stroke-width: 1.5;
+}
+
+.coffee-trust p {
+	margin: 0;
+}
+
+@media (max-width: 781px) {
+	.coffee-trust > .wp-block-group + .wp-block-group {
+		border-left: 0;
+		padding-left: 0;
+	}
+}
+
+.coffee-footer h2.coffee-fh {
+	font: 700 .74rem/1 var(--wp--preset--font-family--body) !important;
+	letter-spacing: .22em;
+	text-transform: uppercase;
+	color: var(--wp--preset--color--caramel);
+	display: flex;
+	align-items: center;
+	gap: .6rem;
+}
+
+.coffee-footer h2.coffee-fh::after {
+	content: "";
+	flex: 1;
+	height: 1px;
+	background: rgba(255, 255, 255, .1);
+}
+
+.coffee-footer .coffee-links {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: grid;
+	gap: .65rem;
+	font-size: .92rem;
+}
+
+.coffee-footer .coffee-links a {
+	color: rgba(255, 255, 255, .82);
+	text-decoration: none;
+	display: inline-block;
+	transition: color .2s, transform .2s;
+}
+
+.coffee-footer .coffee-links a:hover {
+	color: #fff;
+	transform: translateX(4px);
+}
+
+.coffee-footer .wp-block-latest-posts {
+	padding: 0;
+	display: grid;
+	gap: 1rem;
+}
+
+.coffee-footer .wp-block-latest-posts li {
+	display: grid;
+	grid-template-columns: 76px 1fr;
+	gap: .9rem;
+	align-items: center;
+	margin: 0;
+}
+
+.coffee-footer .wp-block-latest-posts__featured-image {
+	margin: 0 !important;
+}
+
+.coffee-footer .wp-block-latest-posts__featured-image img {
+	width: 76px !important;
+	height: 60px !important;
+	object-fit: cover;
+	max-width: none;
+}
+
+.coffee-footer .wp-block-latest-posts__post-title {
+	color: rgba(255, 255, 255, .9);
+	text-decoration: none;
+	font-size: .9rem;
+	font-weight: 500;
+	line-height: 1.35;
+}
+
+.coffee-footer .wp-block-latest-posts__post-title:hover {
+	color: #fff;
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+.coffee-footer .wp-block-social-links .wp-social-link {
+	background: transparent !important;
+	border: 1px solid rgba(255, 255, 255, .2);
+	transition: background .2s, border-color .2s;
+}
+
+.coffee-footer .wp-block-social-links .wp-social-link:hover {
+	background: var(--wp--preset--color--caramel) !important;
+	border-color: var(--wp--preset--color--caramel);
+}
+
+.coffee-footer .coffee-contact svg {
+	width: 16px;
+	height: 16px;
+	stroke: var(--wp--preset--color--caramel);
+	fill: none;
+	stroke-width: 2;
+	vertical-align: -3px;
+	margin-right: .5rem;
+}
+
+.coffee-bigword {
+	position: relative;
+	margin: 0 !important;
+}
+
+.coffee-bigword p {
+	font: 400 clamp(3rem, 11.5vw, 14rem)/.85 var(--wp--preset--font-family--display);
+	white-space: nowrap;
+	text-align: center;
+	color: transparent;
+	-webkit-text-stroke: 1px rgba(184, 177, 123, .22);
+	letter-spacing: .02em;
+	user-select: none;
+	margin: 0 0 -.06em;
+}
+
+.coffee-bigword .wp-block-image {
+	position: absolute;
+	left: 50%;
+	bottom: 8%;
+	width: clamp(90px, 13vw, 170px);
+	margin: 0;
+	transform: translateX(-50%) rotate(-6deg);
+	filter: drop-shadow(0 20px 25px rgba(0, 0, 0, .5));
+}
+
+.coffee-legal a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.coffee-legal a:hover {
+	color: #fff;
+}
+
+.coffee-pay {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .4rem;
+	margin: 0;
+}
+
+.coffee-pay span {
+	border: 1px solid rgba(255, 255, 255, .18);
+	border-radius: 3px;
+	padding: .25rem .5rem;
+	font: 700 .66rem/1 var(--wp--preset--font-family--body);
+	letter-spacing: .08em;
+	color: rgba(255, 255, 255, .8);
+}
+
+.coffee-totop {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background: var(--wp--preset--color--caramel);
+	color: var(--wp--preset--color--body-dark);
+	border: 0;
+	cursor: pointer;
+	display: grid;
+	place-items: center;
+}
+
+.coffee-totop svg {
+	width: 16px;
+	height: 16px;
+	stroke: currentColor;
+	fill: none;
+	stroke-width: 2.4;
+}
+
+/* ===== Forms (Contact Form 7, WooCommerce) ===== */
 .coffee-form input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]),
 .coffee-form select,
-.coffee-form textarea {
+.coffee-form textarea,
+.coffee-modal input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]),
+.coffee-modal select,
+.coffee-modal textarea {
 	width: 100%;
-	min-height: 48px;
-	padding: 0 14px;
-	border: 1px solid var(--wp--preset--color--muted);
-	border-radius: 2px;
-	background: #fff;
-	color: var(--wp--preset--color--ink);
+	min-height: 50px;
+	padding: .8rem 1rem;
+	border: 1.5px solid var(--wp--preset--color--light-2);
+	border-radius: 12px;
+	background: #FAF8F5;
+	color: var(--wp--preset--color--body-dark);
 	font: inherit;
 	box-sizing: border-box;
+	transition: border-color .2s, box-shadow .2s, background .2s;
 }
 
-.coffee-form textarea {
-	padding: 12px 14px;
+.coffee-form input:focus,
+.coffee-form select:focus,
+.coffee-form textarea:focus,
+.coffee-modal input:focus,
+.coffee-modal select:focus,
+.coffee-modal textarea:focus {
+	outline: none;
+	border-color: var(--wp--preset--color--brown);
+	background: #fff;
+	box-shadow: 0 0 0 4px rgba(150, 96, 65, .15);
 }
 
-.coffee-form input[type="submit"] {
-	min-height: 52px;
-	padding: 0 2rem;
+.coffee-form label,
+.coffee-modal label {
+	font-weight: 700;
+	font-size: .72rem;
+	letter-spacing: .14em;
+	text-transform: uppercase;
+	color: var(--wp--preset--color--brown);
+}
+
+.coffee-form input[type="submit"],
+.coffee-modal input[type="submit"] {
+	width: 100%;
+	min-height: 54px;
 	border: 0;
-	border-radius: 2px;
-	background: var(--wp--preset--color--ink);
-	color: var(--wp--preset--color--light);
-	font: inherit;
-	font-weight: 600;
+	border-radius: 12px;
+	background: var(--wp--preset--color--brown);
+	color: #fff;
+	font: 400 1.25rem/1 var(--wp--preset--font-family--display);
+	letter-spacing: .03em;
 	cursor: pointer;
 }
 
-.coffee-plain-list {
-	list-style: none;
-	padding-left: 0;
-	line-height: 2;
+.coffee-form input[type="submit"]:hover,
+.coffee-modal input[type="submit"]:hover {
+	background: #7A4C32;
 }
 
-.coffee-hero-art img {
-	width: 100%;
-	max-width: 460px;
-	height: auto;
+.coffee-info {
+	background: #fff;
+	color: var(--wp--preset--color--body-dark);
+	border-left: 3px solid var(--wp--preset--color--brown);
+	box-shadow: 0 10px 24px rgba(40, 25, 15, .08);
 }
 
-/* Shop, product, cart, checkout and account pages sit on a light area. */
+.coffee-info .coffee-ic {
+	display: grid;
+	place-items: center;
+	flex: none;
+	width: 44px;
+	height: 44px;
+	border-radius: 50%;
+	background: var(--wp--preset--color--light);
+}
+
+.coffee-info svg {
+	width: 22px;
+	height: 22px;
+	fill: none;
+	stroke: var(--wp--preset--color--brown);
+	stroke-width: 1.6;
+}
+
+.coffee-info p {
+	margin: 0;
+}
+
+/* Form panel: white card on the cream sections. */
+.wp-block-column.coffee-form {
+	background: #fff;
+	padding: clamp(1.5rem, 3vw, 2.5rem);
+	box-shadow: 0 20px 45px rgba(40, 25, 15, .1);
+}
+
+/* Dealer perks on navy. */
+.coffee-perk {
+	background: rgba(255, 255, 255, .05);
+	border: 1px solid rgba(255, 255, 255, .12);
+	transition: transform .3s ease, border-color .3s ease;
+}
+
+.coffee-perk:hover {
+	transform: translateY(-6px);
+	border-color: var(--wp--preset--color--caramel);
+}
+
+.coffee-perk svg {
+	width: 40px;
+	height: 40px;
+	fill: none;
+	stroke: var(--wp--preset--color--caramel);
+	stroke-width: 1.6;
+}
+
+.coffee-perk p {
+	color: rgba(255, 255, 255, .75);
+}
+
+.coffee-video-banner h1 {
+	max-width: 13ch;
+}
+
+.screen-reader-text {
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute !important;
+	width: 1px;
+	word-wrap: normal !important;
+}
+
+/* ===== Shop, product, cart, checkout and account ===== */
 .coffee-shop-area a:not(.wp-element-button):not(.wc-block-components-button) {
 	color: var(--wp--preset--color--brown);
 }
 
 .coffee-product-card {
-	border-radius: 2px;
-	overflow: hidden;
-	box-shadow: 0 1px 2px rgba(21, 17, 14, 0.06);
-	transition: transform 0.25s ease, box-shadow 0.25s ease;
+	border: 1px solid var(--wp--preset--color--light-2);
+	transition: transform .3s ease, box-shadow .3s ease;
 	height: 100%;
 }
 
-.coffee-product-card > *:not(.wc-block-components-product-image) {
-	padding-left: 1.25rem;
-	padding-right: 1.25rem;
-	text-align: left;
-}
-
-.coffee-product-card .wp-block-post-title a {
-	text-decoration: none;
-}
-
-.coffee-product-card .wp-block-button,
-.coffee-product-card .wc-block-components-product-button {
-	margin-top: auto;
-	width: 100%;
-	align-items: stretch;
-}
-
-.coffee-shop-area .wc-block-components-product-button .wp-block-button__link,
-.coffee-shop-area .wc-block-components-product-button__button,
-.coffee-shop-area .single_add_to_cart_button,
-.coffee-products .wc-block-grid__product .wp-block-button__link {
-	background: var(--wp--preset--color--ink);
-	color: var(--wp--preset--color--light);
-	border-radius: 2px;
-}
-
-.coffee-shop-area .wc-block-components-product-sale-badge,
-.coffee-shop-area .onsale {
-	background: var(--wp--preset--color--ink);
-	color: var(--wp--preset--color--light);
-	border: 0;
-	border-radius: 2px;
-	margin: 12px;
-}
-
-.coffee-shop-area .woocommerce-product-gallery img,
-.coffee-shop-area .wc-block-components-product-image img {
-	border-radius: 2px;
-}
-
-.coffee-shop-area .quantity .qty {
-	min-height: 48px;
-	border: 1px solid var(--wp--preset--color--muted);
-	border-radius: 2px;
-}
-
-/* Home page product grid (Newest products block). */
-.coffee-products .wc-block-grid__product {
-	background: var(--wp--preset--color--white);
-	transition: transform 0.25s ease, box-shadow 0.25s ease;
-	border-radius: 2px;
-	overflow: hidden;
-	text-align: left;
-	padding-bottom: 1.25rem;
-	border: 0;
-}
-
-.coffee-products .wc-block-grid__product > *:not(.wc-block-grid__product-image) {
-	padding-left: 1.25rem;
-	padding-right: 1.25rem;
-}
-
-.coffee-products .wc-block-grid__product-link {
-	text-decoration: none;
-}
-
-.coffee-products .wc-block-grid .wc-block-grid__products {
-	display: grid;
-	grid-template-columns: repeat(4, minmax(0, 1fr));
-	gap: 1.5rem;
-	margin: 0;
-}
-
-.coffee-products .wc-block-grid__products .wc-block-grid__product {
-	max-width: none;
-	margin: 0;
-	border: 1px solid var(--wp--preset--color--light-2);
-}
-
-@media (max-width: 781px) {
-	.coffee-products .wc-block-grid .wc-block-grid__products {
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-		gap: 1rem;
-	}
-}
-
-.coffee-products .wc-block-grid__product:hover,
 .coffee-product-card:hover {
-	transform: translateY(-4px);
-	box-shadow: 0 18px 40px rgba(21, 17, 14, 0.12);
-}
-
-.coffee-products .wc-block-grid__product-image {
-	background: var(--wp--preset--color--light-2);
-}
-
-.coffee-products .wc-block-grid__product-title {
-	font-family: var(--wp--preset--font-family--display);
-	font-size: 1.5rem;
-	font-weight: 500;
-	color: var(--wp--preset--color--ink);
-}
-
-.coffee-products .wc-block-grid__product-price {
-	font-weight: 600;
-}
-
-.coffee-products .wc-block-grid__product-add-to-cart .wp-block-button__link {
-	width: 100%;
-}
-
-/* Cart, checkout and account pages use the same light area. */
-body.woocommerce-cart main,
-body.woocommerce-checkout main,
-body.woocommerce-account main {
-	background: var(--wp--preset--color--light);
-	color: var(--wp--preset--color--ink);
-	max-width: none;
-}
-
-body.woocommerce-cart main a:not(.wc-block-components-button):not(.wp-element-button),
-body.woocommerce-checkout main a:not(.wc-block-components-button):not(.wp-element-button),
-body.woocommerce-account main a:not(.button) {
-	color: var(--wp--preset--color--brown);
-}
-
-body.woocommerce-cart .wc-block-cart__submit-button,
-body.woocommerce-checkout .wc-block-components-checkout-place-order-button,
-body.woocommerce-account .woocommerce-button {
-	background: var(--wp--preset--color--ink);
-	color: var(--wp--preset--color--light);
-	border-radius: 2px;
+	transform: translateY(-6px);
+	box-shadow: 0 24px 45px rgba(40, 25, 15, .14);
 }
 
 .coffee-product-card > * {
 	box-sizing: border-box;
 	width: 100%;
 	margin: 0;
+}
+
+.coffee-product-card > *:not(.wc-block-components-product-image) {
+	padding-left: 1.2rem;
+	padding-right: 1.2rem;
+	text-align: left;
+}
+
+.coffee-product-card .wc-block-components-product-image {
+	background: radial-gradient(circle at 50% 60%, #EFE6DA 0%, #E2D5C4 100%);
+	overflow: hidden;
 }
 
 .coffee-product-card .wc-block-components-product-image,
@@ -352,96 +1400,695 @@ body.woocommerce-account .woocommerce-button {
 	display: block;
 	width: 100%;
 	height: auto;
-	border-radius: 0;
+	transition: transform .5s ease;
+}
+
+.coffee-product-card:hover .wc-block-components-product-image img {
+	transform: scale(1.05) rotate(-2deg);
 }
 
 .coffee-product-card .wp-block-post-title {
 	margin-top: 1rem;
 }
 
-.coffee-shop-area .woocommerce-product-gallery ~ .onsale,
-.woocommerce .coffee-shop-area span.onsale {
-	min-height: 0;
-	min-width: 0;
-	line-height: 1;
-	padding: 0.45rem 0.8rem;
-	background: var(--wp--preset--color--caramel);
-	color: var(--wp--preset--color--deep);
-	text-transform: uppercase;
-	letter-spacing: 0.16em;
-	border-radius: 2px;
-	font-size: 0.8125rem;
-}
-
-/* Sections touch each other; spacing lives inside each section. */
-.wp-site-blocks > * + * {
-	margin-block-start: 0;
-}
-
+.coffee-product-card .wp-block-post-title a,
 .coffee-shop-area .wp-block-post-title a {
-	color: var(--wp--preset--color--ink);
+	color: var(--wp--preset--color--body-dark);
+	text-decoration: none;
 }
 
-.coffee-product-card .wc-block-components-product-image {
-	background: var(--wp--preset--color--light-2);
+.coffee-product-card .wc-block-components-product-price {
+	color: var(--wp--preset--color--brown);
 }
 
-.coffee-product-card .wp-block-post-title {
-	font-weight: 500;
+.coffee-product-card .wp-block-button,
+.coffee-product-card .wc-block-components-product-button {
+	margin-top: auto;
+	width: 100%;
+	align-items: stretch;
 }
 
-/* Product buttons and badges: quiet, uppercase, square. */
 .coffee-shop-area .wc-block-components-product-button__button,
 .coffee-shop-area .single_add_to_cart_button,
-.coffee-products .wc-block-grid__product .wp-block-button__link,
 body.woocommerce-cart .wc-block-cart__submit-button,
 body.woocommerce-checkout .wc-block-components-checkout-place-order-button,
-.coffee-form input[type="submit"] {
-	text-transform: uppercase;
-	letter-spacing: 0.16em;
-	font-size: 0.75rem;
-	font-weight: 600;
+body.woocommerce-account .woocommerce-button {
+	background: var(--wp--preset--color--body-dark);
+	color: #fff;
+	border-radius: 3px;
+	font-family: var(--wp--preset--font-family--display);
+	font-size: 1.05rem;
+	font-weight: 400;
+	letter-spacing: .03em;
+	text-transform: none;
 }
 
-.coffee-shop-area .wc-block-components-product-button__button:hover,
-.coffee-products .wc-block-grid__product .wp-block-button__link:hover {
+.coffee-shop-area .single_add_to_cart_button,
+body.woocommerce-cart .wc-block-cart__submit-button,
+body.woocommerce-checkout .wc-block-components-checkout-place-order-button {
+	background: var(--wp--preset--color--brown);
+}
+
+.coffee-shop-area .wc-block-components-product-button__button:hover {
 	background: var(--wp--preset--color--caramel);
-	color: var(--wp--preset--color--deep);
+	color: var(--wp--preset--color--body-dark);
 }
 
 .coffee-shop-area .wc-block-components-product-sale-badge,
 .coffee-shop-area .onsale,
-.coffee-products .wc-block-grid__product-onsale {
-	text-transform: uppercase;
-	letter-spacing: 0.16em;
-	font-size: 0.6875rem;
-	background: var(--wp--preset--color--caramel);
-	color: var(--wp--preset--color--deep);
-}
-
-.coffee-shop-area .price,
-.coffee-shop-area .wc-block-components-product-price {
-	letter-spacing: 0.02em;
+.woocommerce .coffee-shop-area span.onsale {
+	min-height: 0;
+	min-width: 0;
+	line-height: 1;
+	padding: .4rem .7rem;
+	background: var(--wp--preset--color--rose);
+	color: var(--wp--preset--color--body-dark);
+	border: 0;
+	border-radius: 2px;
+	margin: 12px;
+	font-family: var(--wp--preset--font-family--display);
+	font-size: .95rem;
+	transform: rotate(-4deg);
 }
 
 .coffee-shop-area .price del,
-.coffee-shop-area .wc-block-components-product-price del,
-.coffee-products .wc-block-grid__product-price del {
-	opacity: 0.55;
+.coffee-shop-area .wc-block-components-product-price del {
+	opacity: .55;
 	font-weight: 400;
 }
 
-.coffee-shop-area .coffee-product-card .wp-block-post-title a:not(.wp-element-button) {
-	color: var(--wp--preset--color--ink);
+.coffee-shop-area .quantity .qty {
+	min-height: 48px;
+	border: 1px solid var(--wp--preset--color--light-2);
+	border-radius: 3px;
+}
+
+body.woocommerce-cart main,
+body.woocommerce-checkout main,
+body.woocommerce-account main {
+	background: var(--wp--preset--color--light);
+	color: var(--wp--preset--color--body-dark);
+	max-width: none;
+}
+
+body.woocommerce-cart main a:not(.wc-block-components-button):not(.wp-element-button),
+body.woocommerce-checkout main a:not(.wc-block-components-button):not(.wp-element-button),
+body.woocommerce-account main a:not(.button) {
+	color: var(--wp--preset--color--brown);
+}
+
+body.woocommerce-cart main .wp-block-cover a,
+body.woocommerce-checkout main .wp-block-cover a,
+body.woocommerce-account main .wp-block-cover a {
+	color: var(--wp--preset--color--caramel);
 }
 
 @media (max-width: 600px) {
-	.coffee-shop-area .wc-block-components-product-button__button,
-	.coffee-products .wc-block-grid__product .wp-block-button__link {
-		padding-left: 0.5rem;
-		padding-right: 0.5rem;
-		letter-spacing: 0.08em;
-		font-size: 0.6875rem;
+	.coffee-shop-area .wc-block-components-product-button__button {
+		padding-left: .5rem;
+		padding-right: .5rem;
 		white-space: nowrap;
 	}
+}
+
+/* ===== Motion: scroll reveal, headline words, page loader ===== */
+.coffee-rv {
+	opacity: 0;
+	translate: 0 34px;
+	transition: opacity .8s var(--coffee-ease) var(--d, 0ms), translate .8s var(--coffee-ease) var(--d, 0ms);
+}
+
+.coffee-rv.is-in {
+	opacity: 1;
+	translate: 0 0;
+}
+
+.coffee-tilt.coffee-rv {
+	translate: 0 70px;
+}
+
+.coffee-tilt.coffee-rv.is-in {
+	translate: 0 0;
+}
+
+.coffee-w {
+	display: inline-block;
+	overflow: hidden;
+	vertical-align: top;
+	padding: .12em .02em .08em;
+	margin: -.12em -.02em -.08em;
+}
+
+.coffee-w > span {
+	display: inline-block;
+	transform: translateY(110%);
+}
+
+.coffee-split.is-go .coffee-w > span {
+	animation: coffee-wordup .9s cubic-bezier(.2, .8, .2, 1) both;
+	animation-delay: calc(var(--i) * 70ms + 150ms);
+}
+
+@keyframes coffee-wordup {
+	to { transform: none; }
+}
+
+@keyframes coffee-fadeup {
+	from { opacity: 0; transform: translateY(12px); }
+	to { opacity: 1; transform: none; }
+}
+
+.coffee-loader {
+	position: fixed;
+	inset: 0;
+	z-index: 200;
+	background: var(--wp--preset--color--deep);
+	display: grid;
+	place-items: center;
+	transition: opacity .6s ease, visibility .6s;
+}
+
+.coffee-loader.is-done {
+	opacity: 0;
+	visibility: hidden;
+}
+
+.coffee-loader .lw {
+	display: grid;
+	justify-items: center;
+	gap: 1.1rem;
+}
+
+.coffee-loader svg {
+	width: 74px;
+	height: 74px;
+	overflow: visible;
+}
+
+.coffee-loader .fill {
+	animation: coffee-fillup 1.1s cubic-bezier(.6, .1, .3, 1) forwards;
+	transform-origin: bottom;
+	transform: scaleY(0);
+}
+
+.coffee-loader .st {
+	fill: none;
+	stroke: #fff;
+	stroke-width: 2;
+	stroke-linecap: round;
+	opacity: 0;
+	animation: coffee-steam 1.6s ease-in-out .5s infinite;
+}
+
+.coffee-loader .st.b {
+	animation-delay: .8s;
+}
+
+.coffee-loader .bar {
+	width: 120px;
+	height: 2px;
+	background: rgba(255, 255, 255, .12);
+	overflow: hidden;
+}
+
+.coffee-loader .bar::after {
+	content: "";
+	display: block;
+	height: 100%;
+	background: var(--wp--preset--color--caramel);
+	animation: coffee-loadbar 1.2s ease forwards;
+	transform-origin: left;
+	transform: scaleX(0);
+}
+
+@keyframes coffee-fillup { to { transform: scaleY(1); } }
+@keyframes coffee-loadbar { to { transform: scaleX(1); } }
+
+/* ===== Cookie card ===== */
+.coffee-cookie {
+	position: fixed;
+	z-index: 110;
+	left: max(16px, env(safe-area-inset-left, 0px));
+	bottom: max(16px, env(safe-area-inset-bottom, 0px));
+	width: min(470px, calc(100% - 32px));
+	background: rgba(24, 20, 18, .94);
+	backdrop-filter: blur(14px);
+	-webkit-backdrop-filter: blur(14px);
+	color: #fff;
+	border: 1px solid rgba(255, 255, 255, .12);
+	border-radius: 16px;
+	padding: 1.3rem 1.4rem 1.2rem;
+	box-shadow: 0 30px 60px rgba(0, 0, 0, .45);
+	display: grid;
+	gap: .9rem;
+	animation: coffee-cookiein .6s cubic-bezier(.2, .8, .2, 1) both;
+}
+
+.coffee-cookie[hidden],
+.coffee-modal[hidden],
+.coffee-cookie [hidden] {
+	display: none !important;
+}
+
+@keyframes coffee-cookiein {
+	from { opacity: 0; transform: translateY(30px) scale(.97); }
+}
+
+.coffee-cookie .ch {
+	display: flex;
+	align-items: center;
+	gap: .8rem;
+}
+
+.coffee-cookie .ci {
+	width: 38px;
+	height: 38px;
+	flex: none;
+	border-radius: 50%;
+	background: rgba(184, 177, 123, .18);
+	display: grid;
+	place-items: center;
+	font-size: 1.1rem;
+	animation: coffee-wobble 3s ease-in-out infinite;
+}
+
+@keyframes coffee-wobble {
+	0%, 100% { rotate: 0deg; }
+	10% { rotate: -12deg; }
+	20% { rotate: 10deg; }
+	30% { rotate: 0deg; }
+}
+
+.coffee-cookie h2 {
+	margin: 0;
+	font-size: 1.15rem;
+	letter-spacing: .04em;
+	text-transform: uppercase;
+}
+
+.coffee-cookie p {
+	margin: 0;
+	font-size: .86rem;
+	color: rgba(255, 255, 255, .75);
+}
+
+.coffee-cookie p a {
+	color: var(--wp--preset--color--caramel);
+	font-weight: 700;
+}
+
+.coffee-cookie .cb {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .6rem;
+	align-items: center;
+}
+
+.coffee-cookie .cb button {
+	border: 0;
+	border-radius: 8px;
+	padding: .75rem 1.1rem;
+	font: 400 .95rem/1 var(--wp--preset--font-family--display);
+	letter-spacing: .03em;
+	cursor: pointer;
+	background: var(--wp--preset--color--brown);
+	color: #fff;
+}
+
+.coffee-cookie .cb button.out {
+	background: rgba(255, 255, 255, .06);
+	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .2);
+}
+
+.coffee-cookie .cb button.lnk {
+	background: none;
+	color: rgba(255, 255, 255, .55);
+	font: 700 .8rem/1 var(--wp--preset--font-family--body);
+	letter-spacing: .12em;
+	text-transform: uppercase;
+	padding: .5rem 0;
+}
+
+.coffee-cookie .prefs {
+	display: grid;
+	gap: .5rem;
+	border-top: 1px solid rgba(255, 255, 255, .1);
+	padding-top: .9rem;
+}
+
+.coffee-cookie .prefs label {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 1rem;
+	font-size: .86rem;
+}
+
+.coffee-cookie .prefs small {
+	display: block;
+	color: rgba(255, 255, 255, .5);
+	font-size: .74rem;
+}
+
+.coffee-sw {
+	appearance: none;
+	-webkit-appearance: none;
+	width: 40px;
+	height: 22px;
+	flex: none;
+	border-radius: 11px;
+	background: rgba(255, 255, 255, .2);
+	position: relative;
+	cursor: pointer;
+	transition: background .2s;
+	margin: 0;
+}
+
+.coffee-sw::after {
+	content: "";
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	background: #fff;
+	transition: transform .2s;
+}
+
+.coffee-sw:checked {
+	background: var(--wp--preset--color--brown);
+}
+
+.coffee-sw:checked::after {
+	transform: translateX(18px);
+}
+
+/* ===== Floating "Bayimiz ol" badge ===== */
+.coffee-bayi {
+	position: fixed;
+	z-index: 75;
+	left: max(16px, env(safe-area-inset-left, 0px));
+	bottom: max(16px, env(safe-area-inset-bottom, 0px));
+	width: 112px;
+	height: 112px;
+	border: 0;
+	padding: 0;
+	background: none;
+	cursor: pointer;
+	transition: opacity .4s, transform .4s;
+	animation: coffee-bob 4s ease-in-out infinite;
+}
+
+body.coffee-cookie-open .coffee-bayi {
+	opacity: 0;
+	pointer-events: none;
+	transform: translateY(20px);
+}
+
+.coffee-bayi .ring {
+	position: absolute;
+	inset: 0;
+	animation: coffee-spin 14s linear infinite;
+}
+
+.coffee-bayi .ring text {
+	font: 700 10.5px var(--wp--preset--font-family--body);
+	letter-spacing: 2.6px;
+	fill: #fff;
+}
+
+.coffee-bayi .disc {
+	position: absolute;
+	inset: 0;
+	border-radius: 50%;
+	background: radial-gradient(circle at 35% 30%, #A8704F, var(--wp--preset--color--brown) 60%, #6E4229);
+	box-shadow: 0 16px 34px rgba(0, 0, 0, .4), inset 0 0 0 2px rgba(255, 255, 255, .15);
+}
+
+.coffee-bayi .core {
+	position: absolute;
+	inset: 27px;
+	border-radius: 50%;
+	background: var(--wp--preset--color--caramel);
+	display: grid;
+	place-items: center;
+	box-shadow: 0 6px 14px rgba(0, 0, 0, .25);
+	transition: transform .3s;
+}
+
+.coffee-bayi .core svg {
+	width: 30px;
+	height: 30px;
+	stroke: var(--wp--preset--color--body-dark);
+	fill: none;
+	stroke-width: 1.8;
+}
+
+.coffee-bayi:hover .core {
+	transform: scale(1.12) rotate(-8deg);
+}
+
+.coffee-bayi:hover .ring {
+	animation-duration: 5s;
+}
+
+@keyframes coffee-spin { to { rotate: 360deg; } }
+@keyframes coffee-bob { 50% { translate: 0 -6px; } }
+
+@media (max-width: 600px) {
+	.coffee-bayi { width: 88px; height: 88px; }
+	.coffee-bayi .core { inset: 21px; }
+	.coffee-bayi .core svg { width: 24px; height: 24px; }
+	.coffee-bayi .ring text { font-size: 9px; letter-spacing: 1.6px; }
+}
+
+/* ===== Dealer popup ===== */
+.coffee-modal {
+	position: fixed;
+	inset: 0;
+	z-index: 140;
+	display: grid;
+	place-items: center;
+	padding: 16px;
+}
+
+.coffee-modal .scrim {
+	position: absolute;
+	inset: 0;
+	background: rgba(40, 20, 10, .6);
+	backdrop-filter: blur(6px);
+	-webkit-backdrop-filter: blur(6px);
+}
+
+.coffee-modal .card {
+	position: relative;
+	width: min(560px, 100%);
+	max-height: calc(100dvh - 32px);
+	overflow-y: auto;
+	background: linear-gradient(180deg, #FFF7E8 0%, #fff 32%);
+	color: var(--wp--preset--color--body-dark);
+	border-radius: 22px;
+	box-shadow: 0 40px 90px rgba(0, 0, 0, .5);
+	animation: coffee-modalin .55s cubic-bezier(.2, .9, .25, 1.15) both;
+	scrollbar-width: thin;
+	scrollbar-color: var(--wp--preset--color--brown) transparent;
+}
+
+.coffee-modal .card::before {
+	content: "";
+	position: sticky;
+	top: 0;
+	display: block;
+	height: 5px;
+	background: linear-gradient(90deg, var(--wp--preset--color--amber), var(--wp--preset--color--brown), var(--wp--preset--color--rose));
+	z-index: 2;
+}
+
+@keyframes coffee-modalin {
+	from { opacity: 0; transform: translateY(40px) scale(.94); }
+}
+
+.coffee-modal .mx {
+	position: absolute;
+	top: 14px;
+	right: 14px;
+	z-index: 3;
+	width: 42px;
+	height: 42px;
+	border-radius: 50%;
+	border: 3px solid #fff;
+	background: var(--wp--preset--color--brown);
+	color: #fff;
+	cursor: pointer;
+	display: grid;
+	place-items: center;
+	box-shadow: 0 6px 16px rgba(0, 0, 0, .25);
+	transition: transform .3s;
+}
+
+.coffee-modal .mx:hover {
+	transform: rotate(90deg);
+}
+
+.coffee-modal .mx svg {
+	width: 16px;
+	height: 16px;
+	stroke: currentColor;
+	stroke-width: 3;
+}
+
+.coffee-modal .mh {
+	text-align: center;
+	padding: 2rem clamp(1.2rem, 5vw, 2.6rem) 0;
+	display: grid;
+	justify-items: center;
+	gap: .7rem;
+}
+
+.coffee-modal .mi {
+	width: 66px;
+	height: 66px;
+	border-radius: 50%;
+	background: radial-gradient(circle at 35% 30%, #B07A58, var(--wp--preset--color--brown));
+	display: grid;
+	place-items: center;
+	box-shadow: 0 12px 26px rgba(150, 96, 65, .45);
+	animation: coffee-pop .6s cubic-bezier(.2, .9, .3, 1.4) .15s both;
+}
+
+.coffee-modal .mi svg {
+	width: 30px;
+	height: 30px;
+	stroke: #fff;
+	fill: none;
+	stroke-width: 1.8;
+}
+
+@keyframes coffee-pop {
+	from { transform: scale(0); }
+}
+
+.coffee-modal h2 {
+	margin: 0;
+	font-size: clamp(2.2rem, 7vw, 3rem);
+	letter-spacing: .03em;
+	padding-bottom: .25em;
+}
+
+.coffee-modal h2 em {
+	font-style: normal;
+	color: var(--wp--preset--color--brown);
+	position: relative;
+}
+
+.coffee-modal h2 em::after {
+	content: "";
+	position: absolute;
+	left: 8%;
+	right: 8%;
+	bottom: .02em;
+	height: 4px;
+	border-radius: 2px;
+	background: linear-gradient(90deg, var(--wp--preset--color--amber), #E9B44C);
+}
+
+.coffee-modal .sub {
+	margin: 0;
+	color: #6B6460;
+	font-size: .95rem;
+}
+
+.coffee-modal .pill {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: .3rem 1rem;
+	align-items: center;
+	padding: .75rem 1.4rem;
+	background: #fff;
+	border-radius: 40px;
+	box-shadow: 0 8px 24px rgba(150, 96, 65, .14);
+	font-size: .82rem;
+	color: #6B6460;
+	margin-top: .4rem;
+}
+
+.coffee-modal .pill b {
+	font: 400 1.15rem/1 var(--wp--preset--font-family--display);
+	color: var(--wp--preset--color--brown);
+	margin-right: .2rem;
+}
+
+.coffee-modal .pill i {
+	width: 5px;
+	height: 5px;
+	border-radius: 50%;
+	background: var(--wp--preset--color--amber);
+}
+
+.coffee-modal .mb {
+	padding: 1.6rem clamp(1.2rem, 5vw, 2.6rem) 2rem;
+}
+
+.coffee-modal .mb .wpcf7-form p {
+	margin: 0 0 1rem;
+}
+
+.coffee-modal .mb .wpcf7-list-item {
+	margin: 0;
+	background: #FFF8E1;
+	border: 1px solid #F3DFA2;
+	border-radius: 12px;
+	padding: .9rem 1rem;
+	font-size: .82rem;
+	display: block;
+}
+
+.coffee-modal .mb a {
+	color: var(--wp--preset--color--brown);
+	font-weight: 700;
+}
+
+/* Toast */
+.coffee-toast {
+	position: fixed;
+	z-index: 120;
+	left: 50%;
+	bottom: max(24px, env(safe-area-inset-bottom, 0px));
+	translate: -50% 0;
+	background: var(--wp--preset--color--deep);
+	color: #fff;
+	padding: .85rem 1.1rem;
+	border-left: 3px solid var(--wp--preset--color--caramel);
+	box-shadow: 0 18px 40px rgba(0, 0, 0, .35);
+	font-size: .9rem;
+	animation: coffee-fadeup .35s ease both;
+	max-width: calc(100% - 32px);
+}
+
+/* Respect reduced motion: show everything, skip movement. */
+@media (prefers-reduced-motion: reduce) {
+	*, *::before, *::after {
+		animation: none !important;
+		transition: none !important;
+	}
+
+	.coffee-rv {
+		opacity: 1;
+		translate: none;
+	}
+
+	.coffee-w > span {
+		transform: none;
+	}
+
+	.coffee-banner .wp-block-cover__image-background {
+		scale: 1;
+	}
+}
+
+/* Full-width sections on built pages sit flush against each other. */
+.wp-block-post-content > .alignfull + .alignfull {
+	margin-block-start: 0;
 }

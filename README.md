@@ -18,23 +18,36 @@ The `theme/coffee-shop` folder is a free block theme built from the mockups. It 
 |---|---|---|
 | ![Theme home](docs/theme/home.png) | ![Theme shop](docs/theme/shop.png) | ![Theme product](docs/theme/product.png) |
 
-### The premium look (0.2.0)
+### The new look (0.3.0)
 
-Version 0.2.0 moves the theme from the original slate and caramel to a darker, more upscale roastery look:
+Version 0.3.0 rebuilds the theme from the [premium mockup](mockup/premium/index.html), in the style of the original Coffee site:
 
 | Token | Value | Use |
 |---|---|---|
-| Espresso (`ink`) | `#15110E` | Site background |
-| Deep espresso (`deep`) | `#0D0A08` | Top bar, value strip, footer |
-| Roast (`surface`) | `#2A221C` | Cards on dark sections |
-| Cream (`light`) | `#F6F1E9` | Shop and product sections |
-| Gold (`caramel`) | `#C6A15B` | Buttons, hairlines, eyebrows, italic accents |
-| Display font | Cormorant Garamond 500/600 + italic | Headings |
-| Body font | Manrope 400 to 600 | Everything else, uppercase letter-spaced for buttons and menu |
+| Navy (`ink`) | `#1A202C` | Header, footer, dark sections |
+| Coffee brown (`brown`) | `#966041` | Brown buttons, video band shade, newsletter |
+| Olive (`caramel`) | `#B8B17B` | Main buttons, eyebrows, footer headings |
+| Rose (`rose`) | `#E58C8C` | Second line of headlines, sale badges |
+| Cream (`light`) | `#F7F2EB` | Shop, about and form sections |
+| Display font | Anton | Headings, buttons |
+| Body font | Roboto 400/500 | Everything else |
 
-Buttons are square with letter-spaced capitals, section eyebrows get a short gold rule, and the photo placeholders are replaced by framed gold illustrations (`assets/images/beans.svg`, `beans-wide.svg`, `cup.svg`) until you add your own photos. The palette slugs did not change, so pages built with 0.1 pick up the new look without edits.
+What's in it:
+
+- **Header:** top bar with opening hours and a rotating message, transparent over the hero, solid once you scroll, with a scroll progress line.
+- **Home:** video hero that crossfades between clips, three tilted photo cards, value strip, outlined scrolling marquees, an Online Market band with a product rail, a barista video dealer band, the latest posts and a "Bizi Takip Edin" band.
+- **Pages:** photo or video banners with breadcrumbs on every page, plus ready patterns for Neden Biz?, Bayilik and İletişim.
+- **Extras:** a cookie notice, a floating "Bayi ol" badge that opens a dealer popup (Contact Form 7), a page loader on the home page, and reveal animations. All motion turns off with the system's "reduce motion" setting.
+- **Footer:** newsletter band, trust badges, link columns, recent posts and a large outlined wordmark.
+
+Turn parts off with the filters `coffee_shop_loader`, `coffee_shop_cookie_notice` and `coffee_shop_dealer_popup` (return `false`), or add hero clips with `coffee_shop_hero_slides`.
+
+Photos and videos come from the original Coffee site and from [Pexels](https://www.pexels.com/license/); see [`theme/coffee-shop/CREDITS.md`](theme/coffee-shop/CREDITS.md). The palette slugs did not change, so pages built with 0.1 and 0.2 pick up the new look without edits.
 
 ## Quick start (mockups)
+
+The newest mockup is `mockup/premium/index.html`: one file with 11 linked pages, photos and videos. The older 10-page mockup is described below.
+
 
 1. Download this repo (**Code → Download ZIP**) or clone it.
 2. Open `mockup/index.html` in your browser.
