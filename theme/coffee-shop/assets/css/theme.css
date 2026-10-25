@@ -1,0 +1,256 @@
+/* Small additions that theme.json cannot express. */
+
+.is-style-card {
+	border-radius: 16px;
+	overflow: hidden;
+}
+
+.is-style-placeholder-frame img {
+	border-radius: 20px;
+}
+
+.coffee-eyebrow {
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	font-weight: 600;
+}
+
+.coffee-topbar a {
+	color: inherit;
+}
+
+/* Header icons and the account / cart blocks sit on the dark header. */
+.coffee-header .wc-block-mini-cart__button,
+.coffee-header .wp-block-woocommerce-customer-account a,
+.coffee-header .wp-block-search__button {
+	color: var(--wp--preset--color--light);
+}
+
+.coffee-header .wc-block-mini-cart__badge {
+	background: var(--wp--preset--color--caramel);
+	color: var(--wp--preset--color--ink);
+}
+
+/* Steps list on the about page. */
+.coffee-step {
+	border-top: 2px solid var(--wp--preset--color--caramel);
+	padding-top: 1.25rem;
+}
+
+/* Product cards on light backgrounds. */
+.coffee-products .wc-block-components-product-sale-badge,
+.coffee-products .wc-block-grid__product-onsale {
+	background: var(--wp--preset--color--ink);
+	color: var(--wp--preset--color--light);
+	border: 0;
+	border-radius: 999px;
+}
+
+.coffee-products .wc-block-grid__product .wp-block-button__link {
+	background: var(--wp--preset--color--ink);
+	color: var(--wp--preset--color--light);
+	width: 100%;
+}
+
+/* Forms (Contact Form 7, WooCommerce) on light cards. */
+.coffee-form input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]),
+.coffee-form select,
+.coffee-form textarea {
+	width: 100%;
+	min-height: 48px;
+	padding: 0 14px;
+	border: 1px solid var(--wp--preset--color--muted);
+	border-radius: 10px;
+	background: #fff;
+	color: var(--wp--preset--color--ink);
+	font: inherit;
+	box-sizing: border-box;
+}
+
+.coffee-form textarea {
+	padding: 12px 14px;
+}
+
+.coffee-form input[type="submit"] {
+	min-height: 52px;
+	padding: 0 2rem;
+	border: 0;
+	border-radius: 999px;
+	background: var(--wp--preset--color--ink);
+	color: var(--wp--preset--color--light);
+	font: inherit;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.coffee-plain-list {
+	list-style: none;
+	padding-left: 0;
+	line-height: 2;
+}
+
+.coffee-hero-art img {
+	width: 100%;
+	max-width: 460px;
+	height: auto;
+}
+
+/* Shop, product, cart, checkout and account pages sit on a light area. */
+.coffee-shop-area a:not(.wp-element-button):not(.wc-block-components-button) {
+	color: var(--wp--preset--color--brown);
+}
+
+.coffee-product-card {
+	border-radius: 16px;
+	overflow: hidden;
+	box-shadow: 0 1px 2px rgba(26, 32, 44, 0.08);
+	height: 100%;
+}
+
+.coffee-product-card > *:not(.wc-block-components-product-image) {
+	padding-left: 1.25rem;
+	padding-right: 1.25rem;
+	text-align: left;
+}
+
+.coffee-product-card .wp-block-post-title a {
+	text-decoration: none;
+}
+
+.coffee-product-card .wp-block-button,
+.coffee-product-card .wc-block-components-product-button {
+	margin-top: auto;
+	width: 100%;
+	align-items: stretch;
+}
+
+.coffee-shop-area .wc-block-components-product-button .wp-block-button__link,
+.coffee-shop-area .wc-block-components-product-button__button,
+.coffee-shop-area .single_add_to_cart_button,
+.coffee-products .wc-block-grid__product .wp-block-button__link {
+	background: var(--wp--preset--color--ink);
+	color: var(--wp--preset--color--light);
+	border-radius: 999px;
+}
+
+.coffee-shop-area .wc-block-components-product-sale-badge,
+.coffee-shop-area .onsale {
+	background: var(--wp--preset--color--ink);
+	color: var(--wp--preset--color--light);
+	border: 0;
+	border-radius: 999px;
+	margin: 12px;
+}
+
+.coffee-shop-area .woocommerce-product-gallery img,
+.coffee-shop-area .wc-block-components-product-image img {
+	border-radius: 16px;
+}
+
+.coffee-shop-area .quantity .qty {
+	min-height: 48px;
+	border: 1px solid var(--wp--preset--color--muted);
+	border-radius: 999px;
+}
+
+/* Home page product grid (Newest products block). */
+.coffee-products .wc-block-grid__product {
+	background: #fff;
+	border-radius: 16px;
+	overflow: hidden;
+	text-align: left;
+	padding-bottom: 1.25rem;
+	border: 0;
+}
+
+.coffee-products .wc-block-grid__product > *:not(.wc-block-grid__product-image) {
+	padding-left: 1.25rem;
+	padding-right: 1.25rem;
+}
+
+.coffee-products .wc-block-grid__product-link {
+	text-decoration: none;
+}
+
+.coffee-products .wc-block-grid__product-title {
+	font-family: var(--wp--preset--font-family--display);
+	font-size: 1.125rem;
+	font-weight: 600;
+	color: var(--wp--preset--color--ink);
+}
+
+.coffee-products .wc-block-grid__product-price {
+	font-weight: 600;
+}
+
+.coffee-products .wc-block-grid__product-add-to-cart .wp-block-button__link {
+	width: 100%;
+}
+
+/* Cart, checkout and account pages use the same light area. */
+body.woocommerce-cart main,
+body.woocommerce-checkout main,
+body.woocommerce-account main {
+	background: var(--wp--preset--color--light);
+	color: var(--wp--preset--color--ink);
+	max-width: none;
+}
+
+body.woocommerce-cart main a:not(.wc-block-components-button),
+body.woocommerce-checkout main a:not(.wc-block-components-button),
+body.woocommerce-account main a:not(.button) {
+	color: var(--wp--preset--color--brown);
+}
+
+body.woocommerce-cart .wc-block-cart__submit-button,
+body.woocommerce-checkout .wc-block-components-checkout-place-order-button,
+body.woocommerce-account .woocommerce-button {
+	background: var(--wp--preset--color--ink);
+	color: var(--wp--preset--color--light);
+	border-radius: 999px;
+}
+
+.coffee-product-card > * {
+	box-sizing: border-box;
+	width: 100%;
+	margin: 0;
+}
+
+.coffee-product-card .wc-block-components-product-image,
+.coffee-product-card .wc-block-components-product-image a {
+	display: block;
+	position: relative;
+	height: auto;
+}
+
+.coffee-product-card .wc-block-components-product-image img {
+	display: block;
+	width: 100%;
+	height: auto;
+	border-radius: 0;
+}
+
+.coffee-product-card .wp-block-post-title {
+	margin-top: 1rem;
+}
+
+.coffee-shop-area .woocommerce-product-gallery ~ .onsale,
+.woocommerce .coffee-shop-area span.onsale {
+	min-height: 0;
+	min-width: 0;
+	line-height: 1;
+	padding: 0.4rem 0.8rem;
+	background: var(--wp--preset--color--ink);
+	color: var(--wp--preset--color--light);
+	border-radius: 999px;
+	font-size: 0.8125rem;
+}
+
+/* Sections touch each other; spacing lives inside each section. */
+.wp-site-blocks > * + * {
+	margin-block-start: 0;
+}
+
+.coffee-shop-area .wp-block-post-title a {
+	color: var(--wp--preset--color--ink);
+}
