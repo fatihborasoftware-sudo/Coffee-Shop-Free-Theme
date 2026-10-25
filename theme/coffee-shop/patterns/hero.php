@@ -8,8 +8,8 @@
  * @package coffee-shop
  */
 ?>
-<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained","contentSize":"1200px"}} -->
-<div class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)">
+<!-- wp:group {"align":"full","className":"coffee-hero","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained","contentSize":"1200px"}} -->
+<div class="wp-block-group alignfull coffee-hero" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)">
 <!-- wp:columns {"verticalAlignment":"center","style":{"spacing":{"blockGap":{"left":"3.5rem"}}}} -->
 <div class="wp-block-columns are-vertically-aligned-center">
 <!-- wp:column {"verticalAlignment":"center","width":"55%"} -->
@@ -18,7 +18,7 @@
 <p class="coffee-eyebrow has-caramel-color has-text-color has-small-font-size"><?php esc_html_e( 'Özenle seçilmiş kahve çekirdekleri', 'coffee-shop' ); ?></p>
 <!-- /wp:paragraph -->
 <!-- wp:heading {"level":1} -->
-<h1 class="wp-block-heading"><?php esc_html_e( 'Tutkuyla demlenen, keyifle sunulan kahve.', 'coffee-shop' ); ?></h1>
+<h1 class="wp-block-heading"><?php echo wp_kses( __( 'Tutkuyla demlenen, <em>keyifle sunulan</em> kahve.', 'coffee-shop' ), array( 'em' => array() ) ); ?></h1>
 <!-- /wp:heading -->
 <!-- wp:paragraph {"textColor":"muted","fontSize":"large"} -->
 <p class="has-muted-color has-text-color has-large-font-size"><?php esc_html_e( 'Her fincanda bir hikâye var. Günün temposuna kısa bir mola ver, kahveni yudumla ve kendini evinde hisset.', 'coffee-shop' ); ?></p>

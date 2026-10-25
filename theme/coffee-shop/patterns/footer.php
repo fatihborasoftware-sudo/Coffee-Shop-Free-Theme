@@ -24,7 +24,7 @@ $coffee_link = static function ( $path, $label ) {
 <!-- wp:paragraph {"fontSize":"small"} -->
 <p class="has-small-font-size"><?php esc_html_e( 'Tutkuyla demlenen, keyifle sunulan kahve.', 'coffee-shop' ); ?></p>
 <!-- /wp:paragraph -->
-<!-- wp:social-links {"iconColor":"light","iconColorValue":"#F7FAFC","className":"is-style-logos-only","style":{"spacing":{"blockGap":{"left":"1rem"}}}} -->
+<!-- wp:social-links {"iconColor":"light","iconColorValue":"#F6F1E9","className":"is-style-logos-only","style":{"spacing":{"blockGap":{"left":"1rem"}}}} -->
 <ul class="wp-block-social-links has-icon-color is-style-logos-only">
 <!-- wp:social-link {"url":"#","service":"instagram"} /-->
 <!-- wp:social-link {"url":"#","service":"facebook"} /-->

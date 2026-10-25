@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 480" role="img" aria-label="Coffee beans">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="40%" r="75%">
+      <stop offset="0" stop-color="#3A2E24"/>
+      <stop offset="1" stop-color="#1C1612"/>
+    </radialGradient>
+    <g id="bean" fill="none" stroke="#C6A15B" stroke-width="3" stroke-linecap="round">
+      <ellipse cx="0" cy="0" rx="34" ry="48"/>
+      <path d="M-4 -46c18 22 -14 44 4 92"/>
+    </g>
+  </defs>
+  <rect width="600" height="480" fill="url(#bg)"/>
+  <rect x="18" y="18" width="564" height="444" fill="none" stroke="#C6A15B" stroke-width="1" opacity=".45"/>
+  <use href="#bean" transform="translate(300 214) rotate(-18) scale(1.6)"/>
+  <use href="#bean" transform="translate(178 300) rotate(32)" opacity=".7"/>
+  <use href="#bean" transform="translate(430 312) rotate(-48)" opacity=".7"/>
+  <use href="#bean" transform="translate(150 140) rotate(-60) scale(.7)" opacity=".45"/>
+  <use href="#bean" transform="translate(458 138) rotate(22) scale(.7)" opacity=".45"/>
+  <text x="300" y="418" fill="#C6A15B" font-family="Georgia, serif" font-size="15" letter-spacing="6" text-anchor="middle">EST. 2017 · TAZE KAVRUM</text>
+</svg>

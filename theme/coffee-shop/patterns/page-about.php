@@ -36,13 +36,9 @@ $coffee_values = array(
 </div>
 <!-- /wp:group -->
 
-<!-- wp:cover {"dimRatio":100,"customOverlayColor":"#2D3748","isUserOverlayColor":true,"minHeight":440,"align":"wide","style":{"border":{"radius":"24px"}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-cover alignwide" style="border-radius:24px;min-height:440px"><span aria-hidden="true" class="wp-block-cover__background has-background-dim-100 has-background-dim" style="background-color:#2D3748"></span><div class="wp-block-cover__inner-container">
-<!-- wp:paragraph {"align":"center","textColor":"muted","fontSize":"small"} -->
-<p class="has-text-align-center has-muted-color has-text-color has-small-font-size"><?php esc_html_e( '[Geniş fotoğraf: kavurma, dükkan ya da ekip]', 'coffee-shop' ); ?></p>
-<!-- /wp:paragraph -->
-</div></div>
-<!-- /wp:cover -->
+<!-- wp:image {"sizeSlug":"full","linkDestination":"none","align":"wide","className":"coffee-framed-art"} -->
+<figure class="wp-block-image alignwide size-full coffee-framed-art"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/beans-wide.svg' ) ); ?>" alt="<?php esc_attr_e( 'Kavrulmuş kahve çekirdekleri', 'coffee-shop' ); ?>"/></figure>
+<!-- /wp:image -->
 
 <!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"},"blockGap":"2.5rem"}},"layout":{"type":"constrained","contentSize":"1200px"}} -->
 <div class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)">

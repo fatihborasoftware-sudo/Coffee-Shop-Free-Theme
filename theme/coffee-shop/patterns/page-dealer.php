@@ -42,13 +42,9 @@ $coffee_benefits = array(
 <!-- /wp:column -->
 <!-- wp:column {"verticalAlignment":"center","width":"45%"} -->
 <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:45%">
-<!-- wp:cover {"dimRatio":100,"customOverlayColor":"#2D3748","isUserOverlayColor":true,"minHeight":380,"style":{"border":{"radius":"24px"}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-cover" style="border-radius:24px;min-height:380px"><span aria-hidden="true" class="wp-block-cover__background has-background-dim-100 has-background-dim" style="background-color:#2D3748"></span><div class="wp-block-cover__inner-container">
-<!-- wp:paragraph {"align":"center","textColor":"muted","fontSize":"small"} -->
-<p class="has-text-align-center has-muted-color has-text-color has-small-font-size"><?php esc_html_e( '[Kafe tezgâhı fotoğrafı]', 'coffee-shop' ); ?></p>
-<!-- /wp:paragraph -->
-</div></div>
-<!-- /wp:cover -->
+<!-- wp:image {"sizeSlug":"full","linkDestination":"none","className":"coffee-framed-art"} -->
+<figure class="wp-block-image size-full coffee-framed-art"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/cup.svg' ) ); ?>" alt="<?php esc_attr_e( 'Bir fincan kahve', 'coffee-shop' ); ?>"/></figure>
+<!-- /wp:image -->
 </div>
 <!-- /wp:column -->
 </div>

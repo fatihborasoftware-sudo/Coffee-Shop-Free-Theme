@@ -18,6 +18,22 @@ The `theme/coffee-shop` folder is a free block theme built from the mockups. It 
 |---|---|---|
 | ![Theme home](docs/theme/home.png) | ![Theme shop](docs/theme/shop.png) | ![Theme product](docs/theme/product.png) |
 
+### The premium look (0.2.0)
+
+Version 0.2.0 moves the theme from the original slate and caramel to a darker, more upscale roastery look:
+
+| Token | Value | Use |
+|---|---|---|
+| Espresso (`ink`) | `#15110E` | Site background |
+| Deep espresso (`deep`) | `#0D0A08` | Top bar, value strip, footer |
+| Roast (`surface`) | `#2A221C` | Cards on dark sections |
+| Cream (`light`) | `#F6F1E9` | Shop and product sections |
+| Gold (`caramel`) | `#C6A15B` | Buttons, hairlines, eyebrows, italic accents |
+| Display font | Cormorant Garamond 500/600 + italic | Headings |
+| Body font | Manrope 400 to 600 | Everything else, uppercase letter-spaced for buttons and menu |
+
+Buttons are square with letter-spaced capitals, section eyebrows get a short gold rule, and the photo placeholders are replaced by framed gold illustrations (`assets/images/beans.svg`, `beans-wide.svg`, `cup.svg`) until you add your own photos. The palette slugs did not change, so pages built with 0.1 pick up the new look without edits.
+
 ## Quick start (mockups)
 
 1. Download this repo (**Code → Download ZIP**) or clone it.
