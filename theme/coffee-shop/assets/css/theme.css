@@ -2120,7 +2120,8 @@ body.coffee-cookie-open .coffee-bayi {
 	font-size: clamp(2rem, 4vw, 2.8rem);
 }
 
-.wp-site-blocks > .coffee-product-banner,
-.wp-site-blocks > .coffee-product-banner + main {
-	margin-block-start: 0;
+/* WooCommerce wraps the product template in its own group, so match any parent. */
+.coffee-product-banner,
+.coffee-product-banner + main {
+	margin-block-start: 0 !important;
 }
