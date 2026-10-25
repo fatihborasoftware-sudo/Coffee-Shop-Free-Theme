@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>Bayilik</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600;700&amp;family=Roboto:wght@400;500;600&amp;display=swap">
+<style>
+body{margin:0;background:#1A202C}
+a{color:#8A5A2B}a:hover{color:#6B4420}
+</style>
+</helmet>
+<div style="background: #1A202C; color: #F7FAFC; font-family: Roboto, system-ui, sans-serif; font-size: 16px; line-height: 1.6;">
+<dc-import name="Header" active="dealer" hint-size="100%,130px"></dc-import>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: 88px 24px 88px; display: flex; flex-wrap: wrap; gap: 56px; align-items: center;">
+<div style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 20px;">
+<p style="margin: 0; color: #D9A86C; font-size: 14px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;">Bayimiz ol</p>
+<h1 style="margin: 0; font-family: 'Roboto Slab', Georgia, serif; font-size: 60px; line-height: 1.08; font-weight: 700;">Midnight Bloom'u kendi menünde sun.</h1>
+<p style="margin: 0; max-width: 540px; color: #CBD5E0; font-size: 18px;">Kafe, restoran, ofis ya da şarküteri: harmanlarımızı müşterilerinle buluşturmak için başvurunu bırak, sana dönelim.</p>
+<a href="#basvuru" style="align-self: flex-start; padding: 15px 28px; border-radius: 999px; background: #D9A86C; color: #1A202C; text-decoration: none; font-weight: 600;">Başvuru formuna git</a>
+</div>
+<div style="flex: 1 1 380px; min-width: 0; aspect-ratio: 4 / 3; border-radius: 24px; background: #2D3748; display: flex; align-items: center; justify-content: center;">
+<span style="border: 1px dashed #718096; border-radius: 6px; padding: 8px 12px; color: #CBD5E0; font-size: 13px;">[Kafe tezgâhı fotoğrafı]</span>
+</div>
+</section>
+
+<section style="background: #141923; border-top: 1px solid #2D3748; border-bottom: 1px solid #2D3748;">
+<div style="max-width: 1200px; margin: 0 auto; padding: 80px 24px; display: flex; flex-direction: column; gap: 36px;">
+<h2 style="margin: 0; font-family: 'Roboto Slab', Georgia, serif; font-size: 36px; font-weight: 700;">Bayilerimize neler sunuyoruz?</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px;">
+<div style="background: #1A202C; border: 1px solid #2D3748; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 8px;"><h3 style="margin: 0; font-family: 'Roboto Slab', Georgia, serif; font-size: 20px; font-weight: 600;">Toptan fiyatlandırma</h3><p style="margin: 0; color: #CBD5E0;">[Bayi fiyat avantajınızı yazın]</p></div>
+<div style="background: #1A202C; border: 1px solid #2D3748; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 8px;"><h3 style="margin: 0; font-family: 'Roboto Slab', Georgia, serif; font-size: 20px; font-weight: 600;">Düzenli taze gönderim</h3><p style="margin: 0; color: #CBD5E0;">[Gönderim sıklığı ve minimum sipariş]</p></div>
+<div style="background: #1A202C; border: 1px solid #2D3748; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 8px;"><h3 style="margin: 0; font-family: 'Roboto Slab', Georgia, serif; font-size: 20px; font-weight: 600;">Demleme desteği</h3><p style="margin: 0; color: #CBD5E0;">[Barista eğitimi veya tarif desteği varsa]</p></div>
+<div style="background: #1A202C; border: 1px solid #2D3748; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 8px;"><h3 style="margin: 0; font-family: 'Roboto Slab', Georgia, serif; font-size: 20px; font-weight: 600;">Marka materyalleri</h3><p style="margin: 0; color: #CBD5E0;">[Menü kartı, bardak, tabela gibi destekler]</p></div>
+</div>
+</div>
+</section>
+
+<section id="basvuru" style="background: #F7FAFC; color: #1A202C;">
+<div style="max-width: 820px; margin: 0 auto; padding: 96px 24px; display: flex; flex-direction: column; gap: 24px;">
+<h2 style="margin: 0; font-family: 'Roboto Slab', Georgia, serif; font-size: 40px; font-weight: 700;">Bayilik başvurusu</h2>
+<sc-if value="{{notSent}}" hint-placeholder-val="{{true}}">
+<form style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px;">
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 500;">Ad soyad<input type="text" autocomplete="name" style="min-height: 48px; padding: 0 14px; border: 1px solid #CBD5E0; border-radius: 10px; font: inherit; background: #FFFFFF;"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 500;">İşletme adı<input type="text" autocomplete="organization" style="min-height: 48px; padding: 0 14px; border: 1px solid #CBD5E0; border-radius: 10px; font: inherit; background: #FFFFFF;"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 500;">E-posta<input type="email" autocomplete="email" style="min-height: 48px; padding: 0 14px; border: 1px solid #CBD5E0; border-radius: 10px; font: inherit; background: #FFFFFF;"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 500;">Telefon<input type="tel" autocomplete="tel" style="min-height: 48px; padding: 0 14px; border: 1px solid #CBD5E0; border-radius: 10px; font: inherit; background: #FFFFFF;"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 500;">Şehir<input type="text" autocomplete="address-level2" style="min-height: 48px; padding: 0 14px; border: 1px solid #CBD5E0; border-radius: 10px; font: inherit; background: #FFFFFF;"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 500;">İşletme türü<select style="min-height: 48px; padding: 0 12px; border: 1px solid #CBD5E0; border-radius: 10px; font: inherit; background: #FFFFFF;"><option>Kafe</option><option>Restoran</option><option>Ofis</option><option>Şarküteri / market</option><option>Diğer</option></select></label>
+<label style="grid-column: 1 / -1; display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 500;">Mesajınız<textarea rows="4" style="padding: 12px 14px; border: 1px solid #CBD5E0; border-radius: 10px; font: inherit; background: #FFFFFF; resize: vertical;"></textarea></label>
+<button type="button" onClick="{{send}}" style="grid-column: 1 / -1; min-height: 52px; border: 0; border-radius: 999px; background: #1A202C; color: #F7FAFC; font: inherit; font-weight: 600; cursor: pointer;">Başvuruyu gönder</button>
+</form>
+</sc-if>
+<sc-if value="{{sent}}" hint-placeholder-val="{{false}}">
+<div role="status" style="background: #FFFFFF; border-radius: 16px; padding: 32px; display: flex; flex-direction: column; gap: 8px;">
+<h3 style="margin: 0; font-family: 'Roboto Slab', Georgia, serif; font-size: 24px; font-weight: 600;">Teşekkürler, başvurun bize ulaştı.</h3>
+<p style="margin: 0; color: #4A5568;">En kısa sürede seninle iletişime geçeceğiz.</p>
+</div>
+</sc-if>
+</div>
+</section>
+
+<dc-import name="Footer" hint-size="100%,480px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2200}}'>
+class Component extends DCLogic {
+renderVals() {
+const sent = !!(this.state && this.state.sent);
+return { sent, notSent: !sent, send: () => this.setState({ sent: true }) };
+}
+}
+</script>
+</body>
+</html>

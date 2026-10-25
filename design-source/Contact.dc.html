@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>İletişim</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600;700&amp;family=Roboto:wght@400;500;600&amp;display=swap">
+<style>
+body{margin:0;background:#1A202C}
+a{color:#D9A86C}a:hover{color:#F0C994}
+</style>
+</helmet>
+<div style="background: #1A202C; color: #F7FAFC; font-family: Roboto, system-ui, sans-serif; font-size: 16px; line-height: 1.6;">
+<dc-import name="Header" active="none" hint-size="100%,130px"></dc-import>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: 80px 24px 96px; display: flex; flex-direction: column; gap: 48px;">
+<div style="display: flex; flex-direction: column; gap: 14px;">
+<p style="margin: 0; color: #D9A86C; font-size: 14px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;">İletişim</p>
+<h1 style="margin: 0; font-family: 'Roboto Slab', Georgia, serif; font-size: 56px; line-height: 1.1; font-weight: 700;">Bir kahve içelim mi?</h1>
+<p style="margin: 0; max-width: 560px; color: #CBD5E0; font-size: 18px;">Siparişin, bayilik ya da sadece kahve hakkında bir sorun varsa yaz, sana dönelim.</p>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 32px; align-items: flex-start;">
+<div style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 16px;">
+<div style="background: #2D3748; border-radius: 16px; padding: 24px; display: flex; gap: 16px;"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D9A86C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"></path><circle cx="12" cy="10" r="2.5"></circle></svg><div><h2 style="margin: 0; font-size: 16px; font-weight: 600;">Adres</h2><p style="margin: 2px 0 0; color: #CBD5E0;">[Dükkan adresi]</p></div></div>
+<div style="background: #2D3748; border-radius: 16px; padding: 24px; display: flex; gap: 16px;"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D9A86C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"></path></svg><div><h2 style="margin: 0; font-size: 16px; font-weight: 600;">Telefon</h2><p style="margin: 2px 0 0; color: #CBD5E0;">[Telefon numarası]</p></div></div>
+<div style="background: #2D3748; border-radius: 16px; padding: 24px; display: flex; gap: 16px;"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D9A86C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg><div><h2 style="margin: 0; font-size: 16px; font-weight: 600;">E-posta</h2><p style="margin: 2px 0 0; color: #CBD5E0;">[E-posta adresi]</p></div></div>
+<div style="background: #2D3748; border-radius: 16px; padding: 24px; display: flex; gap: 16px;"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D9A86C" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg><div><h2 style="margin: 0; font-size: 16px; font-weight: 600;">Çalışma saatleri</h2><p style="margin: 2px 0 0; color: #CBD5E0;">[Hafta içi / hafta sonu saatleri]</p></div></div>
+</div>
+
+<div style="flex: 2 1 520px; min-width: 0; background: #F7FAFC; color: #1A202C; border-radius: 20px; padding: 36px; box-sizing: border-box;">
+<sc-if value="{{notSent}}" hint-placeholder-val="{{true}}">
+<form style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px;">
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 500;">Ad soyad<input type="text" autocomplete="name" style="min-height: 48px; padding: 0 14px; border: 1px solid #CBD5E0; border-radius: 10px; font: inherit; background: #FFFFFF;"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 500;">E-posta<input type="email" autocomplete="email" style="min-height: 48px; padding: 0 14px; border: 1px solid #CBD5E0; border-radius: 10px; font: inherit; background: #FFFFFF;"></label>
+<label style="grid-column: 1 / -1; display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 500;">Konu<select style="min-height: 48px; padding: 0 12px; border: 1px solid #CBD5E0; border-radius: 10px; font: inherit; background: #FFFFFF;"><option>Siparişim hakkında</option><option>Bayilik</option><option>Ürün sorusu</option><option>Diğer</option></select></label>
+<label style="grid-column: 1 / -1; display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 500;">Mesajınız<textarea rows="6" style="padding: 12px 14px; border: 1px solid #CBD5E0; border-radius: 10px; font: inherit; background: #FFFFFF; resize: vertical;"></textarea></label>
+<button type="button" onClick="{{send}}" style="grid-column: 1 / -1; min-height: 52px; border: 0; border-radius: 999px; background: #1A202C; color: #F7FAFC; font: inherit; font-weight: 600; cursor: pointer;">Mesajı gönder</button>
+</form>
+</sc-if>
+<sc-if value="{{sent}}" hint-placeholder-val="{{false}}">
+<div role="status" style="padding: 24px 0; display: flex; flex-direction: column; gap: 8px;">
+<h2 style="margin: 0; font-family: 'Roboto Slab', Georgia, serif; font-size: 26px; font-weight: 600;">Mesajın bize ulaştı.</h2>
+<p style="margin: 0; color: #4A5568;">Teşekkürler, en kısa sürede dönüş yapacağız.</p>
+</div>
+</sc-if>
+</div>
+</div>
+
+<div style="aspect-ratio: 21 / 7; border-radius: 20px; background: #2D3748; display: flex; align-items: center; justify-content: center;">
+<span style="border: 1px dashed #718096; border-radius: 6px; padding: 8px 12px; color: #CBD5E0; font-size: 13px;">[Harita: Google Maps yerleşimi]</span>
+</div>
+</section>
+
+<dc-import name="Footer" hint-size="100%,480px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1700}}'>
+class Component extends DCLogic {
+renderVals() {
+const sent = !!(this.state && this.state.sent);
+return { sent, notSent: !sent, send: () => this.setState({ sent: true }) };
+}
+}
+</script>
+</body>
+</html>
