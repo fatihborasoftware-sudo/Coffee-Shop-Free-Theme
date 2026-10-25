@@ -9,6 +9,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+require get_theme_file_path( 'inc/turkish-woo.php' );
+
 add_action(
 	'after_setup_theme',
 	function () {
