@@ -1,9 +1,14 @@
 <!-- wp:template-part {"slug":"header","area":"header","tagName":"header"} /-->
 
-<!-- wp:group {"tagName":"main","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
-<main class="wp-block-group" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)">
-<!-- wp:post-title {"level":1,"style":{"typography":{"fontSize":"clamp(2.25rem, 5vw, 3.5rem)"}}} /-->
-<!-- wp:post-content {"layout":{"type":"constrained"}} /-->
+<!-- wp:group {"tagName":"main","style":{"spacing":{"blockGap":"0"}},"layout":{"type":"default"}} -->
+<main class="wp-block-group">
+<!-- wp:pattern {"slug":"coffee-shop/page-banner"} /-->
+
+<!-- wp:group {"align":"full","className":"coffee-shop-area","style":{"spacing":{"padding":{"top":"clamp(3rem, 7vw, 5rem)","bottom":"clamp(4rem, 9vw, 7rem)"}}},"backgroundColor":"light","textColor":"body-dark","layout":{"type":"constrained","contentSize":"1200px"}} -->
+<div class="wp-block-group alignfull coffee-shop-area has-body-dark-color has-light-background-color has-text-color has-background" style="padding-top:clamp(3rem, 7vw, 5rem);padding-bottom:clamp(4rem, 9vw, 7rem)">
+<!-- wp:post-content {"layout":{"type":"constrained","contentSize":"1200px"}} /-->
+</div>
+<!-- /wp:group -->
 </main>
 <!-- /wp:group -->
 

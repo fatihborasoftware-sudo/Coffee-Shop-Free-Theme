@@ -2,21 +2,23 @@
 
 <!-- wp:group {"tagName":"main","style":{"spacing":{"blockGap":"0"}},"layout":{"type":"default"}} -->
 <main class="wp-block-group">
-<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|50"},"blockGap":"1rem"}},"layout":{"type":"constrained","contentSize":"820px"}} -->
-<div class="wp-block-group" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--50)">
-<!-- wp:post-terms {"term":"category","textColor":"caramel","fontSize":"small"} /-->
-<!-- wp:post-title {"level":1,"style":{"typography":{"fontSize":"clamp(2.25rem, 5vw, 3.25rem)"}}} /-->
-<!-- wp:post-date {"textColor":"muted","fontSize":"small"} /-->
-</div>
-<!-- /wp:group -->
+<!-- wp:cover {"useFeaturedImage":true,"dimRatio":80,"customOverlayColor":"#0a0806","isUserOverlayColor":true,"minHeight":420,"contentPosition":"bottom left","isDark":true,"align":"full","className":"coffee-banner","style":{"spacing":{"padding":{"top":"clamp(4rem, 9vw, 7rem)","bottom":"clamp(3rem, 6vw, 4.5rem)"}}},"layout":{"type":"constrained","contentSize":"900px"}} -->
+<div class="wp-block-cover alignfull has-custom-content-position is-position-bottom-left coffee-banner" style="padding-top:clamp(4rem, 9vw, 7rem);padding-bottom:clamp(3rem, 6vw, 4.5rem);min-height:420px"><span aria-hidden="true" class="wp-block-cover__background has-background-dim-80 has-background-dim" style="background-color:#0a0806"></span><div class="wp-block-cover__inner-container">
+<!-- wp:post-terms {"term":"category","className":"coffee-eyebrow","textColor":"caramel"} /-->
+<!-- wp:post-title {"level":1,"textColor":"white","style":{"typography":{"fontSize":"clamp(2.4rem, 6vw, 4.2rem)"}}} /-->
+<!-- wp:post-date {"className":"coffee-crumbs"} /-->
+</div></div>
+<!-- /wp:cover -->
 
-<!-- wp:post-featured-image {"aspectRatio":"16/8","align":"wide","style":{"border":{"radius":"2px"}}} /-->
-
-<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|60"}},"typography":{"fontSize":"1.125rem","lineHeight":"1.75"}},"layout":{"type":"constrained","contentSize":"720px"}} -->
-<div class="wp-block-group" style="padding-top:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--60);font-size:1.125rem;line-height:1.75">
+<!-- wp:group {"align":"full","className":"coffee-article","style":{"spacing":{"padding":{"top":"clamp(3rem, 7vw, 5rem)","bottom":"clamp(4rem, 9vw, 7rem)"}},"typography":{"fontSize":"1.125rem","lineHeight":"1.75"}},"backgroundColor":"light","textColor":"body-dark","layout":{"type":"constrained","contentSize":"720px"}} -->
+<div class="wp-block-group alignfull coffee-article has-body-dark-color has-light-background-color has-text-color has-background" style="padding-top:clamp(3rem, 7vw, 5rem);padding-bottom:clamp(4rem, 9vw, 7rem);font-size:1.125rem;line-height:1.75">
 <!-- wp:post-content {"layout":{"type":"constrained","contentSize":"720px"}} /-->
+<!-- wp:group {"style":{"spacing":{"margin":{"top":"3rem"},"padding":{"top":"1.5rem"}},"border":{"top":{"color":"#E6DED3","width":"1px"}}},"layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between"}} -->
+<div class="wp-block-group" style="border-top-color:#E6DED3;border-top-width:1px;margin-top:3rem;padding-top:1.5rem">
 <!-- wp:post-navigation-link {"type":"previous","label":"Önceki yazı","showTitle":true} /-->
 <!-- wp:post-navigation-link {"label":"Sonraki yazı","showTitle":true} /-->
+</div>
+<!-- /wp:group -->
 </div>
 <!-- /wp:group -->
 </main>

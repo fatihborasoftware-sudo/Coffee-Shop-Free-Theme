@@ -1,0 +1,1674 @@
+<title>Coffee Premium Mockup</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@400;500;700&display=swap">
+<style>
+/* Layout: full-bleed photo/video bands, white-framed tilted photo cards bridging bands, Anton headlines. One look (no dark variant): the brand is a dark navy + coffee site. */
+:root {
+  --navy: #1A202C;
+  --navy-2: #2D3748;
+  --amber: #B7791F;
+  --brown: #966041;
+  --brown-dk: #7A4C32;
+  --olive: #B8B17B;
+  --olive-dk: #A39C66;
+  --tan: #B8855C;
+  --rose: #E58C8C;
+  --cream: #F7F2EB;
+  --paper: #FFFFFF;
+  --ink: #15171C;
+  --muted: #6B6460;
+  --line: #E6DED3;
+  --display: "Anton", "Impact", "Arial Narrow", sans-serif;
+  --body: "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --wrap: 1180px;
+  --gut: max(16px, env(safe-area-inset-left, 0px));
+  --gut-r: max(16px, env(safe-area-inset-right, 0px));
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--navy); color: var(--ink); font: 400 16px/1.65 var(--body); -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 60; background: var(--navy-2); }
+img, video { max-width: 100%; display: block; }
+a { color: inherit; }
+h1, h2, h3, h4 { font-family: var(--display); font-weight: 400; line-height: 1.02; margin: 0; letter-spacing: .005em; text-wrap: balance; }
+p { margin: 0; }
+button, input, select, textarea { font: inherit; }
+:focus-visible { outline: 3px solid var(--olive); outline-offset: 3px; }
+.wrap { max-width: calc(var(--wrap) + 32px); margin: 0 auto; padding-left: var(--gut); padding-right: var(--gut-r); }
+.rose { color: var(--rose); }
+.eyebrow { font: 700 .78rem/1 var(--body); letter-spacing: .22em; text-transform: uppercase; color: var(--olive); display: inline-flex; align-items: center; gap: .7rem; }
+.eyebrow::before { content: ""; width: 28px; height: 2px; background: currentColor; }
+
+/* Buttons */
+.btn { --b: var(--olive); --bh: var(--olive-dk); --c: #fff; display: inline-flex; align-items: center; justify-content: center; gap: .5rem; padding: .85rem 1.6rem; background: var(--b); color: var(--c); font: 400 1.15rem/1 var(--display); letter-spacing: .03em; text-decoration: none; border: 0; border-radius: 3px; cursor: pointer; box-shadow: 0 6px 18px rgba(0,0,0,.18); transition: transform .2s ease, background .2s ease; }
+.btn:hover { background: var(--bh); transform: translateY(-2px); }
+.btn.brown { --b: var(--brown); --bh: var(--brown-dk); }
+.btn.dark { --b: var(--ink); --bh: #000; }
+.btn.ghost { --b: transparent; --bh: rgba(255,255,255,.12); box-shadow: inset 0 0 0 2px rgba(255,255,255,.75); }
+.btn.sm { font-size: .95rem; padding: .65rem 1.1rem; }
+.btn.block { width: 100%; }
+
+/* Top bar + header */
+:root { --hh: 84px; }
+.topbar { background: #11151C; color: rgba(255,255,255,.78); font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; border-bottom: 1px solid rgba(184,177,123,.22); }
+.topbar .wrap { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 1rem; padding-block: .55rem; }
+.topbar .tb-l { display: flex; gap: 1.4rem; }
+.topbar .tb-l span { display: inline-flex; align-items: center; gap: .45rem; }
+.topbar .tb-l svg { width: 13px; height: 13px; stroke: var(--olive); fill: none; stroke-width: 2; }
+.topbar .ticker { color: #fff; font-weight: 500; text-align: center; height: 1.2em; overflow: hidden; position: relative; min-width: 0; }
+.topbar .ticker span { display: block; animation: tick 12s infinite; }
+.topbar .ticker b { color: var(--olive); font-weight: 700; }
+@keyframes tick { 0%,28% { transform: translateY(0); } 33%,61% { transform: translateY(-100%); } 66%,94% { transform: translateY(-200%); } 100% { transform: translateY(0); } }
+.topbar .ticker > div { display: grid; }
+.topbar .socials { display: flex; gap: .9rem; justify-content: flex-end; }
+.topbar .socials a { display: grid; place-items: center; opacity: .75; transition: opacity .2s; }
+.topbar .socials a:hover { opacity: 1; }
+.topbar svg.s { width: 13px; height: 13px; fill: #fff; }
+header.site { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; height: var(--hh); color: #fff; background: rgba(21,24,31,.94); backdrop-filter: blur(14px) saturate(1.2); -webkit-backdrop-filter: blur(14px) saturate(1.2); border-bottom: 1px solid rgba(255,255,255,.07); transition: background .35s ease, border-color .35s ease, box-shadow .35s ease; }
+body.overlay header.site:not(.solid) { background: linear-gradient(180deg, rgba(10,8,6,.55), rgba(10,8,6,0)); backdrop-filter: none; -webkit-backdrop-filter: none; border-bottom-color: rgba(255,255,255,.12); }
+header.site.solid { box-shadow: 0 12px 30px rgba(0,0,0,.28); }
+body.overlay main.on > section:first-child { margin-top: calc(-1 * var(--hh)); padding-top: var(--hh); }
+header.site .wrap { height: 100%; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 2rem; }
+.logo img { width: 158px; height: auto; transition: transform .3s ease; }
+.logo:hover img { transform: rotate(-2deg) scale(1.03); }
+nav.main { justify-self: center; display: flex; align-items: center; gap: 2.2rem; height: 100%; }
+nav.main > a, .dd > button { height: 100%; display: inline-flex; align-items: center; gap: .35rem; font: 500 .8rem/1 var(--body); letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.88); text-decoration: none; background: none; border: 0; padding: 0; cursor: pointer; position: relative; transition: color .2s; }
+nav.main > a:hover, .dd:hover > button, nav.main > a.on { color: #fff; }
+nav.main > a::after, .dd > button::after { content: ""; position: absolute; left: 50%; right: 50%; bottom: 22px; height: 2px; background: var(--olive); transition: left .25s ease, right .25s ease; }
+nav.main > a:hover::after, nav.main > a.on::after, .dd:hover > button::after, .dd.on > button::after { left: 0; right: 0; }
+.dd > button svg { width: 10px; height: 10px; stroke: currentColor; fill: none; stroke-width: 2.4; transition: transform .2s; }
+.dd:hover > button svg { transform: rotate(180deg); }
+.dd { position: relative; height: 100%; display: flex; align-items: center; }
+.dd-menu { position: absolute; top: 100%; left: 50%; transform: translate(-50%, 8px); min-width: 230px; padding: .6rem; background: #fff; color: var(--ink); border-radius: 4px; box-shadow: 0 24px 60px rgba(0,0,0,.35); display: grid; opacity: 0; visibility: hidden; transition: opacity .2s ease, transform .2s ease, visibility .2s; }
+.dd-menu::before { content: ""; position: absolute; top: -6px; left: 50%; margin-left: -6px; width: 12px; height: 12px; background: #fff; transform: rotate(45deg); }
+.dd:hover .dd-menu, .dd:focus-within .dd-menu { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+.dd-menu a { display: grid; gap: .1rem; padding: .7rem .85rem; color: var(--ink); text-decoration: none; border-radius: 3px; }
+.dd-menu a b { font: 400 1.1rem/1.1 var(--display); letter-spacing: .02em; }
+.dd-menu a span { font-size: .8rem; color: var(--muted); }
+.dd-menu a:hover { background: var(--cream); }
+.dd-menu a:hover b { color: var(--brown); }
+/* Mağaza mega menu */
+.dd.mega { position: static; }
+.mega .dd-menu { left: 0; right: 0; transform: translateY(8px); min-width: 0; border-radius: 0; padding: 0; background: #fff; }
+.mega .dd-menu::before { display: none; }
+.mega:hover .dd-menu, .mega:focus-within .dd-menu { transform: translateY(0); }
+.mega-in { max-width: calc(var(--wrap) + 32px); margin: 0 auto; padding: 2rem var(--gut-r) 2.2rem var(--gut); display: grid; grid-template-columns: 200px minmax(0, 1fr) 300px; gap: 2.5rem; }
+.mega-in .mcol { display: grid; align-content: start; gap: .2rem; }
+.mega-in h5 { font: 700 .72rem/1 var(--body); letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin: 0 0 .8rem; }
+.mega-in .mcol a { padding: .4rem 0; display: block; font-size: .95rem; }
+.mega-in .mcol a:hover { background: none; color: var(--brown); }
+.mega-bags { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1rem; }
+.mega-in .mega-bags a { padding: 0; text-align: center; display: grid; gap: .5rem; justify-items: center; }
+.mega-bags a:hover { background: none; }
+.mega-bags .ph { width: 100%; aspect-ratio: 3/4; background: linear-gradient(160deg, #F4EDE3, #E7DCCB); display: grid; place-items: center; border-radius: 3px; overflow: hidden; }
+.mega-bags img { width: 72%; transition: transform .35s ease; filter: drop-shadow(0 10px 12px rgba(0,0,0,.2)); }
+.mega-bags a:hover img { transform: translateY(-4px) rotate(-3deg); }
+.mega-bags b { font: 400 1rem/1 var(--display); }
+.mega-bags span { font-size: .82rem; color: var(--brown); font-weight: 700; }
+.mega-promo { position: relative; overflow: hidden; border-radius: 3px; min-height: 230px; color: #fff; display: grid; align-content: end; padding: 1.3rem !important; }
+.mega-promo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.mega-promo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(10,8,6,.85), rgba(10,8,6,0) 65%); }
+.mega-promo > :not(img) { position: relative; z-index: 1; }
+.mega-promo small { font: 700 .7rem/1 var(--body); letter-spacing: .2em; text-transform: uppercase; color: var(--olive); }
+.mega-promo strong { font: 400 1.6rem/1.05 var(--display); margin-top: .3rem; }
+.mega-promo:hover { background: none !important; }
+.dd-menu a.mega-promo { color: #fff; }
+.mc-btns .btn { text-align: center; }
+.icons { display: flex; align-items: center; gap: .5rem; }
+.icons > a, .icons > button, .cartwrap > a { width: 42px; height: 42px; border-radius: 50%; color: #fff; background: none; border: 1px solid transparent; padding: 0; cursor: pointer; position: relative; display: grid; place-items: center; transition: border-color .2s, background .2s; }
+.icons > a:hover, .icons > button:hover, .cartwrap > a:hover { border-color: rgba(255,255,255,.3); background: rgba(255,255,255,.06); }
+.icons svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.8; }
+.badge { position: absolute; top: 2px; right: 0; min-width: 18px; height: 18px; border-radius: 9px; background: var(--rose); color: var(--ink); font: 700 .66rem/18px var(--body); text-align: center; padding: 0 4px; }
+.icons > a.cta { width: auto; height: auto; border-radius: 2px; }
+.icons .cta { margin-left: .7rem; padding: .7rem 1.2rem; border: 1px solid var(--olive); color: #fff; text-decoration: none; font: 500 .74rem/1 var(--body); letter-spacing: .18em; text-transform: uppercase; border-radius: 2px; transition: background .2s, color .2s; }
+.icons .cta:hover { background: var(--olive); color: var(--ink); }
+/* Mini cart */
+.cartwrap { position: relative; }
+.minicart { position: absolute; right: -10px; top: calc(100% + 14px); width: 340px; background: #fff; color: var(--ink); border-radius: 4px; box-shadow: 0 24px 60px rgba(0,0,0,.35); padding: 1.2rem; display: grid; gap: .9rem; opacity: 0; visibility: hidden; transform: translateY(8px); transition: opacity .2s, transform .2s, visibility .2s; }
+.minicart::before { content: ""; position: absolute; top: -20px; left: 0; right: 0; height: 20px; }
+.cartwrap:hover .minicart, .cartwrap:focus-within .minicart { opacity: 1; visibility: visible; transform: none; }
+.minicart h6 { margin: 0; font: 400 1.3rem/1 var(--display); display: flex; justify-content: space-between; align-items: baseline; }
+.minicart h6 small { font: 400 .8rem var(--body); color: var(--muted); }
+.mc-line { display: grid; grid-template-columns: 48px 1fr auto; gap: .75rem; align-items: center; font-size: .86rem; }
+.mc-line .ph { width: 48px; height: 56px; background: var(--cream); display: grid; place-items: center; }
+.mc-line .ph img { width: 70%; }
+.mc-line b { display: block; font-weight: 500; }
+.mc-line span { color: var(--muted); font-size: .78rem; }
+.mc-meter { font-size: .78rem; color: var(--muted); display: grid; gap: .4rem; }
+.mc-meter i { height: 4px; background: var(--line); border-radius: 2px; overflow: hidden; display: block; }
+.mc-meter i::after { content: ""; display: block; height: 100%; width: 100%; background: linear-gradient(90deg, var(--olive), var(--brown)); }
+.mc-total { display: flex; justify-content: space-between; border-top: 1px solid var(--line); padding-top: .8rem; font-weight: 700; }
+.mc-btns { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
+.mc-btns .btn { font-size: .95rem; padding: .75rem .5rem; }
+.mc-btns .btn.line { --b: transparent; --bh: var(--cream); --c: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+/* Search overlay */
+.search-ov { position: fixed; inset: 0; z-index: 90; background: rgba(17,21,28,.985); color: #fff; display: grid; align-content: start; padding-top: max(12vh, env(safe-area-inset-top, 0px)); }
+.search-ov .wrap { width: 100%; max-width: 900px; display: grid; gap: 2rem; }
+.search-ov .close { position: absolute; top: max(20px, env(safe-area-inset-top, 0px)); right: max(20px, env(safe-area-inset-right, 0px)); width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(255,255,255,.25); background: none; color: #fff; cursor: pointer; display: grid; place-items: center; }
+.search-ov .close svg { width: 20px; height: 20px; stroke: currentColor; stroke-width: 2; }
+.search-ov input { width: 100%; background: none; border: 0; border-bottom: 2px solid rgba(255,255,255,.25); color: #fff; font: 400 clamp(2rem, 6vw, 3.6rem)/1.2 var(--display); padding: .3rem 0 .6rem; outline: none; }
+.search-ov input:focus { border-bottom-color: var(--olive); }
+.search-ov input::placeholder { color: rgba(255,255,255,.35); }
+.search-ov h5 { margin: 0 0 .9rem; font: 700 .72rem/1 var(--body); letter-spacing: .2em; text-transform: uppercase; color: var(--olive); }
+.search-ov .pop { display: flex; flex-wrap: wrap; gap: .5rem; }
+.search-ov .pop a { padding: .5rem 1rem; border: 1px solid rgba(255,255,255,.2); border-radius: 30px; text-decoration: none; font-size: .9rem; }
+.search-ov .pop a:hover { border-color: var(--olive); color: var(--olive); }
+.search-ov .sres { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.search-ov .sres a { display: grid; grid-template-columns: 64px 1fr; gap: .9rem; align-items: center; text-decoration: none; padding: .6rem; border-radius: 3px; }
+.search-ov .sres a:hover { background: rgba(255,255,255,.06); }
+.search-ov .sres .ph { height: 74px; background: rgba(255,255,255,.07); display: grid; place-items: center; }
+.search-ov .sres img { width: 70%; }
+.search-ov .sres b { font: 400 1.1rem/1.1 var(--display); display: block; }
+.search-ov .sres span { color: var(--olive); font-size: .85rem; }
+/* Mobile drawer */
+.burger { display: none !important; }
+.drawer { position: fixed; inset: 0; z-index: 95; display: grid; grid-template-columns: 1fr min(420px, 100%); }
+.drawer .scrim { background: rgba(0,0,0,.55); }
+.drawer .panel { background: var(--navy); color: #fff; overflow-y: auto; display: grid; align-content: start; gap: 1.6rem; padding: max(18px, env(safe-area-inset-top, 0px)) max(22px, env(safe-area-inset-right, 0px)) 2rem 22px; animation: slidein .3s ease; }
+@keyframes slidein { from { transform: translateX(40px); opacity: 0; } }
+.drawer .dtop { display: flex; justify-content: space-between; align-items: center; }
+.drawer .dtop img { width: 130px; }
+.drawer nav { display: grid; }
+.drawer nav a { font: 400 2rem/1 var(--display); color: #fff; text-decoration: none; padding: .75rem 0; border-bottom: 1px solid rgba(255,255,255,.08); display: flex; justify-content: space-between; align-items: center; }
+.drawer nav a small { font: 500 .7rem/1 var(--body); letter-spacing: .15em; color: var(--olive); }
+.drawer nav a.on { color: var(--olive); }
+.drawer .dphoto { margin: .4rem .3rem 1rem; aspect-ratio: 16/9; overflow: hidden; border: 6px solid #fff; transform: rotate(-2deg); box-shadow: 0 18px 30px rgba(0,0,0,.4); max-width: 100%; }
+.drawer .dphoto img { width: 100%; height: 100%; object-fit: cover; }
+.drawer .dinfo { font-size: .9rem; color: rgba(255,255,255,.75); display: grid; gap: .4rem; }
+@media (max-width: 1100px) { nav.main { gap: 1.5rem; } .icons .cta { display: none; } }
+@media (max-width: 960px) {
+  :root { --hh: 68px; }
+  nav.main { display: none; }
+  header.site .wrap { grid-template-columns: auto 1fr auto; gap: .5rem; }
+  header.site .wrap { grid-template-columns: auto auto; justify-content: space-between; }
+  .logo img { width: 128px; }
+  .burger { display: grid !important; grid-column: 1; grid-row: 1; }
+  .icons { grid-column: 3; }
+  .icons .acct, .minicart { display: none; }
+  .topbar .wrap { grid-template-columns: 1fr; }
+  .topbar .tb-l, .topbar .socials { display: none; }
+  .hide-sm { display: none !important; }
+  .search-ov .sres { grid-template-columns: 1fr; }
+}
+
+/* Pages */
+main[data-page] { display: none; }
+main[data-page].on { display: block; }
+
+/* Hero */
+.hero { position: relative; color: #fff; overflow: hidden; background: var(--ink); }
+.hero video, .hero .bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(100deg, rgba(10,8,6,.86) 0%, rgba(10,8,6,.55) 48%, rgba(10,8,6,.15) 100%); }
+.hero .wrap { position: relative; z-index: 1; padding-block: clamp(5rem, 11vw, 9rem) clamp(9rem, 16vw, 12rem); display: grid; gap: 1.4rem; }
+.hero h1 { font-size: clamp(3rem, 8vw, 6.4rem); max-width: 11ch; }
+.hero p.lead { max-width: 46ch; font-size: 1.1rem; color: rgba(255,255,255,.85); }
+.hero .ctas { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: .4rem; }
+.hero .counter { position: absolute; right: var(--gut-r); bottom: clamp(8rem, 13vw, 10rem); z-index: 1; display: flex; align-items: center; gap: .8rem; font: 400 1rem/1 var(--display); letter-spacing: .1em; color: rgba(255,255,255,.8); }
+.hero .counter i { width: 70px; height: 2px; background: rgba(255,255,255,.3); position: relative; overflow: hidden; }
+.hero .counter i::after { content: ""; position: absolute; inset: 0; width: 35%; background: var(--olive); animation: prog 8s linear infinite; }
+.hero video.sl { opacity: 0; transition: opacity 1.4s ease; }
+.hero video.sl.on { opacity: 1; }
+@keyframes prog { from { transform: translateX(-100%); } to { transform: translateX(290%); } }
+
+/* Inner page banners */
+.banner { position: relative; color: #fff; background: var(--ink); overflow: hidden; }
+.banner .bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.banner::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,8,6,.85), rgba(10,8,6,.35)); }
+.banner .wrap { position: relative; z-index: 1; padding-block: clamp(3.5rem, 8vw, 6rem); display: grid; gap: .8rem; }
+.banner h1 { font-size: clamp(2.8rem, 7vw, 5rem); }
+.crumbs { font-size: .85rem; color: rgba(255,255,255,.7); }
+.crumbs a { color: var(--olive); text-decoration: none; }
+
+/* Tilted photo cards */
+.tilts { position: relative; z-index: 2; margin-top: clamp(-8rem, -12vw, -6rem); }
+.tilts .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1rem, 2.5vw, 2rem); }
+.tilt { --r: -2deg; position: relative; display: block; aspect-ratio: 4 / 3; border: 7px solid #fff; background: #222; box-shadow: 0 22px 45px rgba(0,0,0,.35); transform: rotate(var(--r)); transition: transform .35s ease, box-shadow .35s ease; color: #fff; text-decoration: none; overflow: hidden; }
+.tilt:nth-child(2) { --r: 1.5deg; }
+.tilt:nth-child(3) { --r: -1deg; }
+.tilt:hover { transform: rotate(0deg) translateY(-6px) scale(1.02); box-shadow: 0 30px 60px rgba(0,0,0,.4); }
+.tilt img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+.tilt:hover img { transform: scale(1.06); }
+.tilt::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 30%, rgba(0,0,0,.7)); }
+.tilt .cap { position: absolute; left: 1.2rem; right: 1.2rem; bottom: 1.2rem; z-index: 1; display: grid; gap: .7rem; justify-items: start; }
+.tilt h3 { font-size: clamp(1.5rem, 2.6vw, 2.1rem); text-shadow: 0 2px 12px rgba(0,0,0,.5); }
+@media (max-width: 760px) { .tilts .grid { grid-template-columns: 1fr; } .tilt { aspect-ratio: 16 / 10; } }
+
+/* Section shells */
+.sec { padding-block: clamp(4rem, 9vw, 7rem); }
+.sec-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 1rem 2rem; margin-bottom: clamp(2rem, 4vw, 3rem); }
+.sec-head h2 { font-size: clamp(2.4rem, 5.5vw, 4rem); }
+.sec-head p { max-width: 48ch; }
+.light { background: var(--cream); }
+.white { background: var(--paper); }
+
+/* Online market band */
+.market { position: relative; color: #fff; overflow: hidden; background: var(--ink); }
+.market .bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: blur(2px); transform: scale(1.04); }
+.market::after { content: ""; position: absolute; inset: 0; background: rgba(12,10,8,.72); }
+.market .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 260px) minmax(0, 1fr); gap: clamp(1.5rem, 4vw, 3rem); align-items: center; padding-block: clamp(4rem, 8vw, 6rem); }
+.market .takeaway { width: 100%; max-width: 260px; filter: drop-shadow(0 25px 35px rgba(0,0,0,.5)); animation: float 6s ease-in-out infinite; }
+@keyframes float { 50% { transform: translateY(-12px) rotate(-2deg); } }
+.market h2 { font-size: clamp(2.6rem, 6vw, 4.2rem); }
+.rail-wrap { position: relative; margin-top: 1.5rem; }
+.rail { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(200px, 1fr); gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 1rem; scrollbar-width: thin; }
+.pcard-d { scroll-snap-align: start; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); padding: 1rem; display: grid; gap: .6rem; text-decoration: none; color: #fff; transition: background .25s ease, transform .25s ease; }
+.pcard-d:hover { background: rgba(255,255,255,.12); transform: translateY(-4px); }
+.pcard-d img { aspect-ratio: 1; object-fit: contain; width: 100%; }
+.pcard-d h3 { font-size: 1.35rem; }
+.price { font-weight: 700; font-variant-numeric: tabular-nums; }
+.price del { opacity: .55; font-weight: 400; margin-right: .4rem; }
+.rail-btns { display: flex; gap: .5rem; margin-top: .5rem; }
+.rail-btns button { width: 44px; height: 44px; border: 2px solid rgba(255,255,255,.5); background: none; color: #fff; cursor: pointer; font-size: 1.1rem; }
+.rail-btns button:hover { background: var(--olive); border-color: var(--olive); }
+@media (max-width: 760px) { .market .wrap { grid-template-columns: 1fr; } .market .takeaway { max-width: 160px; } }
+
+/* Feature strip */
+.feats { background: var(--navy-2); color: #fff; }
+.feats .wrap { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem; padding-block: 2.2rem; }
+.feat { display: grid; grid-template-columns: 44px 1fr; gap: .9rem; align-items: center; }
+.feat svg { width: 44px; height: 44px; stroke: var(--olive); fill: none; stroke-width: 1.6; }
+.feat b { display: block; font: 400 1.15rem/1.1 var(--display); letter-spacing: .02em; }
+.feat span { font-size: .85rem; color: rgba(255,255,255,.7); }
+@media (max-width: 860px) { .feats .wrap { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 480px) { .feats .wrap { grid-template-columns: 1fr; } }
+
+/* Video band */
+.vband { position: relative; color: #fff; overflow: hidden; }
+.vband video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.vband::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(150,96,65,.92) 0%, rgba(150,96,65,.75) 45%, rgba(20,15,10,.25) 100%); }
+.vband .wrap { position: relative; z-index: 1; padding-block: clamp(4.5rem, 9vw, 7rem); display: grid; gap: 1.2rem; justify-items: start; }
+.vband h2 { font-size: clamp(2.6rem, 6vw, 4.4rem); max-width: 14ch; }
+.vband p { max-width: 46ch; color: rgba(255,255,255,.9); }
+
+/* Blog band */
+.blogband { background: var(--tan); color: #fff; }
+.blogband .sec-head { border-bottom: 1px solid rgba(255,255,255,.35); padding-bottom: 1.2rem; }
+.posts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+.post { background: #fff; color: var(--ink); display: flex; flex-direction: column; text-decoration: none; box-shadow: 0 14px 30px rgba(60,35,20,.18); transition: transform .3s ease, box-shadow .3s ease; }
+.post:hover { transform: translateY(-6px); box-shadow: 0 24px 45px rgba(60,35,20,.28); }
+.post .ph { aspect-ratio: 16 / 10; overflow: hidden; background: var(--line); }
+.post .ph img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+.post:hover .ph img { transform: scale(1.06); }
+.post .tx { padding: 1.3rem 1.4rem 1.5rem; display: grid; gap: .6rem; flex: 1; align-content: start; }
+.post .cat { font: 700 .72rem/1 var(--body); letter-spacing: .18em; text-transform: uppercase; color: var(--brown); }
+.post h3 { font-size: 1.45rem; line-height: 1.1; }
+.post p { color: var(--muted); font-size: .92rem; }
+.post .more { margin-top: auto; padding-top: .4rem; font: 400 .95rem/1 var(--display); letter-spacing: .04em; color: var(--ink); }
+@media (max-width: 860px) { .posts { grid-template-columns: minmax(0, 1fr); } }
+
+/* Follow band */
+.follow { position: relative; color: #fff; background: var(--navy); overflow: hidden; }
+.follow .bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: right center; }
+.follow::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(26,32,44,.9) 0%, rgba(26,32,44,.55) 55%, rgba(26,32,44,0) 100%); }
+.follow .wrap { position: relative; z-index: 1; padding-block: clamp(4rem, 8vw, 6rem) clamp(6rem, 12vw, 9rem); display: grid; gap: 1.2rem; }
+.follow h2 { font-size: clamp(2.8rem, 6.5vw, 4.8rem); }
+.social-row { display: flex; gap: .7rem; }
+.social-row a { width: 48px; height: 48px; border-radius: 50%; background: #fff; display: grid; place-items: center; transition: background .2s ease, transform .2s ease; }
+.social-row a:hover { background: var(--olive); transform: translateY(-3px); }
+.social-row svg { width: 20px; height: 20px; fill: var(--ink); }
+.tilts.two { margin-top: clamp(-6rem, -8vw, -4rem); margin-bottom: -3rem; }
+.tilts.two .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 900px; }
+@media (max-width: 760px) { .tilts.two .grid { grid-template-columns: 1fr; } }
+
+/* Footer */
+footer.site { background: #11151C; color: #fff; padding-top: clamp(6rem, 10vw, 7rem); position: relative; overflow: hidden; }
+.f-news { position: relative; background: var(--brown); overflow: hidden; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 2rem; align-items: center; padding: clamp(1.8rem, 4vw, 2.8rem) clamp(1.4rem, 4vw, 3rem); box-shadow: 0 30px 60px rgba(0,0,0,.35); }
+.f-news .bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .16; mix-blend-mode: luminosity; }
+.f-news > * { position: relative; }
+.f-news h3 { font-size: clamp(2rem, 4.5vw, 3rem); margin-top: .6rem; }
+.f-news h3 em { font-style: normal; color: #FFD9A8; }
+.f-news p { color: rgba(255,255,255,.85); margin-top: .5rem; font-size: .95rem; }
+.f-news .eyebrow { color: #FFD9A8; }
+.f-news form { display: grid; gap: .6rem; }
+.f-news .row { display: flex; background: #fff; padding: 5px; border-radius: 3px; }
+.f-news input { flex: 1; min-width: 0; border: 0; padding: .8rem 1rem; font-size: .95rem; outline: none; color: var(--ink); background: none; }
+.f-news .row .btn { --b: var(--ink); --bh: #000; box-shadow: none; }
+.f-news small { color: rgba(255,255,255,.7); font-size: .76rem; }
+.f-news .ok-msg { font-size: .85rem; }
+.f-trust { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-bottom: 1px solid rgba(255,255,255,.09); margin-top: clamp(2.5rem, 5vw, 3.5rem); }
+.f-trust div { display: flex; gap: .9rem; align-items: center; padding: 1.4rem 1rem 1.6rem 0; }
+.f-trust div + div { border-left: 1px solid rgba(255,255,255,.09); padding-left: 1.4rem; }
+.f-trust svg { width: 30px; height: 30px; flex: none; stroke: var(--olive); fill: none; stroke-width: 1.5; }
+.f-trust b { display: block; font: 400 1.05rem/1.1 var(--display); letter-spacing: .02em; }
+.f-trust span { font-size: .8rem; color: rgba(255,255,255,.6); }
+.f-main { display: grid; grid-template-columns: minmax(0, 1.35fr) repeat(2, minmax(0, .8fr)) minmax(0, 1.2fr); gap: clamp(1.5rem, 4vw, 3.5rem); padding-block: clamp(3rem, 6vw, 4.5rem); }
+.f-brand { display: grid; gap: 1.2rem; align-content: start; }
+.f-brand .logo-f { width: 190px; }
+.f-brand p { color: rgba(255,255,255,.7); font-size: .92rem; max-width: 34ch; }
+.f-contact { display: grid; gap: .55rem; font-size: .88rem; color: rgba(255,255,255,.82); }
+.f-contact span { display: flex; gap: .6rem; align-items: flex-start; }
+.f-contact svg { width: 16px; height: 16px; flex: none; margin-top: .2rem; stroke: var(--olive); fill: none; stroke-width: 2; }
+.f-social { display: flex; gap: .55rem; }
+.f-social a { width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255,255,255,.2); display: grid; place-items: center; transition: background .2s, border-color .2s; }
+.f-social a:hover { background: var(--olive); border-color: var(--olive); }
+.f-social svg { width: 15px; height: 15px; fill: #fff; }
+footer.site h4 { font: 700 .74rem/1 var(--body); letter-spacing: .22em; text-transform: uppercase; color: var(--olive); margin-bottom: 1.3rem; display: flex; align-items: center; gap: .6rem; }
+footer.site h4::after { content: ""; flex: 1; height: 1px; background: rgba(255,255,255,.1); }
+footer.site ul { list-style: none; margin: 0 0 2rem; padding: 0; display: grid; gap: .65rem; font-size: .92rem; }
+footer.site ul a { text-decoration: none; color: rgba(255,255,255,.82); display: inline-block; transition: color .2s, transform .2s; }
+footer.site ul a:hover { color: #fff; transform: translateX(4px); }
+.f-posts { display: grid; gap: 1rem; margin-bottom: 1.4rem; }
+.f-posts a { display: grid; grid-template-columns: 76px 1fr; gap: .9rem; align-items: center; text-decoration: none; }
+.f-posts img { width: 76px; height: 60px; object-fit: cover; }
+.f-posts small { display: block; font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--olive); margin-bottom: .2rem; }
+.f-posts b { font-weight: 500; font-size: .9rem; line-height: 1.35; color: rgba(255,255,255,.9); }
+.f-posts a:hover b { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+.f-word { font: 400 clamp(5rem, 21vw, 18rem)/.78 var(--display); text-align: center; color: transparent; -webkit-text-stroke: 1px rgba(184,177,123,.22); letter-spacing: .02em; user-select: none; margin-bottom: -.06em; position: relative; }
+.f-word img { position: absolute; left: 50%; bottom: 8%; width: clamp(90px, 13vw, 170px); transform: translateX(-50%) rotate(-6deg); filter: drop-shadow(0 20px 25px rgba(0,0,0,.5)); }
+.legal { background: #0B0E13; font-size: .8rem; color: rgba(255,255,255,.6); position: relative; }
+.legal .wrap { padding-block: 1.1rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .8rem 1.5rem; }
+.legal nav { display: flex; flex-wrap: wrap; gap: .4rem 1.2rem; }
+.legal nav a { text-decoration: none; }
+.legal nav a:hover { color: #fff; }
+.paylogos { display: flex; gap: .4rem; flex-wrap: wrap; }
+.paylogos span { border: 1px solid rgba(255,255,255,.18); border-radius: 3px; padding: .25rem .5rem; font: 700 .66rem/1 var(--body); letter-spacing: .08em; color: rgba(255,255,255,.8); }
+.totop { width: 40px; height: 40px; border-radius: 50%; background: var(--olive); color: var(--ink); border: 0; cursor: pointer; display: grid; place-items: center; }
+.totop svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2.4; }
+@media (max-width: 960px) { .f-main { grid-template-columns: repeat(2, minmax(0, 1fr)); } .f-brand { grid-column: 1 / -1; } .f-trust { grid-template-columns: repeat(2, minmax(0, 1fr)); } .f-trust div:nth-child(3) { border-left: 0; padding-left: 0; } .f-news { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { .f-main { grid-template-columns: 1fr; } .f-trust { grid-template-columns: 1fr; } .f-trust div + div { border-left: 0; padding-left: 0; border-top: 1px solid rgba(255,255,255,.09); } .legal .wrap { justify-content: center; text-align: center; } }
+
+/* Shop */
+.shopbar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 2rem; }
+.chips { display: flex; flex-wrap: wrap; gap: .5rem; }
+.chip { padding: .5rem 1rem; border: 1px solid var(--line); background: #fff; font: 500 .85rem/1 var(--body); cursor: pointer; }
+.chip.on { background: var(--ink); color: #fff; border-color: var(--ink); }
+select.sort { padding: .55rem .8rem; border: 1px solid var(--line); background: #fff; }
+.pgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1.5rem; }
+.pcard { position: relative; background: #fff; display: flex; flex-direction: column; border: 1px solid var(--line); transition: transform .3s ease, box-shadow .3s ease; }
+.pcard:hover { transform: translateY(-6px); box-shadow: 0 24px 45px rgba(40,25,15,.14); }
+.pcard .im { aspect-ratio: 1; background: radial-gradient(circle at 50% 60%, #EFE6DA 0%, #E2D5C4 100%); display: grid; place-items: center; overflow: hidden; }
+.pcard .im img { width: 78%; transition: transform .5s ease; filter: drop-shadow(0 14px 18px rgba(0,0,0,.25)); }
+.pcard:hover .im img { transform: scale(1.05) rotate(-2deg); }
+.pcard .tx { padding: 1.1rem 1.2rem 1.3rem; display: grid; gap: .45rem; flex: 1; }
+.pcard .tx small { font: 700 .7rem/1 var(--body); letter-spacing: .18em; text-transform: uppercase; color: var(--brown); }
+.pcard h3 { font-size: 1.5rem; }
+.pcard h3 a { text-decoration: none; }
+.pcard .notes { font-size: .85rem; color: var(--muted); }
+.pcard .btn { margin-top: .5rem; }
+.sale { position: absolute; top: 12px; left: 12px; z-index: 1; background: var(--rose); color: var(--ink); font: 400 .85rem/1 var(--display); letter-spacing: .06em; padding: .45rem .7rem; transform: rotate(-4deg); }
+
+/* Product */
+.pdp { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+.gallery .main-im { background: radial-gradient(circle at 50% 60%, #EFE6DA 0%, #DCCDB9 100%); aspect-ratio: 1; display: grid; place-items: center; position: relative; }
+.gallery .main-im img { width: 70%; filter: drop-shadow(0 24px 30px rgba(0,0,0,.3)); }
+.thumbs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .7rem; margin-top: .7rem; }
+.thumbs button { aspect-ratio: 1; border: 2px solid transparent; background: #EFE6DA; padding: 0; cursor: pointer; overflow: hidden; }
+.thumbs button.on { border-color: var(--brown); }
+.thumbs img { width: 100%; height: 100%; object-fit: cover; }
+.pinfo { display: grid; gap: 1.1rem; }
+.pinfo h1 { font-size: clamp(2.6rem, 5.5vw, 4rem); }
+.pinfo .price { font-size: 1.6rem; }
+.stars { color: var(--amber); letter-spacing: .1em; }
+.notes-row { display: flex; flex-wrap: wrap; gap: .5rem; }
+.notes-row span { padding: .35rem .8rem; background: var(--cream); border: 1px solid var(--line); font-size: .82rem; }
+.spec { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid var(--line); }
+.spec div { padding: .8rem 1rem; border-right: 1px solid var(--line); }
+.spec div:last-child { border-right: 0; }
+.spec b { display: block; font: 400 1.1rem/1.1 var(--display); }
+.spec span { font-size: .78rem; color: var(--muted); text-transform: uppercase; letter-spacing: .1em; }
+.buy { display: flex; gap: .7rem; flex-wrap: wrap; }
+.qty { display: inline-flex; border: 1px solid var(--line); background: #fff; }
+.qty button { width: 44px; border: 0; background: none; font-size: 1.2rem; cursor: pointer; }
+.qty input { width: 48px; text-align: center; border: 0; font-weight: 700; }
+.ship-note { display: flex; gap: .6rem; align-items: center; font-size: .88rem; color: var(--muted); }
+details.acc { border-top: 1px solid var(--line); padding: 1rem 0; }
+details.acc:last-of-type { border-bottom: 1px solid var(--line); }
+details.acc summary { font: 400 1.2rem/1 var(--display); letter-spacing: .02em; cursor: pointer; list-style: none; display: flex; justify-content: space-between; }
+details.acc summary::after { content: "+"; font-family: var(--body); }
+details.acc[open] summary::after { content: "–"; }
+details.acc p { margin-top: .8rem; color: var(--muted); }
+@media (max-width: 860px) { .pdp { grid-template-columns: minmax(0, 1fr); } }
+
+/* Cart / checkout / account */
+.two-col { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 2rem; align-items: start; }
+@media (max-width: 900px) { .two-col { grid-template-columns: minmax(0, 1fr); } }
+.panel { background: #fff; border: 1px solid var(--line); padding: clamp(1.2rem, 3vw, 2rem); }
+.panel h2 { font-size: 2rem; margin-bottom: 1.2rem; }
+.line { display: grid; grid-template-columns: 84px minmax(0, 1fr) auto; gap: 1rem; align-items: center; padding: 1rem 0; border-bottom: 1px solid var(--line); }
+.line .thumb { aspect-ratio: 1; background: #EFE6DA; display: grid; place-items: center; }
+.line .thumb img { width: 80%; }
+.line h3 { font-size: 1.3rem; }
+.line small { color: var(--muted); }
+.line .right { display: grid; justify-items: end; gap: .4rem; }
+.rm { background: none; border: 0; color: var(--muted); font-size: .8rem; text-decoration: underline; cursor: pointer; }
+.sum { display: grid; gap: .7rem; }
+.sum .row { display: flex; justify-content: space-between; font-variant-numeric: tabular-nums; }
+.sum .total { font: 400 1.6rem/1 var(--display); padding-top: .9rem; border-top: 2px solid var(--ink); }
+.meter { background: var(--cream); border: 1px dashed var(--olive); padding: 1rem; display: grid; gap: .6rem; font-size: .9rem; }
+.meter .bar { height: 8px; background: #E9E0D3; overflow: hidden; }
+.meter .bar i { display: block; height: 100%; background: linear-gradient(90deg, var(--olive), var(--brown)); }
+.coupon { display: flex; gap: .5rem; }
+.field { display: grid; gap: .35rem; }
+.field label { font-size: .82rem; font-weight: 500; }
+.field input, .field select, .field textarea { width: 100%; padding: .8rem .9rem; border: 1px solid #D9CFC2; background: #fff; border-radius: 2px; }
+.field textarea { min-height: 120px; resize: vertical; }
+.field input:focus, .field select:focus, .field textarea:focus { outline: 2px solid var(--olive); outline-offset: 0; border-color: var(--olive); }
+.fgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.fgrid .full { grid-column: 1 / -1; }
+@media (max-width: 560px) { .fgrid { grid-template-columns: 1fr; } }
+.steps { display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: 2rem; font: 400 1rem/1 var(--display); letter-spacing: .04em; }
+.steps span { padding: .6rem 1rem; background: #fff; border: 1px solid var(--line); color: var(--muted); }
+.steps span.on { background: var(--brown); color: #fff; border-color: var(--brown); }
+.pay { display: grid; gap: .6rem; }
+.pay label { display: flex; gap: .7rem; align-items: center; padding: .9rem 1rem; border: 1px solid var(--line); cursor: pointer; background: #fff; }
+.pay label:has(input:checked) { border-color: var(--brown); background: #FBF6F0; }
+.mini { display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; gap: .8rem; align-items: center; padding: .6rem 0; border-bottom: 1px solid var(--line); font-size: .9rem; }
+.mini .thumb { aspect-ratio: 1; background: #EFE6DA; display: grid; place-items: center; }
+.mini .thumb img { width: 80%; }
+.trust { display: flex; gap: 1rem; flex-wrap: wrap; font-size: .8rem; color: var(--muted); }
+.acc-wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0; box-shadow: 0 30px 60px rgba(40,25,15,.15); }
+.acc-side { position: relative; color: #fff; padding: clamp(1.5rem, 4vw, 3rem); display: grid; align-content: end; gap: 1rem; min-height: 520px; overflow: hidden; }
+.acc-side img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.acc-side::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.1), rgba(0,0,0,.8)); }
+.acc-side > * { position: relative; z-index: 1; }
+.acc-side h2 { font-size: clamp(2.2rem, 4vw, 3.2rem); }
+.acc-side ul { margin: 0; padding-left: 1.1rem; display: grid; gap: .3rem; }
+.acc-form { background: #fff; padding: clamp(1.5rem, 4vw, 3rem); display: grid; gap: 1rem; align-content: start; }
+.tabs { display: flex; border-bottom: 2px solid var(--line); margin-bottom: .5rem; }
+.tabs button { flex: 1; background: none; border: 0; padding: .9rem; font: 400 1.25rem/1 var(--display); letter-spacing: .03em; color: var(--muted); cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -2px; }
+.tabs button.on { color: var(--ink); border-color: var(--brown); }
+.check { display: flex; gap: .5rem; align-items: center; font-size: .88rem; }
+@media (max-width: 860px) { .acc-wrap { grid-template-columns: minmax(0, 1fr); } .acc-side { min-height: 300px; } }
+.dash { display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 1.5rem; margin-top: 3rem; }
+.dash nav { display: grid; align-content: start; background: var(--navy); }
+.dash nav a { color: #fff; text-decoration: none; padding: .9rem 1.1rem; border-left: 3px solid transparent; font-size: .92rem; }
+.dash nav a.on { border-color: var(--olive); background: rgba(255,255,255,.06); }
+.orders { width: 100%; border-collapse: collapse; font-size: .9rem; }
+.orders th, .orders td { text-align: left; padding: .8rem; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.orders th { font: 400 1rem/1 var(--display); letter-spacing: .04em; }
+.pill { padding: .25rem .6rem; font-size: .75rem; font-weight: 700; }
+.pill.ok { background: #E3EED9; color: #3D5B26; }
+.pill.go { background: #FBEBD3; color: #8A5A12; }
+.tablebox { overflow-x: auto; }
+@media (max-width: 760px) { .dash { grid-template-columns: minmax(0, 1fr); } }
+
+/* About / dealer / contact */
+.story { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+.story h2 { font-size: clamp(2.4rem, 5vw, 3.6rem); margin-block: .8rem 1rem; }
+.story p + p { margin-top: 1rem; }
+.story .pic { position: relative; }
+.story .pic .a { border: 8px solid #fff; box-shadow: 0 25px 50px rgba(0,0,0,.2); transform: rotate(-2deg); aspect-ratio: 4 / 3; object-fit: cover; width: 100%; }
+.story .pic .b { position: absolute; width: 46%; right: -4%; bottom: -12%; border: 6px solid #fff; box-shadow: 0 20px 40px rgba(0,0,0,.25); transform: rotate(3deg); aspect-ratio: 1; object-fit: cover; }
+@media (max-width: 860px) { .story { grid-template-columns: minmax(0, 1fr); } .story .pic .b { right: 2%; } }
+.journey { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.2rem; }
+.jstep { background: #fff; display: grid; }
+.jstep img { aspect-ratio: 4 / 3; object-fit: cover; width: 100%; }
+.jstep .tx { padding: 1.1rem 1.2rem 1.4rem; display: grid; gap: .4rem; }
+.jstep em { font: 400 2.4rem/1 var(--display); font-style: normal; color: var(--olive); }
+.jstep h3 { font-size: 1.5rem; }
+.jstep p { font-size: .9rem; color: var(--muted); }
+@media (max-width: 900px) { .journey { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .journey { grid-template-columns: minmax(0, 1fr); } }
+.perks { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.2rem; }
+.perk { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); padding: 1.5rem; display: grid; gap: .6rem; color: #fff; }
+.perk svg { width: 40px; height: 40px; stroke: var(--olive); fill: none; stroke-width: 1.6; }
+.perk h3 { font-size: 1.5rem; }
+.perk p { font-size: .9rem; color: rgba(255,255,255,.75); }
+@media (max-width: 900px) { .perks { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .perks { grid-template-columns: minmax(0, 1fr); } }
+.navysec { background: var(--navy); color: #fff; }
+.info-cards { display: grid; gap: 1rem; }
+.info { display: grid; grid-template-columns: 48px 1fr; gap: 1rem; align-items: center; background: #fff; border: 1px solid var(--line); padding: 1.1rem 1.2rem; }
+.info .ic { width: 48px; height: 48px; background: var(--brown); display: grid; place-items: center; }
+.info svg { width: 22px; height: 22px; stroke: #fff; fill: none; stroke-width: 2; }
+.info b { font: 400 1.15rem/1.1 var(--display); letter-spacing: .02em; display: block; }
+.info span { color: var(--muted); font-size: .9rem; }
+.ok-msg { background: #E3EED9; color: #2F4A1C; padding: .9rem 1rem; font-size: .9rem; }
+
+/* Blog list + post */
+.featured { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); background: #fff; text-decoration: none; margin-bottom: 2rem; box-shadow: 0 20px 45px rgba(40,25,15,.12); }
+.featured .ph { aspect-ratio: auto; min-height: 360px; overflow: hidden; }
+.featured .ph img { width: 100%; height: 100%; object-fit: cover; }
+.featured .tx { padding: clamp(1.5rem, 4vw, 3rem); display: grid; gap: 1rem; align-content: center; }
+.featured h2 { font-size: clamp(2rem, 4vw, 3rem); }
+@media (max-width: 860px) { .featured { grid-template-columns: minmax(0, 1fr); } .featured .ph { min-height: 240px; } }
+.article { max-width: 720px; margin: 0 auto; font-size: 1.08rem; }
+.article p { margin-bottom: 1.3rem; }
+.article h2 { font-size: 2.2rem; margin: 2.2rem 0 1rem; }
+.article ol { padding-left: 1.2rem; display: grid; gap: .8rem; margin-bottom: 1.5rem; }
+.article ol b { font-family: var(--display); font-weight: 400; font-size: 1.15rem; letter-spacing: .02em; }
+.pull { border-left: 5px solid var(--olive); padding: .5rem 0 .5rem 1.4rem; font: 400 1.8rem/1.2 var(--display); color: var(--brown); margin: 2rem 0; }
+.meta { display: flex; flex-wrap: wrap; gap: 1rem; font-size: .85rem; color: rgba(255,255,255,.8); }
+.figure-wide { margin: 2rem 0; }
+.figure-wide img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.figure-wide figcaption { font-size: .82rem; color: var(--muted); margin-top: .5rem; }
+.share { display: flex; gap: .6rem; align-items: center; padding-top: 1.5rem; border-top: 1px solid var(--line); font-size: .9rem; }
+
+/* Mockup switcher */
+.switcher { position: fixed; z-index: 70; right: max(14px, env(safe-area-inset-right, 0px)); bottom: max(14px, env(safe-area-inset-bottom, 0px)); }
+.switcher > button { background: var(--olive); color: var(--ink); border: 0; padding: .75rem 1.1rem; font: 400 1rem/1 var(--display); letter-spacing: .04em; cursor: pointer; box-shadow: 0 10px 25px rgba(0,0,0,.35); }
+.switcher .list { position: absolute; right: 0; bottom: calc(100% + 8px); background: var(--navy); border: 1px solid rgba(255,255,255,.15); min-width: 210px; padding: .4rem; display: grid; box-shadow: 0 18px 40px rgba(0,0,0,.4); }
+.switcher .list a { color: #fff; text-decoration: none; padding: .55rem .75rem; font-size: .88rem; }
+.switcher .list a.on, .switcher .list a:hover { background: rgba(184,177,123,.18); }
+.switcher .list[hidden], [hidden] { display: none !important; }
+
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+/* ===== Motion layer ===== */
+/* Preloader */
+.loader { position: fixed; inset: 0; z-index: 200; background: #11151C; display: grid; place-items: center; transition: opacity .6s ease, visibility .6s; }
+.loader.done { opacity: 0; visibility: hidden; }
+.loader .lw { display: grid; justify-items: center; gap: 1.1rem; }
+.loader svg { width: 74px; height: 74px; overflow: visible; }
+.loader .fill { animation: fillup 1.1s cubic-bezier(.6,.1,.3,1) forwards; transform-origin: bottom; transform: scaleY(0); }
+.loader .st { fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; opacity: 0; animation: steam 1.6s ease-in-out .5s infinite; }
+.loader .st.b { animation-delay: .8s; }
+.loader img { width: 130px; opacity: 0; animation: fadeup .6s ease .35s forwards; }
+.loader .bar { width: 120px; height: 2px; background: rgba(255,255,255,.12); overflow: hidden; }
+.loader .bar::after { content: ""; display: block; height: 100%; background: var(--olive); animation: loadbar 1.2s ease forwards; transform-origin: left; transform: scaleX(0); }
+@keyframes fillup { to { transform: scaleY(1); } }
+@keyframes loadbar { to { transform: scaleX(1); } }
+@keyframes steam { 0% { opacity: 0; transform: translateY(6px); } 40% { opacity: .8; } 100% { opacity: 0; transform: translateY(-14px); } }
+@keyframes fadeup { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+/* Scroll progress */
+.sprog { position: absolute; left: 0; bottom: -1px; height: 2px; width: 100%; background: linear-gradient(90deg, var(--olive), var(--rose)); transform-origin: left; transform: scaleX(0); }
+
+/* Page enter */
+main[data-page].on { animation: pagein .55s ease both; }
+@keyframes pagein { from { opacity: 0; } to { opacity: 1; } }
+
+/* Scroll reveal: uses translate/opacity so it never fights the tilt rotation */
+.rv { opacity: 0; translate: 0 34px; transition: opacity .8s cubic-bezier(.2,.7,.2,1) var(--d, 0ms), translate .8s cubic-bezier(.2,.7,.2,1) var(--d, 0ms); }
+.rv.in { opacity: 1; translate: 0 0; }
+.tilt.rv { translate: 0 70px; }
+.tilt.rv.in { translate: 0 0; }
+
+/* Headline word reveal */
+.w { display: inline-block; overflow: hidden; vertical-align: top; padding: .12em .02em .08em; margin: -.12em -.02em -.08em; }
+.w > span { display: inline-block; transform: translateY(110%); }
+.split.go .w > span { animation: wordup .9s cubic-bezier(.2,.8,.2,1) both; animation-delay: calc(var(--i) * 70ms + 150ms); }
+@keyframes wordup { to { transform: none; } }
+.hero .eyebrow::before, .banner .eyebrow::before { transform-origin: left; }
+main.on .hero .eyebrow, main.on .hero .lead, main.on .hero .ctas, main.on .hero .crumbs, main.on .banner .crumbs, main.on .banner p { animation: fadeup .9s ease both .7s; }
+main.on .hero .ctas { animation-delay: .9s; }
+
+/* Ken Burns on hero video and banners */
+.hero video { animation: kb 18s ease-in-out infinite alternate; }
+@keyframes kb { from { transform: scale(1); } to { transform: scale(1.08); } }
+.banner .bg, .market .bg, .follow .bg { will-change: transform; }
+.banner .bg { scale: 1.12; }
+
+/* Scroll cue */
+.cue { position: absolute; left: 50%; bottom: clamp(8.5rem, 14vw, 10.5rem); z-index: 1; translate: -50% 0; display: grid; justify-items: center; gap: .5rem; color: rgba(255,255,255,.7); font: 500 .66rem/1 var(--body); letter-spacing: .25em; text-transform: uppercase; }
+.cue i { width: 22px; height: 34px; border: 2px solid rgba(255,255,255,.6); border-radius: 12px; position: relative; }
+.cue i::after { content: ""; position: absolute; left: 50%; top: 6px; width: 3px; height: 7px; margin-left: -1.5px; border-radius: 2px; background: var(--olive); animation: wheel 1.6s ease-in-out infinite; }
+@keyframes wheel { 0% { opacity: 0; transform: translateY(0); } 30% { opacity: 1; } 100% { opacity: 0; transform: translateY(12px); } }
+@media (max-width: 760px) { .cue { display: none; } }
+
+/* Button shine */
+.btn { position: relative; overflow: hidden; isolation: isolate; }
+.btn::before { content: ""; position: absolute; top: 0; bottom: 0; left: -60%; width: 40%; background: linear-gradient(100deg, transparent, rgba(255,255,255,.35), transparent); transform: skewX(-20deg); transition: left .6s ease; z-index: -1; pointer-events: none; }
+.btn:hover::before { left: 130%; }
+
+/* Steam over the takeaway cup */
+.cupwrap { position: relative; max-width: 260px; }
+.cupwrap .steam { position: absolute; left: 22%; right: 22%; top: -16%; height: 30%; pointer-events: none; }
+.cupwrap .steam path { fill: none; stroke: rgba(255,255,255,.55); stroke-width: 3; stroke-linecap: round; opacity: 0; animation: steam2 3.2s ease-in-out infinite; }
+.cupwrap .steam path:nth-child(2) { animation-delay: 1s; }
+.cupwrap .steam path:nth-child(3) { animation-delay: 2s; }
+@keyframes steam2 { 0% { opacity: 0; transform: translateY(20px) scaleY(.8); } 35% { opacity: .9; } 100% { opacity: 0; transform: translateY(-25px) scaleY(1.1); } }
+
+/* Marquee bands */
+.marquee { overflow: hidden; padding-block: clamp(1.4rem, 3vw, 2.2rem); background: var(--cream); user-select: none; }
+.mq-track { display: flex; width: max-content; animation: mq 38s linear infinite; }
+.marquee.rev .mq-track { animation-direction: reverse; animation-duration: 30s; }
+.marquee:hover .mq-track { animation-play-state: paused; }
+.mq-track > div { display: flex; align-items: center; gap: clamp(1.5rem, 3vw, 2.6rem); padding-right: clamp(1.5rem, 3vw, 2.6rem); }
+.mq-track span { font: 400 clamp(3rem, 8vw, 6.4rem)/1 var(--display); letter-spacing: .01em; text-transform: uppercase; white-space: nowrap; color: transparent; -webkit-text-stroke: 1.5px rgba(150,96,65,.45); transition: color .3s; }
+.mq-track span:hover { color: var(--brown); }
+.mq-track i { width: clamp(22px, 3vw, 34px); height: clamp(22px, 3vw, 34px); flex: none; border-radius: 50%; border: 1.5px solid rgba(150,96,65,.45); }
+.mq-track i.bean { border: 0; border-radius: 50% / 60%; background: var(--brown); position: relative; rotate: 30deg; }
+.mq-track i.bean::after { content: ""; position: absolute; left: 47%; top: 12%; bottom: 12%; width: 2px; background: var(--cream); border-radius: 2px; }
+.marquee.dark { background: var(--navy); }
+.marquee.dark span { color: var(--olive); -webkit-text-stroke: 0; font-size: clamp(2rem, 5vw, 3.6rem); }
+.marquee.dark span.o { color: transparent; -webkit-text-stroke: 1.2px rgba(255,255,255,.4); }
+.marquee.dark i { border-color: var(--rose); background: var(--rose); width: 12px; height: 12px; }
+@keyframes mq { to { transform: translateX(-50%); } }
+
+/* Toast + fly to cart */
+.toast { position: fixed; z-index: 120; left: 50%; bottom: max(24px, env(safe-area-inset-bottom, 0px)); translate: -50% 0; background: #11151C; color: #fff; padding: .85rem 1.1rem; border-left: 3px solid var(--olive); box-shadow: 0 18px 40px rgba(0,0,0,.35); display: flex; gap: .8rem; align-items: center; font-size: .9rem; animation: toastin .35s ease both; max-width: calc(100% - 32px); }
+.toast a { color: var(--olive); font-weight: 700; }
+@keyframes toastin { from { opacity: 0; translate: -50% 20px; } }
+.flyimg { position: fixed; z-index: 130; pointer-events: none; transition: transform .8s cubic-bezier(.5,-.2,.3,1), opacity .8s ease; filter: drop-shadow(0 10px 14px rgba(0,0,0,.3)); }
+.badge.bump { animation: bump .5s ease; }
+@keyframes bump { 40% { transform: scale(1.6); } }
+.pcard .btn.added { --b: var(--olive); --c: var(--ink); }
+
+/* Cookie card */
+.cookie { position: fixed; z-index: 110; left: max(16px, env(safe-area-inset-left, 0px)); bottom: max(16px, env(safe-area-inset-bottom, 0px)); width: min(470px, calc(100% - 32px)); background: rgba(24,20,18,.94); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); color: #fff; border: 1px solid rgba(255,255,255,.12); border-radius: 16px; padding: 1.3rem 1.4rem 1.2rem; box-shadow: 0 30px 60px rgba(0,0,0,.45); display: grid; gap: .9rem; animation: cookiein .6s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes cookiein { from { opacity: 0; transform: translateY(30px) scale(.97); } }
+.cookie .ch { display: flex; align-items: center; gap: .8rem; }
+.cookie .ci { width: 38px; height: 38px; flex: none; border-radius: 50%; background: rgba(184,177,123,.18); display: grid; place-items: center; font-size: 1.1rem; animation: wobble 3s ease-in-out infinite; }
+@keyframes wobble { 0%, 100% { rotate: 0deg; } 10% { rotate: -12deg; } 20% { rotate: 10deg; } 30% { rotate: 0deg; } }
+.cookie h6 { margin: 0; font: 400 1.15rem/1.1 var(--display); letter-spacing: .04em; text-transform: uppercase; }
+.cookie p { font-size: .86rem; color: rgba(255,255,255,.75); }
+.cookie p a { color: var(--olive); font-weight: 700; }
+.cookie .cb { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; }
+.cookie .cb .btn { font-size: .95rem; padding: .75rem 1.1rem; border-radius: 8px; }
+.cookie .cb .btn.out { --b: rgba(255,255,255,.06); --bh: rgba(255,255,255,.14); box-shadow: inset 0 0 0 1px rgba(255,255,255,.2); }
+.cookie .lnk { background: none; border: 0; color: rgba(255,255,255,.55); font: 700 .8rem/1 var(--body); letter-spacing: .12em; text-transform: uppercase; cursor: pointer; padding: .5rem 0; }
+.cookie .lnk:hover { color: #fff; }
+.cookie .prefs { display: grid; gap: .5rem; border-top: 1px solid rgba(255,255,255,.1); padding-top: .9rem; }
+.cookie .prefs label { display: flex; justify-content: space-between; align-items: center; gap: 1rem; font-size: .86rem; }
+.cookie .prefs small { display: block; color: rgba(255,255,255,.5); font-size: .74rem; }
+.sw { appearance: none; -webkit-appearance: none; width: 40px; height: 22px; flex: none; border-radius: 11px; background: rgba(255,255,255,.2); position: relative; cursor: pointer; transition: background .2s; margin: 0; }
+.sw::after { content: ""; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; border-radius: 50%; background: #fff; transition: transform .2s; }
+.sw:checked { background: var(--brown); }
+.sw:checked::after { transform: translateX(18px); }
+.sw:disabled { opacity: .6; }
+
+/* Floating dealer badge */
+.bayi { position: fixed; z-index: 75; left: max(16px, env(safe-area-inset-left, 0px)); bottom: max(16px, env(safe-area-inset-bottom, 0px)); width: 112px; height: 112px; border: 0; padding: 0; background: none; cursor: pointer; transition: opacity .4s, transform .4s; animation: bob 4s ease-in-out infinite; }
+body.cookie-open .bayi { opacity: 0; pointer-events: none; transform: translateY(20px); }
+.bayi .ring { position: absolute; inset: 0; animation: spin 14s linear infinite; }
+.bayi .ring text { font: 700 10.5px var(--body); letter-spacing: 2.6px; fill: #fff; }
+.bayi .disc { position: absolute; inset: 0; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #A8704F, var(--brown) 60%, #6E4229); box-shadow: 0 16px 34px rgba(0,0,0,.4), inset 0 0 0 2px rgba(255,255,255,.15); }
+.bayi .core { position: absolute; inset: 27px; border-radius: 50%; background: var(--olive); display: grid; place-items: center; box-shadow: 0 6px 14px rgba(0,0,0,.25); transition: transform .3s; }
+.bayi .core svg { width: 30px; height: 30px; stroke: var(--ink); fill: none; stroke-width: 1.8; }
+.bayi:hover .core { transform: scale(1.12) rotate(-8deg); }
+.bayi:hover .ring { animation-duration: 5s; }
+.bayi .x { position: absolute; top: 0; right: 0; width: 24px; height: 24px; border-radius: 50%; background: #fff; color: var(--ink); display: grid; place-items: center; font: 700 .8rem/1 var(--body); box-shadow: 0 4px 10px rgba(0,0,0,.25); }
+@keyframes spin { to { rotate: 360deg; } }
+@keyframes bob { 50% { translate: 0 -6px; } }
+@media (max-width: 600px) { .bayi { width: 88px; height: 88px; } .bayi .core { inset: 21px; } .bayi .core svg { width: 24px; height: 24px; } .bayi .ring text { font-size: 9px; letter-spacing: 1.6px; } }
+
+/* Dealer modal */
+.modal { position: fixed; inset: 0; z-index: 140; display: grid; place-items: center; padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+.modal .scrim { position: absolute; inset: 0; background: rgba(40,20,10,.6); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); animation: pagein .3s ease both; }
+.modal .card { position: relative; width: min(560px, 100%); max-height: calc(100dvh - 32px); overflow-y: auto; background: linear-gradient(180deg, #FFF7E8 0%, #fff 32%); border-radius: 22px; box-shadow: 0 40px 90px rgba(0,0,0,.5); animation: modalin .55s cubic-bezier(.2,.9,.25,1.15) both; scrollbar-width: thin; scrollbar-color: var(--brown) transparent; }
+.modal .card::before { content: ""; position: sticky; top: 0; display: block; height: 5px; background: linear-gradient(90deg, var(--amber), var(--brown), var(--rose)); z-index: 2; }
+@keyframes modalin { from { opacity: 0; transform: translateY(40px) scale(.94); } }
+.modal .mx { position: absolute; top: 14px; right: 14px; z-index: 3; width: 42px; height: 42px; border-radius: 50%; border: 3px solid #fff; background: var(--brown); color: #fff; cursor: pointer; display: grid; place-items: center; box-shadow: 0 6px 16px rgba(0,0,0,.25); transition: transform .3s; }
+.modal .mx:hover { transform: rotate(90deg); }
+.modal .mx svg { width: 16px; height: 16px; stroke: currentColor; stroke-width: 3; }
+.modal .mh { text-align: center; padding: 2rem clamp(1.2rem, 5vw, 2.6rem) 0; display: grid; justify-items: center; gap: .7rem; }
+.modal .mi { width: 66px; height: 66px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #B07A58, var(--brown)); display: grid; place-items: center; box-shadow: 0 12px 26px rgba(150,96,65,.45); animation: pop .6s cubic-bezier(.2,.9,.3,1.4) .15s both; }
+.modal .mi svg { width: 30px; height: 30px; stroke: #fff; fill: none; stroke-width: 1.8; }
+@keyframes pop { from { transform: scale(0); } }
+.modal h2 { font-size: clamp(2.2rem, 7vw, 3rem); letter-spacing: .03em; color: var(--ink); padding-bottom: .25em; }
+.modal h2 em { font-style: normal; color: var(--brown); position: relative; }
+.modal h2 em::after { content: ""; position: absolute; left: 8%; right: 8%; bottom: .02em; height: 4px; border-radius: 2px; background: linear-gradient(90deg, var(--amber), #E9B44C); transform-origin: left; animation: lineg .6s ease .5s both; }
+@keyframes lineg { from { transform: scaleX(0); } }
+.modal .sub { color: var(--muted); font-size: .95rem; }
+.modal .sub b { color: var(--brown); }
+.modal .pill { display: flex; flex-wrap: wrap; justify-content: center; gap: .3rem 1rem; align-items: center; padding: .75rem 1.4rem; background: #fff; border-radius: 40px; box-shadow: 0 8px 24px rgba(150,96,65,.14); font-size: .82rem; color: var(--muted); margin-top: .4rem; }
+.modal .pill b { font: 400 1.15rem/1 var(--display); color: var(--brown); margin-right: .2rem; }
+.modal .pill i { width: 5px; height: 5px; border-radius: 50%; background: var(--amber); }
+.modal form { padding: 1.6rem clamp(1.2rem, 5vw, 2.6rem) 2rem; display: grid; gap: 1rem; }
+.modal .mf { display: grid; gap: .4rem; animation: fadeup .5s ease both; animation-delay: calc(var(--i) * 60ms + 250ms); }
+.modal .mf label { font: 700 .7rem/1 var(--body); letter-spacing: .14em; text-transform: uppercase; color: var(--brown); }
+.modal .mf label::after { content: " *"; color: var(--rose); }
+.modal .mf input, .modal .mf select { width: 100%; padding: .9rem 1rem; border: 1.5px solid var(--line); border-radius: 12px; background: #FAF8F5; font-size: .95rem; color: var(--ink); transition: border-color .2s, box-shadow .2s, background .2s; }
+.modal .mf input:focus, .modal .mf select:focus { outline: none; border-color: var(--brown); background: #fff; box-shadow: 0 0 0 4px rgba(150,96,65,.15); }
+.modal .tel { display: flex; border: 1.5px solid var(--line); border-radius: 12px; background: #FAF8F5; overflow: hidden; transition: border-color .2s, box-shadow .2s; }
+.modal .tel:focus-within { border-color: var(--brown); box-shadow: 0 0 0 4px rgba(150,96,65,.15); background: #fff; }
+.modal .tel span { padding: .9rem .9rem; border-right: 1.5px solid var(--line); font: 700 .85rem/1.3 var(--body); color: var(--brown); display: flex; gap: .3rem; align-items: center; }
+.modal .tel span small { font-size: .65rem; color: var(--muted); }
+.modal .tel input { border: 0 !important; box-shadow: none !important; border-radius: 0; background: none; }
+.modal .two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1rem; }
+@media (max-width: 520px) { .modal .two { grid-template-columns: 1fr; } }
+.modal .kvkk { display: flex; gap: .8rem; align-items: flex-start; background: #FFF8E1; border: 1px solid #F3DFA2; border-radius: 12px; padding: .9rem 1rem; font-size: .82rem; color: var(--ink); }
+.modal .kvkk input { width: 20px; height: 20px; flex: none; accent-color: var(--brown); margin-top: .1rem; }
+.modal .kvkk a { color: var(--brown); font-weight: 700; }
+.modal .btn.block { border-radius: 12px; font-size: 1.25rem; padding: 1rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  .rv { opacity: 1; translate: none; }
+  .w > span { transform: none; }
+  .mq-track { animation: none !important; }
+  .banner .bg { scale: 1; }
+}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-fb" viewBox="0 0 24 24"><path d="M14 8h3V4h-3c-2.8 0-4 1.7-4 4.3V10H7v4h3v8h4v-8h3l1-4h-4V8.6c0-.4.3-.6.6-.6z"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M17.8 3h3.3l-7.2 8.2L22 21h-6.6l-5.2-6.8L4.3 21H1l7.7-8.8L1 3h6.8l4.7 6.2L17.8 3zm-1.2 16h1.8L7.5 4.9H5.6L16.6 19z"/></symbol>
+  <symbol id="i-yt" viewBox="0 0 24 24"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.7 15.1V8.9l5.8 3.1-5.8 3.1z"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zM17.3 5.5a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zM21.9 7.1a6 6 0 0 0-1.6-4.2A6 6 0 0 0 16.1 1.3C14.4 1.2 9.6 1.2 7.9 1.3a6 6 0 0 0-4.2 1.6A6 6 0 0 0 2.1 7.1C2 8.8 2 13.6 2.1 15.3a6 6 0 0 0 1.6 4.2 6 6 0 0 0 4.2 1.6c1.7.1 6.5.1 8.2 0a6 6 0 0 0 4.2-1.6 6 6 0 0 0 1.6-4.2c.1-1.7.1-6.5 0-8.2zm-2.2 10a3.3 3.3 0 0 1-1.9 1.9c-1.3.5-4.4.4-5.8.4s-4.5.1-5.8-.4a3.3 3.3 0 0 1-1.9-1.9c-.5-1.3-.4-4.4-.4-5.8s-.1-4.5.4-5.8a3.3 3.3 0 0 1 1.9-1.9c1.3-.5 4.4-.4 5.8-.4s4.5-.1 5.8.4a3.3 3.3 0 0 1 1.9 1.9c.5 1.3.4 4.4.4 5.8s.1 4.5-.4 5.8z"/></symbol>
+</svg>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="tb-l">
+      <span><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Moda, Kadıköy</span>
+      <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>08:00 – 22:00</span>
+    </div>
+    <div class="ticker" aria-live="off">
+      <div><span><b>₺900</b> ve üzeri siparişlerde kargo bedava</span><span>Her hafta <b>taze kavrum</b>, aynı gün kargoda</span><span>Kahve Kulübü üyelerine <b>%10</b> indirim</span></div>
+    </div>
+    <div class="socials" aria-label="Sosyal medya">
+      <a href="#home" aria-label="Instagram"><svg class="s"><use href="#i-ig"/></svg></a>
+      <a href="#home" aria-label="Facebook"><svg class="s"><use href="#i-fb"/></svg></a>
+      <a href="#home" aria-label="X"><svg class="s"><use href="#i-x"/></svg></a>
+      <a href="#home" aria-label="YouTube"><svg class="s"><use href="#i-yt"/></svg></a>
+    </div>
+  </div>
+</div>
+
+<header class="site" id="siteheader">
+  <span class="sprog" id="sprog"></span>
+  <div class="wrap">
+    <a class="logo" href="#home" aria-label="Coffee anasayfa"><img src="assets/logo.webp" alt="Coffee logosu" width="158" height="41"></a>
+    <nav class="main" id="mainnav" aria-label="Ana menü">
+      <a href="#home" data-link="home">Anasayfa</a>
+      <div class="dd mega" data-group="magaza urun sepet odeme">
+        <button type="button" aria-haspopup="true" onclick="location.hash='magaza'">Mağaza <svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="dd-menu">
+          <div class="mega-in">
+            <div class="mcol">
+              <h5>Kategoriler</h5>
+              <a href="#magaza">Tüm kahveler</a><a href="#magaza">Espresso harmanları</a><a href="#magaza">Filtre kahveler</a><a href="#magaza">İndirimdekiler</a><a href="#magaza">Hediye setleri</a>
+            </div>
+            <div class="mcol">
+              <h5>Midnight Bloom serisi</h5>
+              <div class="mega-bags">
+                <a href="#urun"><span class="ph"><img src="assets/bag-a.webp" alt=""></span><b>Bloom – A</b><span>₺1.199</span></a>
+                <a href="#urun"><span class="ph"><img src="assets/bag-b.webp" alt=""></span><b>Bloom – B</b><span>₺1.350</span></a>
+                <a href="#urun"><span class="ph"><img src="assets/bag-c.webp" alt=""></span><b>Bloom – C</b><span>₺1.750</span></a>
+                <a href="#urun"><span class="ph"><img src="assets/bag-d.webp" alt=""></span><b>Bloom – D</b><span>₺1.199</span></a>
+                <a href="#urun"><span class="ph"><img src="assets/bag-e.webp" alt=""></span><b>Bloom – E</b><span>₺2.250</span></a>
+              </div>
+            </div>
+            <a class="mega-promo" href="#magaza"><img src="assets/px-roaster.webp" alt=""><small>Bu hafta kavrulanlar</small><strong>Taze kavrum,<br>kapında</strong></a>
+          </div>
+        </div>
+      </div>
+      <div class="dd" data-group="neden-biz bayilik iletisim">
+        <button type="button" aria-haspopup="true">Kurumsal <svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="dd-menu">
+          <a href="#neden-biz"><b>Neden Biz?</b><span>Çekirdekten fincana hikâyemiz</span></a>
+          <a href="#bayilik"><b>Bayilik</b><span>Kahvemizi işletmende sun</span></a>
+          <a href="#iletisim"><b>İletişim</b><span>Adres, saatler ve form</span></a>
+        </div>
+      </div>
+      <a href="#neden-biz" data-link="neden-biz">Neden Biz?</a>
+      <a href="#blog" data-link="blog">Blog</a>
+    </nav>
+    <div class="icons">
+      <button type="button" id="searchbtn" aria-label="Ara"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+      <a class="acct" href="#hesabim" aria-label="Hesabım"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></a>
+      <div class="cartwrap">
+        <a href="#sepet" aria-label="Sepet, 3 ürün"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="badge">3</span></a>
+        <div class="minicart">
+          <h6>Sepetin <small>3 ürün</small></h6>
+          <div class="mc-line"><span class="ph"><img src="assets/bag-a.webp" alt=""></span><div><b>Midnight Bloom – A</b><span>Espresso öğütüm · 1 adet</span></div><strong>₺1.199</strong></div>
+          <div class="mc-line"><span class="ph"><img src="assets/bag-c.webp" alt=""></span><div><b>Midnight Bloom – C</b><span>Çekirdek · 1 adet</span></div><strong>₺1.750</strong></div>
+          <div class="mc-line"><span class="ph"><img src="assets/bag-e.webp" alt=""></span><div><b>Midnight Bloom – E</b><span>Filtre öğütüm · 1 adet</span></div><strong>₺2.250</strong></div>
+          <div class="mc-meter">Kargo bedava kazandın 🎉<i></i></div>
+          <div class="mc-total"><span>Ara toplam</span><span>₺5.199,00</span></div>
+          <div class="mc-btns"><a class="btn line" href="#sepet">Sepete git</a><a class="btn brown" href="#odeme">Ödeme</a></div>
+        </div>
+      </div>
+      <a class="cta" href="#iletisim">İletişim</a>
+      <button type="button" class="burger" id="burger" aria-label="Menüyü aç" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h11M4 17h16"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<div class="search-ov" id="searchov" hidden role="dialog" aria-label="Arama">
+  <button type="button" class="close" data-close="searchov" aria-label="Kapat"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  <div class="wrap">
+    <input type="search" placeholder="Ne arıyorsun?" aria-label="Arama">
+    <div><h5>Popüler aramalar</h5><div class="pop"><a href="#magaza">Midnight Bloom</a><a href="#magaza">Espresso</a><a href="#magaza">Filtre kahve</a><a href="#yazi">Demleme rehberi</a><a href="#bayilik">Bayilik</a></div></div>
+    <div><h5>Öne çıkan kahveler</h5><div class="sres">
+      <a href="#urun"><span class="ph"><img src="assets/bag-a.webp" alt=""></span><div><b>Midnight Bloom – A</b><span>₺1.199</span></div></a>
+      <a href="#urun"><span class="ph"><img src="assets/bag-c.webp" alt=""></span><div><b>Midnight Bloom – C</b><span>₺1.750</span></div></a>
+      <a href="#urun"><span class="ph"><img src="assets/bag-e.webp" alt=""></span><div><b>Midnight Bloom – E</b><span>₺2.250</span></div></a>
+    </div></div>
+  </div>
+</div>
+
+<div class="drawer" id="drawer" hidden role="dialog" aria-label="Menü">
+  <div class="scrim" data-close="drawer"></div>
+  <div class="panel">
+    <div class="dtop"><img src="assets/logo.webp" alt="Coffee"><button type="button" class="totop" data-close="drawer" aria-label="Menüyü kapat" style="background:none;border:1px solid rgba(255,255,255,.25);color:#fff"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+    <nav aria-label="Mobil menü">
+      <a href="#home" data-link="home">Anasayfa <small>01</small></a>
+      <a href="#magaza" data-link="magaza">Mağaza <small>02</small></a>
+      <a href="#neden-biz" data-link="neden-biz">Neden Biz? <small>03</small></a>
+      <a href="#bayilik" data-link="bayilik">Bayilik <small>04</small></a>
+      <a href="#blog" data-link="blog">Blog <small>05</small></a>
+      <a href="#iletisim" data-link="iletisim">İletişim <small>06</small></a>
+      <a href="#hesabim" data-link="hesabim">Hesabım <small>07</small></a>
+    </nav>
+    <div class="dphoto"><img src="assets/px-cafe-interior.webp" alt="Kafe içi"></div>
+    <div class="dinfo"><span>Moda Cd. No: 12, Kadıköy / İstanbul</span><span>Her gün 08:00 – 22:00</span></div>
+    <div class="f-social"><a href="#home" aria-label="Instagram"><svg><use href="#i-ig"/></svg></a><a href="#home" aria-label="Facebook"><svg><use href="#i-fb"/></svg></a><a href="#home" aria-label="X"><svg><use href="#i-x"/></svg></a><a href="#home" aria-label="YouTube"><svg><use href="#i-yt"/></svg></a></div>
+  </div>
+</div>
+
+<!-- ============ HOME ============ -->
+<main data-page="home">
+  <section class="hero">
+    <video class="sl on" autoplay muted loop playsinline poster="assets/hero-poster.jpg" aria-hidden="true"><source src="assets/hero.mp4" type="video/mp4"></video>
+    <video class="sl" muted loop playsinline preload="none" poster="assets/px-latte-art-pour-poster.jpg" aria-hidden="true"><source src="assets/px-latte-art-pour.mp4" type="video/mp4"></video>
+    <video class="sl" muted loop playsinline preload="none" poster="assets/px-espresso-drip-poster.jpg" aria-hidden="true"><source src="assets/px-espresso-drip.mp4" type="video/mp4"></video>
+    <div class="wrap">
+      <span class="eyebrow">Özenle seçilmiş kahve çekirdekleri</span>
+      <h1>Tutkuyla Demlenen, <span class="rose">Keyifle Sunulan Kahve</span></h1>
+      <p class="lead">Her fincanda bir hikâye var. Taze kavrulmuş Midnight Bloom harmanlarıyla günün temposuna kısa bir mola ver.</p>
+      <div class="ctas">
+        <a class="btn" href="#neden-biz">Hakkında</a>
+        <a class="btn ghost" href="#magaza">Alışverişe Başla</a>
+      </div>
+    </div>
+    <div class="counter" aria-hidden="true"><span id="slnum">01</span> <i></i> 03</div>
+    <div class="cue" aria-hidden="true"><i></i>Kaydır</div>
+  </section>
+
+  <div class="tilts">
+    <div class="wrap grid">
+      <a class="tilt" href="#neden-biz"><img src="assets/roast.webp" alt="Tavada kavrulan kahve çekirdekleri" loading="lazy"><div class="cap"><h3>Tutkuyla Demlenen</h3><span class="btn sm">Detay</span></div></a>
+      <a class="tilt" href="#bayilik"><img src="assets/cup-hand.webp" alt="Elde tutulan karton kahve bardağı" loading="lazy"><div class="cap"><h3>Her fincanda bir hikâye var</h3><span class="btn brown sm">Bayimiz Ol!</span></div></a>
+      <a class="tilt" href="#neden-biz"><img src="assets/double-shot.webp" alt="Makineden iki fincana akan espresso" loading="lazy"><div class="cap"><h3>Özenle seçilmiş kahve çekirdekleri</h3><span class="btn sm">Neden Biz?</span></div></a>
+    </div>
+  </div>
+
+  <section class="sec light" style="padding-top: clamp(3rem, 6vw, 5rem);">
+    <div class="wrap feats-light" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+      <div class="feat" style="color: var(--ink);"><svg viewBox="0 0 48 48"><path d="M24 6c8 6 8 30 0 36-8-6-8-30 0-36z"/><path d="M24 8c-3 10 3 22 0 32"/></svg><div><b>Taze kavrum</b><span style="color:var(--muted)">Kavrulduktan sonra 48 saat içinde yola çıkar.</span></div></div>
+      <div class="feat" style="color: var(--ink);"><svg viewBox="0 0 48 48"><path d="M4 14h26v18H4zM30 20h8l6 6v6H30z"/><circle cx="12" cy="35" r="3"/><circle cx="36" cy="35" r="3"/></svg><div><b>Ücretsiz kargo</b><span style="color:var(--muted)">900,00 TL ve üzeri siparişlerde.</span></div></div>
+      <div class="feat" style="color: var(--ink);"><svg viewBox="0 0 48 48"><path d="M10 18h24v10a12 12 0 0 1-24 0zM34 21h3a5 5 0 0 1 0 10h-4M8 42h30"/></svg><div><b>Her demleme için</b><span style="color:var(--muted)">Filtre, espresso, French press, moka pot.</span></div></div>
+      <div class="feat" style="color: var(--ink);"><svg viewBox="0 0 48 48"><path d="M8 40V18l16-10 16 10v22z"/><path d="M18 40V26h12v14"/></svg><div><b>Bayilik</b><span style="color:var(--muted)">Kafeniz için toptan fiyat ve destek.</span></div></div>
+    </div>
+  </section>
+
+  <div class="marquee " aria-hidden="true"><div class="mq-track"><div><span>Taze kavrum</span><i class="bean"></i><span>Tutkuyla demlenen</span><i></i><span>Midnight Bloom</span><i class="bean"></i><span>Keyifle sunulan</span><i></i><span>Çekirdekten fincana</span><i class="bean"></i></div><div><span>Taze kavrum</span><i class="bean"></i><span>Tutkuyla demlenen</span><i></i><span>Midnight Bloom</span><i class="bean"></i><span>Keyifle sunulan</span><i></i><span>Çekirdekten fincana</span><i class="bean"></i></div></div></div>
+  <section class="market">
+    <img class="bg" src="assets/machine-blur.webp" alt="" loading="lazy">
+    <div class="wrap">
+      <div class="cupwrap"><svg class="steam" viewBox="0 0 100 60" aria-hidden="true"><path d="M30 58c-8-12 8-18 0-30s6-18 0-26"/><path d="M50 58c-8-12 8-18 0-30s6-18 0-26"/><path d="M70 58c-8-12 8-18 0-30s6-18 0-26"/></svg><img class="takeaway" src="assets/takeaway.webp" alt="Coffee logolu karton bardak" loading="lazy"></div>
+      <div>
+        <span class="eyebrow">Midnight Bloom serisi</span>
+        <h2 style="margin-top:.8rem">Online Market</h2>
+        <div class="rail-wrap">
+          <div class="rail" id="rail" tabindex="0" aria-label="Ürünler">
+            <a class="pcard-d" href="#urun"><img src="assets/bag-a.webp" alt="Midnight Bloom A paketi" loading="lazy"><h3>Midnight Bloom – A</h3><span class="price"><del>₺1.350,00</del>₺1.199,00</span></a>
+            <a class="pcard-d" href="#urun"><img src="assets/bag-b.webp" alt="Midnight Bloom B paketi" loading="lazy"><h3>Midnight Bloom – B</h3><span class="price">₺1.350,00</span></a>
+            <a class="pcard-d" href="#urun"><img src="assets/bag-c.webp" alt="Midnight Bloom C paketi" loading="lazy"><h3>Midnight Bloom – C</h3><span class="price">₺1.750,00</span></a>
+            <a class="pcard-d" href="#urun"><img src="assets/bag-d.webp" alt="Midnight Bloom D paketi" loading="lazy"><h3>Midnight Bloom – D</h3><span class="price"><del>₺1.350,00</del>₺1.199,00</span></a>
+            <a class="pcard-d" href="#urun"><img src="assets/bag-e.webp" alt="Midnight Bloom E paketi" loading="lazy"><h3>Midnight Bloom – E</h3><span class="price">₺2.250,00</span></a>
+          </div>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:1rem; margin-top:1rem;">
+          <div class="rail-btns"><button type="button" data-rail="-1" aria-label="Önceki ürünler">←</button><button type="button" data-rail="1" aria-label="Sonraki ürünler">→</button></div>
+          <a class="btn brown" href="#magaza">Alışverişe Başla!</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="vband">
+    <video autoplay muted loop playsinline poster="assets/barista-poster.jpg" aria-hidden="true"><source src="assets/barista.mp4" type="video/mp4"></video>
+    <div class="wrap">
+      <span class="eyebrow" style="color:#fff">Bayimiz ol</span>
+      <h2>Kafeniz için Midnight Bloom</h2>
+      <p>Harmanlarımızı kendi menünüzde sunun. Toptan fiyat, düzenli taze gönderim, barista eğitimi ve marka materyalleri.</p>
+      <a class="btn" href="#bayilik" data-dealer>Bayilik Başvurusu</a>
+    </div>
+  </section>
+
+  <section class="sec blogband">
+    <div class="wrap">
+      <div class="sec-head"><h2>Blog</h2><a class="btn brown sm" href="#blog">Tüm Yazılar</a></div>
+      <div class="posts">
+        <a class="post" href="#yazi"><div class="ph"><img src="assets/pour-over.webp" alt="Kalita Wave ile filtre kahve demleme" loading="lazy"></div><div class="tx"><span class="cat">Demleme</span><h3>Evde Daha İyi Kahve Yapmanın 5 Altın Kuralı</h3><p>Evde kahve yapmak bir ritüele dönüştüğünde lezzet de kendiliğinden artar.</p><span class="more">Devamını oku →</span></div></a>
+        <a class="post" href="#yazi"><div class="ph"><img src="assets/espresso-pour.webp" alt="Portafiltreden akan espresso" loading="lazy"></div><div class="tx"><span class="cat">Rehber</span><h3>Filtre Kahve mi, Espresso mu? Hangisi Sana Göre?</h3><p>Kahve dünyasına adım atan herkesin aklındaki ilk sorulardan biri.</p><span class="more">Devamını oku →</span></div></a>
+        <a class="post" href="#yazi"><div class="ph"><img src="assets/px-roasted-beans-macro.webp" alt="Yakından kavrulmuş kahve çekirdekleri" loading="lazy"></div><div class="tx"><span class="cat">Çekirdek</span><h3>Kahvenin Yolculuğu: Çekirdekten Fincana</h3><p>Kahve, yalnızca bir içecek değil; uzun ve özenli bir yolculuğun sonucu.</p><span class="more">Devamını oku →</span></div></a>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee dark rev" aria-hidden="true"><div class="mq-track"><div><span>₺900 üzeri kargo bedava</span><i></i><span class="o">Haftalık taze kavrum</span><i></i><span>Kahve Kulübü %10</span><i></i><span class="o">Bayimiz ol</span><i></i></div><div><span>₺900 üzeri kargo bedava</span><i></i><span class="o">Haftalık taze kavrum</span><i></i><span>Kahve Kulübü %10</span><i></i><span class="o">Bayimiz ol</span><i></i></div></div></div>
+  <section class="follow">
+    <img class="bg" src="assets/doodle.webp" alt="" loading="lazy">
+    <div class="wrap">
+      <h2>Bizi Takip Edin</h2>
+      <p style="max-width:40ch; color: rgba(255,255,255,.8)">Yeni harmanlar, demleme ipuçları ve kampanyalar önce sosyal medyada.</p>
+      <div class="social-row">
+        <a href="#home" aria-label="Facebook"><svg><use href="#i-fb"/></svg></a>
+        <a href="#home" aria-label="X"><svg><use href="#i-x"/></svg></a>
+        <a href="#home" aria-label="YouTube"><svg><use href="#i-yt"/></svg></a>
+        <a href="#home" aria-label="Instagram"><svg><use href="#i-ig"/></svg></a>
+      </div>
+    </div>
+  </section>
+  <div class="tilts two">
+    <div class="wrap grid">
+      <a class="tilt" href="#neden-biz"><img src="assets/px-latte-art.webp" alt="Fincana latte art dökülüyor" loading="lazy"><div class="cap"><h3>Tutkuyla Demlenen</h3><span class="btn sm">Detay</span></div></a>
+      <a class="tilt" href="#neden-biz"><img src="assets/px-iced-coffee.webp" alt="Koyu masada buzlu kahve" loading="lazy"><div class="cap"><h3>Soğuk demleme sezonu</h3><span class="btn sm">Neden Biz?</span></div></a>
+    </div>
+  </div>
+</main>
+
+<!-- ============ SHOP ============ -->
+<main data-page="magaza">
+  <section class="banner">
+    <img class="bg" src="assets/px-coffee-bags-shelf.webp" alt="">
+    <div class="wrap">
+      <div class="crumbs"><a href="#home">Anasayfa</a> / Mağaza</div>
+      <h1>Mağaza <span class="rose">Midnight Bloom</span></h1>
+      <p style="max-width:50ch; color:rgba(255,255,255,.85)">Beş harman, tek seri. Orta koyu kavrum, kakao ve karamel notaları.</p>
+    </div>
+  </section>
+  <section class="sec light">
+    <div class="wrap">
+      <div class="shopbar">
+        <div class="chips" role="group" aria-label="Filtre">
+          <button class="chip on" type="button">Tümü (5)</button>
+          <button class="chip" type="button">İndirimde (2)</button>
+          <button class="chip" type="button">Espresso için</button>
+          <button class="chip" type="button">Filtre için</button>
+        </div>
+        <label><span class="visually" style="position:absolute;left:-9999px">Sırala</span>
+          <select class="sort" id="sort"><option>Önerilen sıralama</option><option>Fiyat: düşükten yükseğe</option><option>Fiyat: yüksekten düşüğe</option><option>En yeni</option></select>
+        </label>
+      </div>
+      <div class="pgrid">
+        <article class="pcard"><span class="sale">İndirim</span><a class="im" href="#urun"><img src="assets/bag-a.webp" alt="Midnight Bloom A paketi" loading="lazy"></a><div class="tx"><small>Espresso · 250 g</small><h3><a href="#urun">Midnight Bloom – A</a></h3><p class="notes">Kakao, karamel, çiçeksi bitiş</p><span class="price"><del>₺1.350,00</del>₺1.199,00</span><button class="btn dark sm block" type="button">Sepete Ekle</button></div></article>
+        <article class="pcard"><a class="im" href="#urun"><img src="assets/bag-b.webp" alt="Midnight Bloom B paketi" loading="lazy"></a><div class="tx"><small>Filtre · 250 g</small><h3><a href="#urun">Midnight Bloom – B</a></h3><p class="notes">Fındık, sütlü çikolata</p><span class="price">₺1.350,00</span><button class="btn dark sm block" type="button">Sepete Ekle</button></div></article>
+        <article class="pcard"><a class="im" href="#urun"><img src="assets/bag-c.webp" alt="Midnight Bloom C paketi" loading="lazy"></a><div class="tx"><small>Espresso · 500 g</small><h3><a href="#urun">Midnight Bloom – C</a></h3><p class="notes">Bitter çikolata, baharat</p><span class="price">₺1.750,00</span><button class="btn dark sm block" type="button">Sepete Ekle</button></div></article>
+        <article class="pcard"><span class="sale">İndirim</span><a class="im" href="#urun"><img src="assets/bag-d.webp" alt="Midnight Bloom D paketi" loading="lazy"></a><div class="tx"><small>Filtre · 250 g</small><h3><a href="#urun">Midnight Bloom – D</a></h3><p class="notes">Kırmızı meyve, bal</p><span class="price"><del>₺1.350,00</del>₺1.199,00</span><button class="btn dark sm block" type="button">Sepete Ekle</button></div></article>
+        <article class="pcard"><a class="im" href="#urun"><img src="assets/bag-e.webp" alt="Midnight Bloom E paketi" loading="lazy"></a><div class="tx"><small>Çekirdek · 1 kg</small><h3><a href="#urun">Midnight Bloom – E</a></h3><p class="notes">Karamel, tam gövde</p><span class="price">₺2.250,00</span><button class="btn dark sm block" type="button">Sepete Ekle</button></div></article>
+      </div>
+    </div>
+  </section>
+  <section class="vband" style="--x:1">
+    <video autoplay muted loop playsinline poster="assets/hero-poster.jpg" aria-hidden="true"><source src="assets/hero.mp4" type="video/mp4"></video>
+    <div class="wrap">
+      <h2>Taze kavrum, kapına kadar</h2>
+      <p>900,00 TL ve üzeri siparişlerde kargo bizden. Siparişin kavrulduktan sonra 48 saat içinde yola çıkar.</p>
+    </div>
+  </section>
+<div class="marquee " aria-hidden="true"><div class="mq-track"><div><span>Taze kavrum</span><i class="bean"></i><span>Midnight Bloom</span><i></i><span>Taze kavrum</span><i class="bean"></i><span>Midnight Bloom</span><i></i></div><div><span>Taze kavrum</span><i class="bean"></i><span>Midnight Bloom</span><i></i><span>Taze kavrum</span><i class="bean"></i><span>Midnight Bloom</span><i></i></div></div></div>
+</main>
+
+<!-- ============ PRODUCT ============ -->
+<main data-page="urun">
+  <section class="sec light" style="padding-top: 2.5rem;">
+    <div class="wrap">
+      <div class="crumbs" style="color:var(--muted); margin-bottom:1.5rem"><a href="#home" style="color:var(--brown)">Anasayfa</a> / <a href="#magaza" style="color:var(--brown)">Mağaza</a> / Midnight Bloom – A</div>
+      <div class="pdp">
+        <div class="gallery">
+          <div class="main-im"><span class="sale">İndirim</span><img id="pdp-main" src="assets/bag-a.webp" alt="Midnight Bloom A paketi"></div>
+          <div class="thumbs" id="thumbs">
+            <button type="button" class="on" data-src="assets/bag-a.webp" aria-label="Paket"><img src="assets/bag-a.webp" alt=""></button>
+            <button type="button" data-src="assets/roast.webp" aria-label="Kavurma"><img src="assets/roast.webp" alt=""></button>
+            <button type="button" data-src="assets/espresso-pour.webp" aria-label="Espresso"><img src="assets/espresso-pour.webp" alt=""></button>
+            <button type="button" data-src="assets/beans-paper.webp" aria-label="Çekirdekler"><img src="assets/beans-paper.webp" alt=""></button>
+          </div>
+        </div>
+        <div class="pinfo">
+          <span class="eyebrow" style="color:var(--brown)">Midnight Bloom serisi</span>
+          <h1>Midnight Bloom – A</h1>
+          <div class="stars" aria-label="5 üzerinden 4,8 puan">★★★★★ <span style="color:var(--muted); letter-spacing:0; font-size:.88rem">4,8 · 36 değerlendirme</span></div>
+          <div class="price"><del>₺1.350,00</del>₺1.199,00</div>
+          <p>Gecenin sakinliğinden ilham alan özel bir harman. Orta koyu kavrulmuş çekirdekleriyle yoğun ama dengeli bir içim; ilk yudumda kakao ve hafif karamel, bitişte yumuşak çiçeksi bir aroma.</p>
+          <div class="notes-row"><span>Kakao</span><span>Karamel</span><span>Çiçeksi</span></div>
+          <div class="spec"><div><span>Kavrum</span><b>Orta koyu</b></div><div><span>Menşei</span><b>Etiyopya · Brezilya</b></div><div><span>Ağırlık</span><b>250 g</b></div></div>
+          <div class="field" style="max-width:280px"><label for="grind">Öğütme</label><select id="grind"><option>Çekirdek</option><option>Espresso</option><option>Filtre / V60</option><option>French press</option><option>Moka pot</option></select></div>
+          <div class="buy">
+            <div class="qty"><button type="button" data-q="-1" aria-label="Azalt">−</button><input id="qty" value="1" inputmode="numeric" aria-label="Adet"><button type="button" data-q="1" aria-label="Artır">+</button></div>
+            <a class="btn brown" href="#sepet">Sepete Ekle</a>
+          </div>
+          <div class="ship-note"><svg width="22" height="22" viewBox="0 0 48 48" fill="none" stroke="#966041" stroke-width="3"><path d="M4 14h26v18H4zM30 20h8l6 6v6H30z"/></svg> 900,00 TL ve üzeri siparişlerde ücretsiz kargo · 1–3 iş gününde teslim</div>
+          <div>
+            <details class="acc" open><summary>Açıklama</summary><p>Midnight Bloom – A, espresso bazlı içecekler için dengelendi. Sütle buluştuğunda karamel notası öne çıkar; sade içimde kakao ve çiçeksi bitiş hissedilir.</p></details>
+            <details class="acc"><summary>Demleme önerisi</summary><p>Espresso: 18 g kahve, 36 g çıktı, 27–30 saniye. Filtre: 15 g kahve, 250 ml su, 92–94 °C.</p></details>
+            <details class="acc"><summary>Kargo ve iade</summary><p>Siparişler kavrulduktan sonra 48 saat içinde kargoya verilir. Açılmamış paketlerde 14 gün içinde iade.</p></details>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="sec white">
+    <div class="wrap">
+      <div class="sec-head"><h2>Bunları da sevebilirsin</h2></div>
+      <div class="pgrid">
+        <article class="pcard"><a class="im" href="#urun"><img src="assets/bag-b.webp" alt="Midnight Bloom B paketi" loading="lazy"></a><div class="tx"><h3><a href="#urun">Midnight Bloom – B</a></h3><span class="price">₺1.350,00</span></div></article>
+        <article class="pcard"><a class="im" href="#urun"><img src="assets/bag-c.webp" alt="Midnight Bloom C paketi" loading="lazy"></a><div class="tx"><h3><a href="#urun">Midnight Bloom – C</a></h3><span class="price">₺1.750,00</span></div></article>
+        <article class="pcard"><span class="sale">İndirim</span><a class="im" href="#urun"><img src="assets/bag-d.webp" alt="Midnight Bloom D paketi" loading="lazy"></a><div class="tx"><h3><a href="#urun">Midnight Bloom – D</a></h3><span class="price"><del>₺1.350,00</del>₺1.199,00</span></div></article>
+        <article class="pcard"><a class="im" href="#urun"><img src="assets/bag-e.webp" alt="Midnight Bloom E paketi" loading="lazy"></a><div class="tx"><h3><a href="#urun">Midnight Bloom – E</a></h3><span class="price">₺2.250,00</span></div></article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ CART ============ -->
+<main data-page="sepet">
+  <section class="banner">
+    <img class="bg" src="assets/px-flatlay-cup-beans.webp" alt="">
+    <div class="wrap"><div class="crumbs"><a href="#home">Anasayfa</a> / Sepet</div><h1>Sepetim</h1></div>
+  </section>
+  <section class="sec light">
+    <div class="wrap">
+      <div class="steps"><span class="on">1 · Sepet</span><span>2 · Ödeme</span><span>3 · Onay</span></div>
+      <div class="two-col">
+        <div class="panel">
+          <h2>Ürünler</h2>
+          <div class="line"><div class="thumb"><img src="assets/bag-a.webp" alt="Midnight Bloom A"></div><div><h3>Midnight Bloom – A</h3><small>Espresso öğütme · 250 g</small></div><div class="right"><div class="qty"><button type="button" aria-label="Azalt">−</button><input value="1" aria-label="Adet"><button type="button" aria-label="Artır">+</button></div><span class="price">₺1.199,00</span><button class="rm" type="button">Kaldır</button></div></div>
+          <div class="line"><div class="thumb"><img src="assets/bag-c.webp" alt="Midnight Bloom C"></div><div><h3>Midnight Bloom – C</h3><small>Çekirdek · 500 g</small></div><div class="right"><div class="qty"><button type="button" aria-label="Azalt">−</button><input value="1" aria-label="Adet"><button type="button" aria-label="Artır">+</button></div><span class="price">₺1.750,00</span><button class="rm" type="button">Kaldır</button></div></div>
+          <div class="line" style="border-bottom:0"><div class="thumb"><img src="assets/bag-e.webp" alt="Midnight Bloom E"></div><div><h3>Midnight Bloom – E</h3><small>Çekirdek · 1 kg</small></div><div class="right"><div class="qty"><button type="button" aria-label="Azalt">−</button><input value="1" aria-label="Adet"><button type="button" aria-label="Artır">+</button></div><span class="price">₺2.250,00</span><button class="rm" type="button">Kaldır</button></div></div>
+          <div class="coupon" style="margin-top:1rem"><div class="field" style="flex:1"><label for="cpn" style="position:absolute;left:-9999px">Kupon kodu</label><input id="cpn" placeholder="Kupon kodu"></div><button class="btn dark sm" type="button">Uygula</button></div>
+        </div>
+        <aside class="panel">
+          <h2>Sipariş özeti</h2>
+          <div class="sum">
+            <div class="meter"><b>Ücretsiz kargo kazandın!</b><div class="bar"><i style="width:100%"></i></div><span>900,00 TL sınırını geçtin, kargo bizden.</span></div>
+            <div class="row"><span>Ara toplam</span><span>₺5.199,00</span></div>
+            <div class="row"><span>İndirim</span><span>−₺151,00</span></div>
+            <div class="row"><span>Kargo</span><span>Ücretsiz</span></div>
+            <div class="row total"><span>Toplam</span><span>₺5.199,00</span></div>
+            <a class="btn brown block" href="#odeme">Ödemeye Geç</a>
+            <a href="#magaza" style="text-align:center; font-size:.88rem; color:var(--brown)">Alışverişe devam et</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ CHECKOUT ============ -->
+<main data-page="odeme">
+  <section class="banner">
+    <img class="bg" src="assets/coffee-bar.webp" alt="">
+    <div class="wrap"><div class="crumbs"><a href="#home">Anasayfa</a> / <a href="#sepet">Sepet</a> / Ödeme</div><h1>Ödeme</h1></div>
+  </section>
+  <section class="sec light">
+    <div class="wrap">
+      <div class="steps"><span>1 · Sepet</span><span class="on">2 · Ödeme</span><span>3 · Onay</span></div>
+      <form class="two-col" id="checkout">
+        <div class="panel">
+          <h2>Teslimat bilgileri</h2>
+          <div class="fgrid">
+            <div class="field"><label for="ad">Ad</label><input id="ad" value="Ayşe"></div>
+            <div class="field"><label for="soyad">Soyad</label><input id="soyad" value="Yılmaz"></div>
+            <div class="field full"><label for="eposta">E-posta</label><input id="eposta" type="email" value="ayse@ornek.com"></div>
+            <div class="field"><label for="tel">Telefon</label><input id="tel" value="0532 000 00 00"></div>
+            <div class="field"><label for="il">İl</label><select id="il"><option>İstanbul</option><option>Ankara</option><option>İzmir</option></select></div>
+            <div class="field full"><label for="adres">Adres</label><input id="adres" value="Moda Cd. No: 12 D: 4, Kadıköy"></div>
+            <div class="field full"><label for="not">Sipariş notu (isteğe bağlı)</label><textarea id="not" placeholder="Kapıya bırakılabilir"></textarea></div>
+          </div>
+          <h2 style="margin-top:2rem">Ödeme yöntemi</h2>
+          <div class="pay">
+            <label><input type="radio" name="pay" id="pay-card" checked> Kredi / banka kartı</label>
+            <label><input type="radio" name="pay" id="pay-eft"> Havale / EFT</label>
+            <label><input type="radio" name="pay" id="pay-door"> Kapıda ödeme</label>
+          </div>
+          <div class="fgrid" style="margin-top:1rem">
+            <div class="field full"><label for="kart">Kart numarası</label><input id="kart" placeholder="0000 0000 0000 0000" inputmode="numeric"></div>
+            <div class="field"><label for="skt">Son kullanma</label><input id="skt" placeholder="AA/YY"></div>
+            <div class="field"><label for="cvc">CVC</label><input id="cvc" placeholder="123"></div>
+          </div>
+        </div>
+        <aside class="panel">
+          <h2>Siparişin</h2>
+          <div class="mini"><div class="thumb"><img src="assets/bag-a.webp" alt=""></div><span>Midnight Bloom – A × 1</span><b>₺1.199,00</b></div>
+          <div class="mini"><div class="thumb"><img src="assets/bag-c.webp" alt=""></div><span>Midnight Bloom – C × 1</span><b>₺1.750,00</b></div>
+          <div class="mini"><div class="thumb"><img src="assets/bag-e.webp" alt=""></div><span>Midnight Bloom – E × 1</span><b>₺2.250,00</b></div>
+          <div class="sum" style="margin-top:1rem">
+            <div class="row"><span>Kargo</span><span>Ücretsiz</span></div>
+            <div class="row total"><span>Toplam</span><span>₺5.199,00</span></div>
+            <label class="check"><input type="checkbox" id="terms" checked> <span><a href="#home" style="color:var(--brown)">Mesafeli satış sözleşmesini</a> okudum, onaylıyorum.</span></label>
+            <button class="btn brown block" type="submit">Siparişi Tamamla</button>
+            <p class="ok-msg" id="ok-order" hidden>Bu bir tasarım örneği. Gerçek sitede burada sipariş onay sayfası açılır.</p>
+            <div class="trust"><span>🔒 256-bit SSL</span><span>3D Secure</span><span>14 gün iade</span></div>
+          </div>
+        </aside>
+      </form>
+    </div>
+  </section>
+</main>
+
+<!-- ============ ACCOUNT ============ -->
+<main data-page="hesabim">
+  <section class="sec light" style="padding-top: clamp(3rem, 6vw, 5rem);">
+    <div class="wrap">
+      <div class="acc-wrap">
+        <div class="acc-side">
+          <img src="assets/cafe-interior.webp" alt="">
+          <span class="eyebrow">Hesabım</span>
+          <h2>Kahven <span class="rose">bir tık uzakta</span></h2>
+          <ul><li>Siparişlerini ve kargonu takip et</li><li>Favori harmanını tek tıkla tekrar sipariş et</li><li>Üyelere özel kampanyalardan ilk sen haberdar ol</li></ul>
+        </div>
+        <div class="acc-form">
+          <div class="tabs" role="tablist"><button type="button" class="on" data-tab="login" role="tab">Giriş Yap</button><button type="button" data-tab="reg" role="tab">Üye Ol</button></div>
+          <form data-pane="login" class="pane" style="display:grid; gap:1rem">
+            <div class="field"><label for="l-mail">E-posta</label><input id="l-mail" type="email" value="ayse@ornek.com"></div>
+            <div class="field"><label for="l-pass">Şifre</label><input id="l-pass" type="password" value="sifre1234"></div>
+            <div style="display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap"><label class="check"><input type="checkbox" id="remember" checked> Beni hatırla</label><a href="#hesabim" style="font-size:.88rem; color:var(--brown)">Şifremi unuttum</a></div>
+            <button class="btn dark block" type="submit">Giriş Yap</button>
+          </form>
+          <form data-pane="reg" class="pane" hidden style="display:grid; gap:1rem">
+            <div class="fgrid"><div class="field"><label for="r-ad">Ad</label><input id="r-ad"></div><div class="field"><label for="r-soyad">Soyad</label><input id="r-soyad"></div></div>
+            <div class="field"><label for="r-mail">E-posta</label><input id="r-mail" type="email"></div>
+            <div class="field"><label for="r-pass">Şifre</label><input id="r-pass" type="password"></div>
+            <label class="check"><input type="checkbox" id="kvkk"> KVKK aydınlatma metnini okudum.</label>
+            <button class="btn brown block" type="submit">Üye Ol</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="dash">
+        <nav aria-label="Hesap menüsü"><a href="#hesabim" class="on">Siparişlerim</a><a href="#hesabim">Adreslerim</a><a href="#hesabim">Hesap bilgileri</a><a href="#hesabim">Kargo takip</a><a href="#hesabim">Çıkış yap</a></nav>
+        <div class="panel">
+          <h2>Merhaba Ayşe</h2>
+          <p style="color:var(--muted); margin-bottom:1rem">Giriş yaptıktan sonra hesap sayfası böyle görünür.</p>
+          <div class="tablebox"><table class="orders"><thead><tr><th>Sipariş</th><th>Tarih</th><th>Durum</th><th>Toplam</th><th></th></tr></thead><tbody>
+            <tr><td>#1042</td><td>22 Ekim 2026</td><td><span class="pill go">Kargoda</span></td><td>₺5.199,00</td><td><a href="#hesabim" style="color:var(--brown)">Görüntüle</a></td></tr>
+            <tr><td>#1031</td><td>3 Ekim 2026</td><td><span class="pill ok">Teslim edildi</span></td><td>₺1.199,00</td><td><a href="#hesabim" style="color:var(--brown)">Tekrar sipariş ver</a></td></tr>
+            <tr><td>#1017</td><td>14 Eylül 2026</td><td><span class="pill ok">Teslim edildi</span></td><td>₺2.250,00</td><td><a href="#hesabim" style="color:var(--brown)">Tekrar sipariş ver</a></td></tr>
+          </tbody></table></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ ABOUT ============ -->
+<main data-page="neden-biz">
+  <section class="banner">
+    <img class="bg" src="assets/px-espresso-extraction.webp" alt="">
+    <div class="wrap"><div class="crumbs"><a href="#home">Anasayfa</a> / Kurumsal</div><h1>Neden <span class="rose">Biz?</span></h1></div>
+  </section>
+  <section class="sec white">
+    <div class="wrap story">
+      <div>
+        <span class="eyebrow" style="color:var(--brown)">Hikâyemiz</span>
+        <h2>Kendini evinde hissettiren kahve</h2>
+        <p>Coffee, iyi bir fincanın sadece çekirdekle değil, o çekirdeğe gösterilen özenle başladığına inanan küçük bir ekibin işi. Çekirdeklerimizi güvendiğimiz üreticilerden seçiyor, küçük partiler halinde kavuruyor ve kavrulduktan sonraki 48 saat içinde yola çıkarıyoruz.</p>
+        <p>Midnight Bloom serisi bu yaklaşımın sonucu: yoğun ama yorucu olmayan, sütle de sade de keyifle içilen beş harman.</p>
+        <a class="btn brown" href="#magaza" style="margin-top:1.5rem">Harmanları Keşfet</a>
+      </div>
+      <div class="pic"><img class="a" src="assets/barista.webp" alt="Barista espresso hazırlıyor" loading="lazy"><img class="b" src="assets/roast.webp" alt="Kavrulan çekirdekler" loading="lazy"></div>
+    </div>
+  </section>
+  <section class="sec light">
+    <div class="wrap">
+      <div class="sec-head"><div><span class="eyebrow" style="color:var(--brown)">Süreç</span><h2 style="margin-top:.6rem">Çekirdekten fincana</h2></div><p style="color:var(--muted)">Her paket aynı dört adımdan geçer. Sıra önemli: biri aksarsa fincandaki tat da değişir.</p></div>
+      <div class="journey">
+        <div class="jstep"><img src="assets/px-coffee-cherries.webp" alt="Dalında olgunlaşmış kahve kirazları" loading="lazy"><div class="tx"><em>1</em><h3>Hasat</h3><p>Yolculuk tropikal iklimlerde yetişen kahve ağaçlarında başlar.</p></div></div>
+        <div class="jstep"><img src="assets/roast.webp" alt="Tavada kurutulan çekirdekler" loading="lazy"><div class="tx"><em>2</em><h3>Yıkama ve kurutma</h3><p>Hasat edilen çekirdekler yıkanır, kurutulur ve kavurmaya hazırlanır.</p></div></div>
+        <div class="jstep"><img src="assets/px-roaster.webp" alt="Kavurma makinesinde dönen çekirdekler" loading="lazy"><div class="tx"><em>3</em><h3>Kavurma</h3><p>Orta koyu kavrum: yoğun ama dengeli, yorucu olmayan bir içim.</p></div></div>
+        <div class="jstep"><img src="assets/double-shot.webp" alt="Fincana akan espresso" loading="lazy"><div class="tx"><em>4</em><h3>Fincan</h3><p>Kahveni yudumla, günün temposuna kısa bir mola ver.</p></div></div>
+      </div>
+    </div>
+  </section>
+  <div class="marquee " aria-hidden="true"><div class="mq-track"><div><span>Dikkat</span><i class="bean"></i><span>Alışkanlık yapabilir!</span><i></i><span>Dikkat</span><i class="bean"></i><span>Alışkanlık yapabilir!</span><i></i></div><div><span>Dikkat</span><i class="bean"></i><span>Alışkanlık yapabilir!</span><i></i><span>Dikkat</span><i class="bean"></i><span>Alışkanlık yapabilir!</span><i></i></div></div></div>
+  <section class="vband">
+    <video autoplay muted loop playsinline poster="assets/px-roaster-poster.jpg" aria-hidden="true"><source src="assets/px-roaster.mp4" type="video/mp4"></video>
+    <div class="wrap"><h2>Her fincanda bir hikâye var</h2><p>Bizimle tanışmanın en iyi yolu bir fincan Midnight Bloom.</p><a class="btn" href="#magaza">Mağazaya Git</a></div>
+  </section>
+</main>
+
+<!-- ============ DEALER ============ -->
+<main data-page="bayilik">
+  <section class="hero" style="min-height:auto">
+    <video autoplay muted loop playsinline poster="assets/barista-poster.jpg" aria-hidden="true"><source src="assets/barista.mp4" type="video/mp4"></video>
+    <div class="wrap" style="padding-bottom: clamp(5rem, 10vw, 8rem)">
+      <div class="crumbs"><a href="#home">Anasayfa</a> / Bayilik</div>
+      <h1 style="max-width:13ch">Midnight Bloom'u <span class="rose">kendi menünde sun</span></h1>
+      <p class="lead">Kafe, restoran, ofis ya da şarküteri: harmanlarımızı müşterilerinizle buluşturmak için başvurun, iki iş günü içinde dönüş yapalım.</p>
+      <div class="ctas"><a class="btn" href="#basvuru" data-dealer>Hızlı Başvuru</a><a class="btn ghost" href="#basvuru">Detaylı Form</a></div>
+    </div>
+  </section>
+  <section class="sec navysec">
+    <div class="wrap">
+      <div class="sec-head"><h2>Bayilerimize neler sunuyoruz?</h2></div>
+      <div class="perks">
+        <div class="perk"><svg viewBox="0 0 48 48"><path d="M6 30 24 12l18 18M14 26v14h20V26"/></svg><h3>Toptan fiyat</h3><p>Hacme göre kademeli bayi fiyatları ve ödeme vadesi.</p></div>
+        <div class="perk"><svg viewBox="0 0 48 48"><path d="M4 14h26v18H4zM30 20h8l6 6v6H30z"/></svg><h3>Düzenli taze gönderim</h3><p>Haftalık ya da iki haftalık planla, her zaman taze kavrum.</p></div>
+        <div class="perk"><svg viewBox="0 0 48 48"><path d="M10 18h24v10a12 12 0 0 1-24 0zM34 21h3a5 5 0 0 1 0 10h-4"/></svg><h3>Demleme desteği</h3><p>Barista eğitimi ve reçete kartları ekibinize özel.</p></div>
+        <div class="perk"><svg viewBox="0 0 48 48"><rect x="8" y="8" width="32" height="32"/><path d="M8 18h32"/></svg><h3>Marka materyalleri</h3><p>Menü kartı, bardak ve tabela tasarımları.</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="sec light" id="basvuru">
+    <div class="wrap story" style="align-items:start">
+      <div class="pic"><img class="a" src="assets/coffee-bar.webp" alt="Coffee yazılı kafe tezgâhı" loading="lazy"><img class="b" src="assets/cup-hand.webp" alt="Karton bardakta kahve" loading="lazy"></div>
+      <form class="panel" id="dealer-form" style="display:grid; gap:1rem">
+        <h2>Bayilik başvurusu</h2>
+        <div class="fgrid">
+          <div class="field"><label for="d-ad">Ad soyad</label><input id="d-ad"></div>
+          <div class="field"><label for="d-firma">İşletme adı</label><input id="d-firma"></div>
+          <div class="field"><label for="d-tel">Telefon</label><input id="d-tel"></div>
+          <div class="field"><label for="d-sehir">Şehir</label><input id="d-sehir"></div>
+          <div class="field full"><label for="d-tur">İşletme türü</label><select id="d-tur"><option>Kafe</option><option>Restoran</option><option>Ofis</option><option>Şarküteri</option></select></div>
+          <div class="field full"><label for="d-msg">Mesajınız</label><textarea id="d-msg" placeholder="Aylık tahmini tüketim, sorularınız…"></textarea></div>
+        </div>
+        <button class="btn brown" type="submit">Başvuruyu Gönder</button>
+        <p class="ok-msg" hidden>Bu bir tasarım örneği. Gerçek sitede başvuru Contact Form 7 ile gönderilir.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<!-- ============ CONTACT ============ -->
+<main data-page="iletisim">
+  <section class="banner">
+    <img class="bg" src="assets/px-cafe-interior.webp" alt="">
+    <div class="wrap"><div class="crumbs"><a href="#home">Anasayfa</a> / İletişim</div><h1>Bir kahve <span class="rose">içelim mi?</span></h1><p style="max-width:50ch; color:rgba(255,255,255,.85)">Siparişin, bayilik ya da sadece kahve hakkında bir sorun varsa yaz, sana dönelim.</p></div>
+  </section>
+  <section class="sec light">
+    <div class="wrap two-col" style="grid-template-columns: minmax(0,1fr) minmax(0,1.4fr)">
+      <div class="info-cards">
+        <div class="info"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><div><b>Adres</b><span>Moda Cd. No: 12, Kadıköy / İstanbul</span></div></div>
+        <div class="info"><span class="ic"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span><div><b>Telefon</b><span>0216 000 00 00</span></div></div>
+        <div class="info"><span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14"/><path d="m3 7 9 6 9-6"/></svg></span><div><b>E-posta</b><span>merhaba@coffee.com.tr</span></div></div>
+        <div class="info"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><b>Çalışma saatleri</b><span>Hafta içi 08:00–20:00 · Hafta sonu 10:00–22:00</span></div></div>
+        <img src="assets/coffee-bar.webp" alt="Coffee kafe tezgâhı" style="border:7px solid #fff; box-shadow:0 20px 40px rgba(0,0,0,.18); transform:rotate(-1.5deg); aspect-ratio:16/10; object-fit:cover; width:100%; margin-top:1rem" loading="lazy">
+      </div>
+      <form class="panel" id="contact-form" style="display:grid; gap:1rem">
+        <h2>Bize yazın</h2>
+        <div class="fgrid">
+          <div class="field"><label for="c-ad">Ad soyad</label><input id="c-ad"></div>
+          <div class="field"><label for="c-mail">E-posta</label><input id="c-mail" type="email"></div>
+          <div class="field full"><label for="c-konu">Konu</label><select id="c-konu"><option>Siparişim</option><option>Bayilik</option><option>Ürünler</option><option>Diğer</option></select></div>
+          <div class="field full"><label for="c-msg">Mesajınız</label><textarea id="c-msg"></textarea></div>
+        </div>
+        <label class="check"><input type="checkbox" id="c-kvkk"> KVKK aydınlatma metnini okudum.</label>
+        <button class="btn brown" type="submit">Gönder</button>
+        <p class="ok-msg" hidden>Bu bir tasarım örneği. Gerçek sitede mesaj Contact Form 7 ile gönderilir.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<!-- ============ BLOG ============ -->
+<main data-page="blog">
+  <section class="banner">
+    <img class="bg" src="assets/espresso-pour.webp" alt="">
+    <div class="wrap"><div class="crumbs"><a href="#home">Anasayfa</a> / Blog</div><h1>Kahve <span class="rose">Rehberi</span></h1><p style="max-width:50ch; color:rgba(255,255,255,.85)">Demleme ipuçları, çekirdek rehberleri ve kahve kültürü üzerine yazılar.</p></div>
+  </section>
+  <section class="sec light">
+    <div class="wrap">
+      <a class="featured" href="#yazi">
+        <div class="ph"><img src="assets/cafe-interior.webp" alt="Mum ışığında sıcak bir kafe" loading="lazy"></div>
+        <div class="tx"><span class="eyebrow" style="color:var(--brown)">Öne çıkan · Kültür</span><h2>Tutkuyla Demlenen, Keyifle Sunulan Kahve</h2><p style="color:var(--muted)">Her fincanda bir hikâye var. Özenle seçilmiş kahve çekirdekleri, ustalıkla hazırlanan tarifler ve sıcak bir atmosfer.</p><span class="btn dark sm" style="justify-self:start">Devamını Oku</span></div>
+      </a>
+      <div class="chips" style="margin-bottom:1.5rem"><button class="chip on" type="button">Tümü</button><button class="chip" type="button">Demleme</button><button class="chip" type="button">Rehber</button><button class="chip" type="button">Çekirdek</button><button class="chip" type="button">Kültür</button></div>
+      <div class="posts">
+        <a class="post" href="#yazi"><div class="ph"><img src="assets/pour-over.webp" alt="Kalita Wave ile filtre kahve demleme" loading="lazy"></div><div class="tx"><span class="cat">Demleme · 5 dk</span><h3>Evde Daha İyi Kahve Yapmanın 5 Altın Kuralı</h3><p>Evde kahve yapmak bir ritüele dönüştüğünde lezzet de kendiliğinden artar.</p><span class="more">Devamını oku →</span></div></a>
+        <a class="post" href="#yazi"><div class="ph"><img src="assets/espresso-pour.webp" alt="Portafiltreden akan espresso" loading="lazy"></div><div class="tx"><span class="cat">Rehber · 4 dk</span><h3>Filtre Kahve mi, Espresso mu? Hangisi Sana Göre?</h3><p>Filtre kahve daha yumuşak içimi ve uzun süreli keyfiyle öne çıkar.</p><span class="more">Devamını oku →</span></div></a>
+        <a class="post" href="#yazi"><div class="ph"><img src="assets/px-roasted-beans-macro.webp" alt="Yakından kavrulmuş kahve çekirdekleri" loading="lazy"></div><div class="tx"><span class="cat">Çekirdek · 6 dk</span><h3>Kahvenin Yolculuğu: Çekirdekten Fincana</h3><p>Bu yolculuk tropikal iklimlerde yetişen kahve ağaçlarında başlar.</p><span class="more">Devamını oku →</span></div></a>
+      </div>
+    </div>
+  </section>
+<div class="marquee rev" aria-hidden="true"><div class="mq-track"><div><span>Kahve rehberi</span><i class="bean"></i><span>Demleme</span><i></i><span>Çekirdek</span><i class="bean"></i><span>Kültür</span><i></i></div><div><span>Kahve rehberi</span><i class="bean"></i><span>Demleme</span><i></i><span>Çekirdek</span><i class="bean"></i><span>Kültür</span><i></i></div></div></div>
+</main>
+
+<!-- ============ POST ============ -->
+<main data-page="yazi">
+  <section class="banner" style="min-height: 60vh; display:grid; align-items:end">
+    <img class="bg" src="assets/pour-over.webp" alt="">
+    <div class="wrap" style="padding-bottom: 3rem">
+      <div class="crumbs"><a href="#home">Anasayfa</a> / <a href="#blog">Blog</a> / Demleme</div>
+      <h1 style="max-width:16ch">Evde Daha İyi Kahve Yapmanın <span class="rose">5 Altın Kuralı</span></h1>
+      <div class="meta"><span>Coffee ekibi</span><span>12 Ekim 2026</span><span>5 dk okuma</span></div>
+    </div>
+  </section>
+  <section class="sec white">
+    <div class="wrap">
+      <article class="article">
+        <p>Evde kahve yapmak bir ritüele dönüştüğünde lezzet de kendiliğinden artar. İşte daha iyi kahve için beş temel ipucu. Bu küçük dokunuşlarla evde içtiğin kahve, bir kafedeki deneyimi aratmaz.</p>
+        <ol>
+          <li><b>Taze çekirdek kullan.</b> Kavrum tarihinden sonraki 2–4 hafta, aromanın en canlı olduğu dönemdir.</li>
+          <li><b>Demlemeden hemen önce öğüt.</b> Öğütülmüş kahve dakikalar içinde aromasını kaybetmeye başlar.</li>
+          <li><b>Tartı kullan.</b> Filtre için 1:16 oranı iyi bir başlangıç: 15 g kahveye 250 g su.</li>
+          <li><b>Suyun sıcaklığına dikkat et.</b> 92–94 °C; kaynar su acılık getirir.</li>
+          <li><b>Ekipmanını temiz tut.</b> Eski kahve yağları en iyi çekirdeği bile bozar.</li>
+        </ol>
+        <p class="pull">“İyi kahvenin sırrı pahalı ekipman değil, tutarlılık.”</p>
+        <figure class="figure-wide"><img src="assets/beans-paper.webp" alt="Kraft kağıt üzerinde kavrulmuş çekirdekler" loading="lazy"><figcaption>Midnight Bloom çekirdekleri, kavrumdan iki gün sonra.</figcaption></figure>
+        <h2>Hangi demleme yöntemi?</h2>
+        <p>Filtre kahve daha yumuşak ve uzun bir içim verir; espresso ise yoğun ve kısa. İkisi için de Midnight Bloom serisinde bir harman var: A ve C espresso için, B ve D filtre için dengelendi.</p>
+        <div class="share">Paylaş: <a class="btn dark sm" href="#yazi">Facebook</a><a class="btn dark sm" href="#yazi">X</a><a class="btn dark sm" href="#yazi">WhatsApp</a></div>
+      </article>
+    </div>
+  </section>
+  <section class="sec blogband">
+    <div class="wrap">
+      <div class="sec-head"><h2>Diğer yazılar</h2><a class="btn brown sm" href="#blog">Tüm Yazılar</a></div>
+      <div class="posts">
+        <a class="post" href="#yazi"><div class="ph"><img src="assets/espresso-pour.webp" alt="Portafiltreden akan espresso" loading="lazy"></div><div class="tx"><span class="cat">Rehber</span><h3>Filtre Kahve mi, Espresso mu?</h3><span class="more">Devamını oku →</span></div></a>
+        <a class="post" href="#yazi"><div class="ph"><img src="assets/px-roasted-beans-macro.webp" alt="Yakından kavrulmuş kahve çekirdekleri" loading="lazy"></div><div class="tx"><span class="cat">Çekirdek</span><h3>Kahvenin Yolculuğu: Çekirdekten Fincana</h3><span class="more">Devamını oku →</span></div></a>
+        <a class="post" href="#yazi"><div class="ph"><img src="assets/cafe-interior.webp" alt="Kafe iç mekânı" loading="lazy"></div><div class="tx"><span class="cat">Kültür</span><h3>Tutkuyla Demlenen, Keyifle Sunulan Kahve</h3><span class="more">Devamını oku →</span></div></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="f-news">
+      <img class="bg" src="assets/px-roasted-beans-macro.webp" alt="">
+      <div>
+        <span class="eyebrow">Kahve Kulübü</span>
+        <h3>İlk siparişinde <em>%10</em> indirim</h3>
+        <p>Yeni kavrumlar, demleme rehberleri ve kulübe özel kampanyalar ayda iki kez e-postanda.</p>
+      </div>
+      <form>
+        <div class="row"><input type="email" placeholder="E-posta adresin" aria-label="E-posta adresin" required><button class="btn sm" type="submit">Katıl</button></div>
+        <small>Abone olarak KVKK aydınlatma metnini kabul edersin. İstediğin an ayrılabilirsin.</small>
+        <p class="ok-msg" hidden>Bu bir tasarım örneği. Gerçek sitede kayıt bülten eklentisine gider.</p>
+      </form>
+    </div>
+
+    <div class="f-trust">
+      <div><svg viewBox="0 0 24 24"><path d="M12 3c3 3 4 6 0 9s-3 6 0 9M8 6c-2 2-2 4 0 6M16 12c2 2 2 4 0 6"/></svg><p><b>Haftalık taze kavrum</b><span>Siparişe göre kavrulur</span></p></div>
+      <div><svg viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg><p><b>₺900 üzeri kargo bedava</b><span>Aynı gün kargoda</span></p></div>
+      <div><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><p><b>Güvenli ödeme</b><span>256-bit SSL · 3D Secure</span></p></div>
+      <div><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.4-5.7L4 8.6"/><path d="M4 4v4.6h4.6"/></svg><p><b>14 gün iade</b><span>Koşulsuz, kolay iade</span></p></div>
+    </div>
+
+    <div class="f-main">
+      <div class="f-brand">
+        <img class="logo-f" src="assets/logo.webp" alt="Coffee logosu" loading="lazy">
+        <p>Özenle seçilmiş çekirdekler, küçük partilerde kavrum ve tutkuyla demlenen her fincan.</p>
+        <div class="f-contact">
+          <span><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Moda Cd. No: 12, Kadıköy / İstanbul</span>
+          <span><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>0216 000 00 00</span>
+          <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Hafta içi 08:00–20:00 · Hafta sonu 10:00–22:00</span>
+        </div>
+        <div class="f-social"><a href="#home" aria-label="Instagram"><svg><use href="#i-ig"/></svg></a><a href="#home" aria-label="Facebook"><svg><use href="#i-fb"/></svg></a><a href="#home" aria-label="X"><svg><use href="#i-x"/></svg></a><a href="#home" aria-label="YouTube"><svg><use href="#i-yt"/></svg></a></div>
+      </div>
+      <div>
+        <h4>Kahveler</h4>
+        <ul><li><a href="#urun">Midnight Bloom – A</a></li><li><a href="#urun">Midnight Bloom – B</a></li><li><a href="#urun">Midnight Bloom – C</a></li><li><a href="#urun">Midnight Bloom – D</a></li><li><a href="#urun">Midnight Bloom – E</a></li><li><a href="#magaza">Tüm ürünler</a></li></ul>
+      </div>
+      <div>
+        <h4>Kurumsal</h4>
+        <ul><li><a href="#neden-biz">Neden Biz?</a></li><li><a href="#bayilik">Bayilik</a></li><li><a href="#blog">Blog</a></li><li><a href="#iletisim">İletişim</a></li></ul>
+        <h4>Hesabım</h4>
+        <ul><li><a href="#hesabim">Giriş Yap / Üye Ol</a></li><li><a href="#hesabim">Siparişlerim</a></li><li><a href="#hesabim">Kargo Takip</a></li></ul>
+      </div>
+      <div>
+        <h4>Son yazılar</h4>
+        <div class="f-posts">
+          <a href="#yazi"><img src="assets/pour-over.webp" alt="" loading="lazy"><span><small>Demleme</small><b>Evde Daha İyi Kahve Yapmanın 5 Altın Kuralı</b></span></a>
+          <a href="#yazi"><img src="assets/espresso-pour.webp" alt="" loading="lazy"><span><small>Rehber</small><b>Filtre Kahve mi, Espresso mu? Hangisi Sana Göre?</b></span></a>
+          <a href="#yazi"><img src="assets/px-roasted-beans-macro.webp" alt="" loading="lazy"><span><small>Çekirdek</small><b>Kahvenin Yolculuğu: Çekirdekten Fincana</b></span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="f-word" aria-hidden="true">COFFEE<img src="assets/takeaway.webp" alt=""></div>
+  <div class="legal"><div class="wrap">
+    <span>© 2026 Coffee · Tüm hakları saklıdır.</span>
+    <nav aria-label="Yasal"><a href="#home">Mesafeli Satış Sözleşmesi</a><a href="#home">Açık Rıza Metni</a><a href="#home">K.V.K.K.</a></nav>
+    <div class="paylogos" aria-label="Ödeme yöntemleri"><span>VISA</span><span>MASTERCARD</span><span>TROY</span><span>iyzico</span></div>
+    <button type="button" class="totop" id="totop" aria-label="Yukarı çık"><svg viewBox="0 0 24 24"><path d="m6 15 6-6 6 6"/></svg></button>
+  </div></div>
+</footer>
+
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="lw">
+    <svg viewBox="0 0 64 64">
+      <path class="st" d="M24 14c-3-4 3-6 0-10"/><path class="st b" d="M34 14c-3-4 3-6 0-10"/>
+      <defs><clipPath id="cupclip"><path d="M12 22h36v18a14 14 0 0 1-14 14h-8a14 14 0 0 1-14-14z"/></clipPath></defs>
+      <g clip-path="url(#cupclip)"><rect class="fill" x="10" y="22" width="40" height="34" fill="#966041"/></g>
+      <path d="M12 22h36v18a14 14 0 0 1-14 14h-8a14 14 0 0 1-14-14z" fill="none" stroke="#fff" stroke-width="2.5"/>
+      <path d="M48 27h3a6 6 0 0 1 0 12h-3" fill="none" stroke="#fff" stroke-width="2.5"/>
+    </svg>
+    <img src="assets/logo.webp" alt="">
+    <div class="bar"></div>
+  </div>
+</div>
+
+<div class="cookie" id="cookie" hidden role="dialog" aria-label="Çerez tercihleri">
+  <div class="ch"><span class="ci" aria-hidden="true">🍪</span><h6>Kahve deneyimini özelleştir</h6></div>
+  <p>Coffee olarak sitemizde sana en iyi ve kesintisiz deneyimi sunabilmek için çerezler kullanıyoruz. <a href="#home">Gizlilik Politikası</a></p>
+  <div class="prefs" id="cprefs" hidden>
+    <label><span>Gerekli çerezler<small>Sepet ve oturum için her zaman açık</small></span><input class="sw" type="checkbox" checked disabled></label>
+    <label><span>Analitik<small>Siteyi nasıl kullandığını anlamamıza yardım eder</small></span><input class="sw" type="checkbox" checked></label>
+    <label><span>Pazarlama<small>Sana özel kampanyalar gösterir</small></span><input class="sw" type="checkbox"></label>
+  </div>
+  <div class="cb">
+    <button type="button" class="btn brown" data-cookie="all">Tümünü Kabul Et</button>
+    <button type="button" class="btn out" data-cookie="min">Sadece Gerekli</button>
+    <button type="button" class="lnk" id="cset">Ayarlar</button>
+  </div>
+</div>
+
+<button type="button" class="bayi" id="bayibtn" aria-label="Bayimiz ol: başvuru formunu aç">
+  <span class="disc"></span>
+  <svg class="ring" viewBox="0 0 112 112" aria-hidden="true"><defs><path id="ringp" d="M56 56m-43 0a43 43 0 1 1 86 0a43 43 0 1 1-86 0"/></defs><text><textPath href="#ringp">BAYİMİZ OL • KAFENE COFFEE • BAYİMİZ OL •</textPath></text></svg>
+  <span class="core"><svg viewBox="0 0 24 24"><path d="M3 9l1.5-5h15L21 9"/><path d="M3 9c0 1.7 1.3 3 3 3s3-1.3 3-3c0 1.7 1.3 3 3 3s3-1.3 3-3c0 1.7 1.3 3 3 3s3-1.3 3-3"/><path d="M5 12v8h14v-8M10 20v-5h4v5"/></svg></span>
+</button>
+
+<div class="modal" id="dealermodal" hidden role="dialog" aria-modal="true" aria-labelledby="dm-title">
+  <div class="scrim" data-close="dealermodal"></div>
+  <div class="card">
+    <button type="button" class="mx" data-close="dealermodal" aria-label="Kapat"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    <div class="mh">
+      <span class="mi"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M4 9h16M8 13h8M8 16h5"/></svg></span>
+      <h2 id="dm-title">Bayimiz <em>olun</em></h2>
+      <p class="sub"><b>Coffee</b> ailesine katılın, taze kavrumu kendi menünüzde sunun</p>
+      <div class="pill"><span><b data-count="5">0</b> Harman</span><i></i><span><b data-count="48">0</b>saatte taze kargo</span><i></i><span><b data-count="2">0</b>iş gününde dönüş</span></div>
+    </div>
+    <form>
+      <div class="mf" style="--i:0"><label for="m-ad">Adınız soyadınız</label><input id="m-ad" placeholder="Adınız Soyadınız" required></div>
+      <div class="mf" style="--i:1"><label for="m-mail">E-posta</label><input id="m-mail" type="email" placeholder="E-posta adresiniz" required></div>
+      <div class="mf" style="--i:2"><label for="m-tel">Telefon</label><div class="tel"><span><small>TR</small>+90</span><input id="m-tel" inputmode="tel" placeholder="5XX XXX XX XX" required></div></div>
+      <div class="two">
+        <div class="mf" style="--i:3"><label for="m-sehir">Şehir</label><select id="m-sehir" required><option value="">Seçin</option><option>İstanbul</option><option>Ankara</option><option>İzmir</option><option>Bursa</option><option>Antalya</option><option>Diğer</option></select></div>
+        <div class="mf" style="--i:4"><label for="m-tur">İşletme türü</label><select id="m-tur" required><option value="">Seçin</option><option>Kafe</option><option>Restoran</option><option>Ofis</option><option>Şarküteri</option></select></div>
+      </div>
+      <div class="mf" style="--i:5"><label for="m-kg">Aylık tahmini tüketim</label><select id="m-kg" required><option value="">Seçin</option><option>5–10 kg</option><option>10–25 kg</option><option>25–50 kg</option><option>50 kg üzeri</option></select></div>
+      <label class="kvkk mf" style="--i:6"><input type="checkbox" required><span>Bayilik formunu iletmemle birlikte işlenecek kişisel verilerime ilişkin aydınlatma metnini okudum ve onaylıyorum. <a href="#home">Metni okumak için tıklayın.</a></span></label>
+      <button class="btn brown block mf" style="--i:7" type="submit">Başvuruyu Gönder</button>
+      <p class="ok-msg" hidden>Bu bir tasarım örneği. Gerçek sitede başvuru Contact Form 7 ile size ulaşır.</p>
+    </form>
+  </div>
+</div>
+
+<div class="switcher">
+  <div class="list" id="pagelist" hidden></div>
+  <button type="button" id="pagesbtn" aria-expanded="false">Sayfalar ▴</button>
+</div>
+
+<script>
+(function () {
+  var pages = [["home","Anasayfa"],["magaza","Mağaza"],["urun","Ürün"],["sepet","Sepet"],["odeme","Ödeme"],["hesabim","Hesabım"],["neden-biz","Neden Biz?"],["bayilik","Bayilik"],["iletisim","İletişim"],["blog","Blog"],["yazi","Blog yazısı"]];
+  var ids = pages.map(function (p) { return p[0]; });
+  var list = document.getElementById("pagelist");
+  list.innerHTML = pages.map(function (p) { return '<a href="#' + p[0] + '" data-p="' + p[0] + '">' + p[1] + '</a>'; }).join("");
+  function show() {
+    var h = (location.hash || "#home").slice(1);
+    if (h === "basvuru") { h = "bayilik"; }
+    if (ids.indexOf(h) < 0) { h = "home"; }
+    document.querySelectorAll("main[data-page]").forEach(function (m) { m.classList.toggle("on", m.getAttribute("data-page") === h); });
+    document.querySelectorAll("nav.main > a, #drawer nav a").forEach(function (a) { a.classList.toggle("on", a.getAttribute("data-link") === h); });
+    document.querySelectorAll("nav.main .dd[data-group]").forEach(function (d) { d.classList.toggle("on", d.getAttribute("data-group").split(" ").indexOf(h) > -1); });
+    var first = document.querySelector("main.on > section:first-child");
+    document.body.classList.toggle("overlay", !!first && (first.classList.contains("hero") || first.classList.contains("banner")));
+    list.querySelectorAll("a").forEach(function (a) { a.classList.toggle("on", a.getAttribute("data-p") === h); });
+    list.hidden = true;
+    ["drawer", "searchov", "dealermodal"].forEach(function (id) { var el = document.getElementById(id); if (el && !el.hidden) { el.hidden = true; document.body.style.overflow = ""; } });
+    if (location.hash !== "#basvuru") { window.scrollTo(0, 0); } else { setTimeout(function () { var el = document.getElementById("basvuru"); if (el) el.scrollIntoView(); }, 30); }
+    document.querySelectorAll("main:not(.on) video").forEach(function (v) { try { v.pause(); } catch (e) {} });
+    document.querySelectorAll("main.on video:not(.sl), main.on video.sl.on").forEach(function (v) { var p = v.play(); if (p && p.catch) p.catch(function () {}); });
+  }
+  window.addEventListener("hashchange", show);
+  show();
+
+  var pb = document.getElementById("pagesbtn");
+  pb.addEventListener("click", function () { list.hidden = !list.hidden; pb.setAttribute("aria-expanded", String(!list.hidden)); });
+  var burger = document.getElementById("burger");
+  function openOv(id, on) { var el = document.getElementById(id); el.hidden = !on; document.body.style.overflow = on ? "hidden" : ""; if (id === "drawer") burger.setAttribute("aria-expanded", String(on)); if (on && id === "searchov") el.querySelector("input").focus(); if (on && id === "dealermodal") setTimeout(function () { el.querySelector("input").focus(); }, 300); }
+  burger.addEventListener("click", function () { openOv("drawer", true); });
+  document.getElementById("searchbtn").addEventListener("click", function () { openOv("searchov", true); });
+  document.querySelectorAll("[data-close]").forEach(function (b) { b.addEventListener("click", function () { openOv(b.getAttribute("data-close"), false); }); });
+  document.querySelectorAll("#drawer a, #searchov a").forEach(function (a) { a.addEventListener("click", function () { openOv("drawer", false); openOv("searchov", false); }); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") { openOv("drawer", false); openOv("searchov", false); openOv("dealermodal", false); } });
+  document.getElementById("totop").addEventListener("click", function () { window.scrollTo({ top: 0, behavior: "smooth" }); });
+  var hdr = document.getElementById("siteheader");
+  function onScroll() { hdr.classList.toggle("solid", window.scrollY > 60); }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  document.querySelectorAll("[data-rail]").forEach(function (b) {
+    b.addEventListener("click", function () { var r = document.getElementById("rail"); r.scrollBy({ left: Number(b.getAttribute("data-rail")) * (r.clientWidth * 0.8), behavior: "smooth" }); });
+  });
+  document.querySelectorAll(".qty").forEach(function (q) {
+    var input = q.querySelector("input");
+    q.querySelectorAll("button").forEach(function (b, i) {
+      b.addEventListener("click", function () { var v = parseInt(input.value, 10) || 1; v = i === 0 ? Math.max(1, v - 1) : v + 1; input.value = v; });
+    });
+  });
+  document.querySelectorAll("#thumbs button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      document.querySelectorAll("#thumbs button").forEach(function (x) { x.classList.remove("on"); });
+      b.classList.add("on");
+      var m = document.getElementById("pdp-main");
+      m.src = b.getAttribute("data-src");
+      var isBag = m.src.indexOf("bag-") > -1;
+      m.style.width = isBag ? "70%" : "100%"; m.style.height = isBag ? "" : "100%"; m.style.objectFit = isBag ? "" : "cover";
+    });
+  });
+  document.querySelectorAll(".tabs button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      document.querySelectorAll(".tabs button").forEach(function (x) { x.classList.toggle("on", x === b); });
+      document.querySelectorAll(".pane").forEach(function (p) { p.hidden = p.getAttribute("data-pane") !== b.getAttribute("data-tab"); });
+    });
+  });
+  document.querySelectorAll(".chips").forEach(function (g) {
+    g.querySelectorAll(".chip").forEach(function (c) { c.addEventListener("click", function () { g.querySelectorAll(".chip").forEach(function (x) { x.classList.toggle("on", x === c); }); }); });
+  });
+  document.querySelectorAll("form").forEach(function (f) {
+    f.addEventListener("submit", function (e) { e.preventDefault(); var m = f.querySelector(".ok-msg"); if (m) m.hidden = false; });
+  });
+  /* ===== Motion layer ===== */
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Preloader
+  var loader = document.getElementById("loader");
+  setTimeout(function () { loader.classList.add("done"); playHeads(); }, reduce ? 0 : 1300);
+
+  // Split headline words for the reveal
+  document.querySelectorAll(".hero h1, .banner h1").forEach(function (h) {
+    h.classList.add("split");
+    var i = 0;
+    (function walk(node) {
+      Array.prototype.slice.call(node.childNodes).forEach(function (c) {
+        if (c.nodeType === 3) {
+          var frag = document.createDocumentFragment();
+          c.textContent.split(/(\s+)/).forEach(function (part) {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+            var w = document.createElement("span"); w.className = "w";
+            var inner = document.createElement("span"); inner.textContent = part; inner.style.setProperty("--i", i++);
+            w.appendChild(inner); frag.appendChild(w);
+          });
+          node.replaceChild(frag, c);
+        } else if (c.nodeType === 1) { walk(c); }
+      });
+    })(h);
+  });
+  function playHeads() {
+    document.querySelectorAll(".split").forEach(function (h) { h.classList.remove("go"); });
+    void document.body.offsetWidth;
+    document.querySelectorAll("main.on .split").forEach(function (h) { h.classList.add("go"); });
+  }
+  window.addEventListener("hashchange", function () { if (loader.classList.contains("done")) playHeads(); });
+
+  // Scroll reveal with per-parent stagger
+  var sel = ".sec-head, .feat, .post, .pcard, .perk, .journey > *, .story > *, .featured, .info, .panel, .f-trust > div, .f-main > div, .f-news, .vband .wrap > *, .follow .wrap > *, .market .wrap > div > *, .cupwrap, .tilt, .fgrid, .crow, .pdp > *, .acc, .mega-bags a";
+  var io = "IntersectionObserver" in window && !reduce ? new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }) : null;
+  document.querySelectorAll(sel).forEach(function (el) {
+    if (el.closest("header.site, .modal, .drawer, .search-ov")) return;
+    var sibs = Array.prototype.filter.call(el.parentNode.children, function (x) { return x.matches(sel); });
+    el.style.setProperty("--d", Math.min(sibs.indexOf(el), 5) * 90 + "ms");
+    el.classList.add("rv");
+    if (io) io.observe(el); else el.classList.add("in");
+  });
+
+  // Parallax + scroll progress
+  var sprog = document.getElementById("sprog");
+  var pars = document.querySelectorAll(".banner .bg, .market .bg, .follow .bg, .vband video");
+  var ticking = false;
+  function frame() {
+    ticking = false;
+    var h = document.documentElement.scrollHeight - innerHeight;
+    sprog.style.transform = "scaleX(" + (h > 0 ? scrollY / h : 0) + ")";
+    if (reduce) return;
+    pars.forEach(function (el) {
+      var r = el.parentNode.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > innerHeight) return;
+      var off = (r.top + r.height / 2 - innerHeight / 2) * -0.12;
+      el.style.transform = "translate3d(0," + off.toFixed(1) + "px,0)";
+    });
+  }
+  window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }, { passive: true });
+  frame();
+
+  // Add to cart: fly the bag to the cart icon, bump the badge, toast
+  var badge = document.querySelector(".cartwrap .badge");
+  var count = 3, toastT;
+  document.querySelectorAll(".pcard .btn").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var card = b.closest(".pcard"), img = card.querySelector(".im img"), cart = document.querySelector(".cartwrap > a");
+      var a = img.getBoundingClientRect(), c = cart.getBoundingClientRect();
+      if (!reduce) {
+        var f = img.cloneNode(); f.className = "flyimg";
+        f.style.cssText = "left:" + a.left + "px;top:" + a.top + "px;width:" + a.width + "px;";
+        document.body.appendChild(f);
+        requestAnimationFrame(function () { requestAnimationFrame(function () {
+          f.style.transform = "translate(" + (c.left + c.width / 2 - a.left - a.width / 2) + "px," + (c.top + c.height / 2 - a.top - a.height / 2) + "px) scale(.12) rotate(-20deg)";
+          f.style.opacity = ".4";
+        }); });
+        setTimeout(function () { f.remove(); }, 850);
+      }
+      setTimeout(function () {
+        badge.textContent = ++count; badge.classList.remove("bump"); void badge.offsetWidth; badge.classList.add("bump");
+      }, reduce ? 0 : 750);
+      b.textContent = "Eklendi ✓"; b.classList.add("added");
+      setTimeout(function () { b.textContent = "Sepete Ekle"; b.classList.remove("added"); }, 1800);
+      var old = document.querySelector(".toast"); if (old) old.remove();
+      var t = document.createElement("div"); t.className = "toast"; t.setAttribute("role", "status");
+      t.innerHTML = "<span><b>" + card.querySelector("h3").textContent + "</b> sepete eklendi</span><a href=\"#sepet\">Sepete git</a>";
+      document.body.appendChild(t); clearTimeout(toastT); toastT = setTimeout(function () { t.remove(); }, 3200);
+    });
+  });
+
+  // Count-up numbers
+  function countUp(root) {
+    root.querySelectorAll("[data-count]").forEach(function (el) {
+      var to = +el.getAttribute("data-count"), t0 = performance.now(), dur = reduce ? 1 : 1100;
+      (function step(now) { var k = Math.min(1, (now - t0) / dur); el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(step); })(t0);
+    });
+  }
+
+  // Cookie card (shown on every visit of the mockup so it can be reviewed)
+  var cookie = document.getElementById("cookie");
+  setTimeout(function () { cookie.hidden = false; document.body.classList.add("cookie-open"); }, reduce ? 300 : 2000);
+  function closeCookie() { cookie.hidden = true; document.body.classList.remove("cookie-open"); }
+  cookie.querySelectorAll("[data-cookie]").forEach(function (b) { b.addEventListener("click", closeCookie); });
+  document.getElementById("cset").addEventListener("click", function () {
+    var p = document.getElementById("cprefs"); p.hidden = !p.hidden;
+    this.textContent = p.hidden ? "Ayarlar" : "Seçimi kaydet";
+    if (p.hidden) closeCookie();
+  });
+
+  // Dealer badge + modal
+  function openDealer() { openOv("dealermodal", true); countUp(document.getElementById("dealermodal")); }
+  document.getElementById("bayibtn").addEventListener("click", openDealer);
+  document.querySelectorAll("[data-dealer]").forEach(function (b) { b.addEventListener("click", function (e) { e.preventDefault(); openDealer(); }); });
+
+  // Hero video slider (3 clips, crossfade every 8 s)
+  var slides = document.querySelectorAll(".hero video.sl"), cur = 0, slnum = document.getElementById("slnum");
+  if (slides.length > 1 && !reduce) setInterval(function () {
+    if (!document.querySelector('main[data-page="home"].on')) return;
+    var prev = slides[cur]; cur = (cur + 1) % slides.length; var nx = slides[cur];
+    nx.preload = "auto"; var pp = nx.play(); if (pp && pp.catch) pp.catch(function () {});
+    nx.classList.add("on"); prev.classList.remove("on");
+    setTimeout(function () { try { prev.pause(); } catch (e) {} }, 1500);
+    slnum.textContent = "0" + (cur + 1);
+  }, 8000);
+})();
+</script>
