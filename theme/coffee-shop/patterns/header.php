@@ -11,8 +11,8 @@
 ?>
 <!-- wp:group {"className":"coffee-header","style":{"spacing":{"blockGap":"0","padding":{"left":"0","right":"0"}},"border":{"bottom":{"color":"var:preset|color|surface","width":"1px"}}},"backgroundColor":"ink","layout":{"type":"default"}} -->
 <div class="wp-block-group coffee-header has-ink-background-color has-background" style="border-bottom-color:var(--wp--preset--color--surface);border-bottom-width:1px;padding-left:0;padding-right:0">
-<!-- wp:group {"className":"coffee-topbar","style":{"spacing":{"padding":{"top":"0.5rem","bottom":"0.5rem"}},"typography":{"fontWeight":"500"}},"backgroundColor":"caramel","textColor":"ink","fontSize":"small","layout":{"type":"constrained"}} -->
-<div class="wp-block-group coffee-topbar has-ink-color has-caramel-background-color has-text-color has-background has-small-font-size" style="padding-top:0.5rem;padding-bottom:0.5rem;font-weight:500">
+<!-- wp:group {"className":"coffee-topbar","style":{"spacing":{"padding":{"top":"0.5rem","bottom":"0.5rem"}},"typography":{"fontWeight":"500"}},"backgroundColor":"deep","textColor":"caramel","fontSize":"small","layout":{"type":"constrained"}} -->
+<div class="wp-block-group coffee-topbar has-caramel-color has-deep-background-color has-text-color has-background has-small-font-size" style="padding-top:0.5rem;padding-bottom:0.5rem;font-weight:500">
 <!-- wp:paragraph {"align":"center"} -->
 <p class="has-text-align-center">900,00 TL ve üzeri alışverişlerde kargo bedava</p>
 <!-- /wp:paragraph -->

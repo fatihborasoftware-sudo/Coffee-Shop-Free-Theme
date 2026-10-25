@@ -1,10 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" role="img" aria-label="Coffee cup">
-  <circle cx="240" cy="240" r="240" fill="#2D3748"/>
-  <g fill="none" stroke="#D9A86C" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M200 110c-18 22 18 38 0 62M240 96c-18 26 18 44 0 76M280 110c-18 22 18 38 0 62"/>
-    <path d="M128 208h196v60a86 86 0 0 1-86 86h-24a86 86 0 0 1-86-86z"/>
-    <path d="M324 228h18a38 38 0 0 1 0 76h-26"/>
-    <path d="M104 384h268"/>
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="45%" r="55%">
+      <stop offset="0" stop-color="#3A2E24"/>
+      <stop offset="1" stop-color="#1C1612"/>
+    </radialGradient>
+  </defs>
+  <circle cx="240" cy="240" r="236" fill="url(#glow)"/>
+  <circle cx="240" cy="240" r="222" fill="none" stroke="#C6A15B" stroke-width="1.5" opacity=".55"/>
+  <g fill="none" stroke="#C6A15B" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M204 112c-16 22 16 38 0 62M240 98c-16 26 16 44 0 76M276 112c-16 22 16 38 0 62"/>
+    <path d="M132 210h192v58a84 84 0 0 1-84 84h-24a84 84 0 0 1-84-84z"/>
+    <path d="M324 230h16a36 36 0 0 1 0 72h-24"/>
+    <path d="M112 384h256"/>
   </g>
-  <ellipse cx="226" cy="214" rx="90" ry="10" fill="#8A5A2B" opacity=".6"/>
+  <ellipse cx="228" cy="216" rx="88" ry="8" fill="#8B6A3E" opacity=".55"/>
 </svg>

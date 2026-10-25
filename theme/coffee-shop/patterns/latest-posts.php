@@ -34,7 +34,7 @@
 <!-- wp:query {"queryId":3,"query":{"perPage":3,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","inherit":false}} -->
 <div class="wp-block-query">
 <!-- wp:post-template {"style":{"spacing":{"blockGap":"1.75rem"}},"layout":{"type":"grid","columnCount":3,"minimumColumnWidth":"17rem"}} -->
-<!-- wp:post-featured-image {"isLink":true,"aspectRatio":"16/10","style":{"border":{"radius":"14px"}}} /-->
+<!-- wp:post-featured-image {"isLink":true,"aspectRatio":"16/10","style":{"border":{"radius":"2px"}}} /-->
 <!-- wp:post-terms {"term":"category","style":{"typography":{"fontSize":"0.8125rem","fontWeight":"500"}},"textColor":"caramel"} /-->
 <!-- wp:post-title {"isLink":true,"level":3,"style":{"typography":{"fontSize":"1.375rem","lineHeight":"1.3"},"elements":{"link":{"color":{"text":"var:preset|color|light"}}}}} /-->
 <!-- wp:post-excerpt {"moreText":"Devamını oku","excerptLength":18,"textColor":"muted"} /-->

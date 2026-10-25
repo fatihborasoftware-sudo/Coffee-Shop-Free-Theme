@@ -14,8 +14,8 @@ $coffee_items = array(
 	array( __( 'Ücretsiz kargo', 'coffee-shop' ), __( '900,00 TL ve üzeri siparişlerde.', 'coffee-shop' ) ),
 );
 ?>
-<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"2.5rem","bottom":"2.5rem"}},"border":{"top":{"color":"var:preset|color|surface","width":"1px"},"bottom":{"color":"var:preset|color|surface","width":"1px"}}},"backgroundColor":"deep","layout":{"type":"constrained","contentSize":"1200px"}} -->
-<div class="wp-block-group alignfull has-deep-background-color has-background" style="border-top-color:var(--wp--preset--color--surface);border-top-width:1px;border-bottom-color:var(--wp--preset--color--surface);border-bottom-width:1px;padding-top:2.5rem;padding-bottom:2.5rem">
+<!-- wp:group {"align":"full","className":"coffee-values","style":{"spacing":{"padding":{"top":"2.5rem","bottom":"2.5rem"}},"border":{"top":{"color":"var:preset|color|surface","width":"1px"},"bottom":{"color":"var:preset|color|surface","width":"1px"}}},"backgroundColor":"deep","layout":{"type":"constrained","contentSize":"1200px"}} -->
+<div class="wp-block-group alignfull coffee-values has-deep-background-color has-background" style="border-top-color:var(--wp--preset--color--surface);border-top-width:1px;border-bottom-color:var(--wp--preset--color--surface);border-bottom-width:1px;padding-top:2.5rem;padding-bottom:2.5rem">
 <!-- wp:group {"style":{"spacing":{"blockGap":"2rem"}},"layout":{"type":"grid","minimumColumnWidth":"15rem"}} -->
 <div class="wp-block-group">
 <?php foreach ( $coffee_items as $coffee_item ) : ?>

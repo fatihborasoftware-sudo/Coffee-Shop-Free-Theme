@@ -14,13 +14,9 @@
 <div class="wp-block-columns are-vertically-aligned-center">
 <!-- wp:column {"verticalAlignment":"center"} -->
 <div class="wp-block-column is-vertically-aligned-center">
-<!-- wp:cover {"dimRatio":100,"customOverlayColor":"#2D3748","isUserOverlayColor":true,"minHeight":420,"style":{"border":{"radius":"20px"}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-cover" style="border-radius:20px;min-height:420px"><span aria-hidden="true" class="wp-block-cover__background has-background-dim-100 has-background-dim" style="background-color:#2D3748"></span><div class="wp-block-cover__inner-container">
-<!-- wp:paragraph {"align":"center","textColor":"muted","fontSize":"small"} -->
-<p class="has-text-align-center has-muted-color has-text-color has-small-font-size"><?php esc_html_e( '[Dükkan / kavurma fotoğrafı]', 'coffee-shop' ); ?></p>
-<!-- /wp:paragraph -->
-</div></div>
-<!-- /wp:cover -->
+<!-- wp:image {"sizeSlug":"full","linkDestination":"none","className":"coffee-framed-art"} -->
+<figure class="wp-block-image size-full coffee-framed-art"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/beans.svg' ) ); ?>" alt="<?php esc_attr_e( 'Kavrulmuş kahve çekirdekleri', 'coffee-shop' ); ?>"/></figure>
+<!-- /wp:image -->
 </div>
 <!-- /wp:column -->
 <!-- wp:column {"verticalAlignment":"center"} -->
