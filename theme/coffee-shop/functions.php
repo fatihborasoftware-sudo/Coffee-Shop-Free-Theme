@@ -50,3 +50,20 @@ add_action(
 		);
 	}
 );
+
+/*
+ * The header already places the account and cart icons. WooCommerce would
+ * hook a second copy after the Navigation block, because the header part
+ * only references a pattern, so take those out again.
+ */
+add_filter(
+	'hooked_block_types',
+	function ( $hooked_blocks, $position, $anchor_block ) {
+		if ( 'core/navigation' === $anchor_block && 'after' === $position ) {
+			$hooked_blocks = array_values( array_diff( $hooked_blocks, array( 'woocommerce/customer-account', 'woocommerce/mini-cart' ) ) );
+		}
+		return $hooked_blocks;
+	},
+	20,
+	3
+);

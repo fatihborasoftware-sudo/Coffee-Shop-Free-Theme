@@ -31,6 +31,28 @@
 	color: var(--wp--preset--color--ink);
 }
 
+/* The logo already carries the name; show the site title only without a logo. */
+.coffee-header .wp-block-site-logo + .wp-block-site-title {
+	display: none;
+}
+
+/* Phones: logo, menu button and icons on one row. */
+@media (max-width: 781px) {
+	.coffee-header .wp-block-group.is-layout-flex {
+		flex-wrap: nowrap;
+		gap: 0.75rem;
+	}
+
+	.coffee-header .wp-block-site-logo img {
+		width: 120px;
+		height: auto;
+	}
+
+	.coffee-header .wp-block-buttons {
+		display: none;
+	}
+}
+
 /* Steps list on the about page. */
 .coffee-step {
 	border-top: 2px solid var(--wp--preset--color--caramel);
