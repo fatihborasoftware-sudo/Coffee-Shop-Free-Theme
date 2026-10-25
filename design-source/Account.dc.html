@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>Hesabım</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600;700&amp;family=Roboto:wght@400;500;600&amp;display=swap">
+<style>
+body{margin:0;background:#1A202C}
+a{color:#8A5A2B}a:hover{color:#6B4420}
+</style>
+</helmet>
+<div style="background: #F7FAFC; color: #1A202C; font-family: Roboto, system-ui, sans-serif; font-size: 16px; line-height: 1.6;">
+<dc-import name="Header" active="none" hint-size="100%,130px"></dc-import>
+
+<section style="max-width: 1100px; margin: 0 auto; padding: 56px 24px 96px; display: flex; flex-wrap: wrap; gap: 32px; align-items: stretch;">
+<div style="flex: 1 1 420px; min-width: 0; background: #FFFFFF; border-radius: 20px; padding: 40px; display: flex; flex-direction: column; gap: 20px; box-sizing: border-box;">
+<div role="tablist" aria-label="Hesap" style="display: flex; gap: 6px; padding: 4px; background: #EDF2F7; border-radius: 999px; align-self: flex-start;">
+<sc-if value="{{isLogin}}" hint-placeholder-val="{{true}}">
+<button type="button" role="tab" aria-selected="true" style="min-height: 44px; padding: 0 22px; border: 0; border-radius: 999px; background: #1A202C; color: #F7FAFC; font: inherit; font-weight: 500; cursor: pointer;">Giriş yap</button>
+<button type="button" role="tab" aria-selected="false" onClick="{{toRegister}}" style="min-height: 44px; padding: 0 22px; border: 0; border-radius: 999px; background: transparent; color: #1A202C; font: inherit; cursor: pointer;">Üye ol</button>
+</sc-if>
+<sc-if value="{{isRegister}}" hint-placeholder-val="{{false}}">
+<button type="button" role="tab" aria-selected="false" onClick="{{toLogin}}" style="min-height: 44px; padding: 0 22px; border: 0; border-radius: 999px; background: transparent; color: #1A202C; font: inherit; cursor: pointer;">Giriş yap</button>
+<button type="button" role="tab" aria-selected="true" style="min-height: 44px; padding: 0 22px; border: 0; border-radius: 999px; background: #1A202C; color: #F7FAFC; font: inherit; font-weight: 500; cursor: pointer;">Üye ol</button>
+</sc-if>
+</div>
+
+<sc-if value="{{isLogin}}" hint-placeholder-val="{{true}}">
+<form style="display: flex; flex-direction: column; gap: 16px;">
+<h1 style="margin: 0; font-family: 'Roboto Slab', Georgia, serif; font-size: 36px; font-weight: 700;">Tekrar hoş geldin</h1>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 500;">Kullanıcı adı veya e-posta adresi
+<input type="email" autocomplete="username" style="min-height: 48px; padding: 0 14px; border: 1px solid #CBD5E0; border-radius: 10px; font: inherit;"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 500;">Parola
+<input type="password" autocomplete="current-password" style="min-height: 48px; padding: 0 14px; border: 1px solid #CBD5E0; border-radius: 10px; font: inherit;"></label>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; font-size: 14px;">
+<label style="display: flex; align-items: center; gap: 8px; min-height: 44px;"><input type="checkbox" style="width: 18px; height: 18px;"> Beni hatırla</label>
+<a href="#">Parolanızı mı unuttunuz?</a>
+</div>
+<button type="button" style="min-height: 52px; border: 0; border-radius: 999px; background: #1A202C; color: #F7FAFC; font: inherit; font-weight: 600; cursor: pointer;">Giriş yap</button>
+</form>
+</sc-if>
+
+<sc-if value="{{isRegister}}" hint-placeholder-val="{{false}}">
+<form style="display: flex; flex-direction: column; gap: 16px;">
+<h1 style="margin: 0; font-family: 'Roboto Slab', Georgia, serif; font-size: 36px; font-weight: 700;">Aramıza katıl</h1>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 500;">Ad soyad
+<input type="text" autocomplete="name" style="min-height: 48px; padding: 0 14px; border: 1px solid #CBD5E0; border-radius: 10px; font: inherit;"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 500;">E-posta adresi
+<input type="email" autocomplete="email" style="min-height: 48px; padding: 0 14px; border: 1px solid #CBD5E0; border-radius: 10px; font: inherit;"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 500;">Parola
+<input type="password" autocomplete="new-password" style="min-height: 48px; padding: 0 14px; border: 1px solid #CBD5E0; border-radius: 10px; font: inherit;"></label>
+<label style="display: flex; align-items: flex-start; gap: 10px; font-size: 14px;"><input type="checkbox" style="width: 18px; height: 18px; margin-top: 3px;"> <span><a href="#">K.V.K.K. aydınlatma metnini</a> ve <a href="#">açık rıza metnini</a> okudum.</span></label>
+<button type="button" style="min-height: 52px; border: 0; border-radius: 999px; background: #1A202C; color: #F7FAFC; font: inherit; font-weight: 600; cursor: pointer;">Üye ol</button>
+</form>
+</sc-if>
+</div>
+
+<div style="flex: 1 1 360px; min-width: 0; background: #1A202C; color: #F7FAFC; border-radius: 20px; padding: 40px; display: flex; flex-direction: column; gap: 22px; box-sizing: border-box;">
+<h2 style="margin: 0; font-family: 'Roboto Slab', Georgia, serif; font-size: 28px; font-weight: 700;">Hesabınla neler yapabilirsin?</h2>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 18px;">
+<li style="display: flex; gap: 14px;"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D9A86C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v9H3z"></path><path d="M14 10h4l3 3v3h-7"></path><circle cx="7" cy="17.5" r="1.8"></circle><circle cx="17" cy="17.5" r="1.8"></circle></svg><span style="color: #CBD5E0;">Siparişlerini ve kargo durumunu takip et</span></li>
+<li style="display: flex; gap: 14px;"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D9A86C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 0 2.3-5.6M4 4v4h4"></path></svg><span style="color: #CBD5E0;">Favori harmanını tek tıkla yeniden sipariş et</span></li>
+<li style="display: flex; gap: 14px;"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D9A86C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"></path></svg><span style="color: #CBD5E0;">Adreslerini kaydet, daha hızlı öde</span></li>
+</ul>
+</div>
+</section>
+
+<dc-import name="Footer" hint-size="100%,480px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1500}}'>
+class Component extends DCLogic {
+renderVals() {
+const reg = !!(this.state && this.state.reg);
+return {
+isLogin: !reg, isRegister: reg,
+toRegister: () => this.setState({ reg: true }),
+toLogin: () => this.setState({ reg: false })
+};
+}
+}
+</script>
+</body>
+</html>

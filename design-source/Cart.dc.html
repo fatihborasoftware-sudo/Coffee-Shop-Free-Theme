@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>Sepet</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600;700&amp;family=Roboto:wght@400;500;600&amp;display=swap">
+<style>
+body{margin:0;background:#1A202C}
+a{color:#8A5A2B}a:hover{color:#6B4420}
+</style>
+</helmet>
+<div style="background: #F7FAFC; color: #1A202C; font-family: Roboto, system-ui, sans-serif; font-size: 16px; line-height: 1.6;">
+<dc-import name="Header" active="none" cart-count="{{count}}" hint-size="100%,130px"></dc-import>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: 48px 24px 96px; display: flex; flex-direction: column; gap: 32px;">
+<div>
+<p style="margin: 0 0 8px; font-size: 14px; color: #4A5568;"><a href="Main.dc.html">Anasayfa</a> / Sepet</p>
+<h1 style="margin: 0; font-family: 'Roboto Slab', Georgia, serif; font-size: 48px; line-height: 1.1; font-weight: 700;">Sepetin</h1>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 32px; align-items: flex-start;">
+<div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 16px;">
+<div style="background: #FFFFFF; border-radius: 16px; padding: 18px 20px; display: flex; flex-direction: column; gap: 10px;">
+<p style="margin: 0; font-size: 15px;">{{shipMsg}}</p>
+<div style="height: 8px; border-radius: 4px; background: #E2E8F0; overflow: hidden;"><div style="height: 8px; border-radius: 4px; background: #D9A86C; width: {{shipPct}};"></div></div>
+</div>
+<sc-for list="{{items}}" as="it" hint-placeholder-count="2">
+<article style="background: #FFFFFF; border-radius: 16px; padding: 16px; display: flex; flex-wrap: wrap; gap: 20px; align-items: center;">
+<div style="width: 96px; height: 110px; border-radius: 10px; background: #EDF2F7; display: flex; align-items: center; justify-content: center; color: #4A5568; font-size: 12px; flex: none;">{{it.img}}</div>
+<div style="flex: 1 1 200px; min-width: 0;">
+<h2 style="margin: 0; font-family: 'Roboto Slab', Georgia, serif; font-size: 19px; font-weight: 600;"><a href="Product.dc.html" style="color: #1A202C; text-decoration: none;">{{it.name}}</a></h2>
+<p style="margin: 2px 0 0; color: #4A5568; font-size: 14px;">Öğütme: {{it.grind}} · Birim: {{it.unit}}</p>
+</div>
+<div style="display: flex; align-items: center; border: 1px solid #CBD5E0; border-radius: 999px;">
+<button type="button" aria-label="Azalt" onClick="{{it.dec}}" style="width: 44px; height: 44px; border: 0; background: transparent; font: inherit; font-size: 18px; cursor: pointer; color: #1A202C;">−</button>
+<span style="min-width: 28px; text-align: center; font-weight: 600;">{{it.qty}}</span>
+<button type="button" aria-label="Artır" onClick="{{it.inc}}" style="width: 44px; height: 44px; border: 0; background: transparent; font: inherit; font-size: 18px; cursor: pointer; color: #1A202C;">+</button>
+</div>
+<div style="min-width: 110px; text-align: right; font-weight: 600; font-size: 18px;">{{it.total}}</div>
+<button type="button" aria-label="Ürünü kaldır" onClick="{{it.remove}}" style="width: 44px; height: 44px; border: 0; border-radius: 22px; background: transparent; color: #4A5568; cursor: pointer; display: flex; align-items: center; justify-content: center;"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"></path></svg></button>
+</article>
+</sc-for>
+<sc-if value="{{empty}}" hint-placeholder-val="{{false}}">
+<div style="background: #FFFFFF; border-radius: 16px; padding: 48px 24px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 16px;">
+<p style="margin: 0; font-size: 18px;">Sepetinizde ürün bulunmuyor.</p>
+<a href="Shop.dc.html" style="padding: 13px 24px; border-radius: 999px; background: #1A202C; color: #F7FAFC; text-decoration: none; font-weight: 500;">Mağazaya dön</a>
+</div>
+</sc-if>
+</div>
+
+<aside aria-label="Sipariş özeti" style="flex: 1 1 320px; min-width: 0; background: #1A202C; color: #F7FAFC; border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 14px;">
+<h2 style="margin: 0 0 4px; font-family: 'Roboto Slab', Georgia, serif; font-size: 24px; font-weight: 600;">Sipariş özeti</h2>
+<div style="display: flex; justify-content: space-between; color: #CBD5E0;"><span>Ara toplam</span><span>{{subtotal}}</span></div>
+<div style="display: flex; justify-content: space-between; color: #CBD5E0;"><span>Kargo</span><span>{{shipping}}</span></div>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; color: #CBD5E0;">İndirim kodu
+<span style="display: flex; gap: 8px;"><input type="text" placeholder="Kodu gir" style="flex: 1; min-width: 0; min-height: 44px; padding: 0 14px; border: 1px solid #4A5568; border-radius: 10px; background: #2D3748; color: #F7FAFC; font: inherit;"><button type="button" style="min-height: 44px; padding: 0 16px; border: 1px solid #D9A86C; border-radius: 10px; background: transparent; color: #D9A86C; font: inherit; font-weight: 500; cursor: pointer;">Uygula</button></span>
+</label>
+<div style="border-top: 1px solid #2D3748; padding-top: 14px; display: flex; justify-content: space-between; font-size: 20px; font-weight: 600;"><span>Toplam</span><span>{{total}}</span></div>
+<a href="#" style="min-height: 52px; display: flex; align-items: center; justify-content: center; border-radius: 999px; background: #D9A86C; color: #1A202C; text-decoration: none; font-weight: 600;">Ödemeye geç</a>
+<p style="margin: 0; color: #A0AEC0; font-size: 13px; text-align: center;">Güvenli ödeme · KDV dahil</p>
+</aside>
+</div>
+</section>
+
+<dc-import name="Footer" hint-size="100%,480px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1700}}'>
+class Component extends DCLogic {
+renderVals() {
+const s = this.state || {};
+const qa = s.qa ?? 1, qc = s.qc ?? 1;
+const fmt = (n) => '₺' + n.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const rows = [
+{ key: 'qa', name: 'Midnight Bloom – A', img: 'a.png', grind: 'Çekirdek', price: 1199, qty: qa },
+{ key: 'qc', name: 'Midnight Bloom – C', img: 'c.png', grind: 'Filtre', price: 1750, qty: qc }
+].filter((r) => r.qty > 0);
+const subtotal = rows.reduce((t, r) => t + r.price * r.qty, 0);
+const free = 900;
+const shipCost = subtotal >= free || subtotal === 0 ? 0 : 89.9;
+const left = Math.max(0, free - subtotal);
+return {
+items: rows.map((r) => ({
+...r, unit: fmt(r.price), total: fmt(r.price * r.qty),
+inc: () => this.setState({ [r.key]: r.qty + 1 }),
+dec: () => this.setState({ [r.key]: Math.max(1, r.qty - 1) }),
+remove: () => this.setState({ [r.key]: 0 })
+})),
+empty: rows.length === 0,
+count: rows.reduce((t, r) => t + r.qty, 0),
+subtotal: fmt(subtotal),
+shipping: shipCost === 0 ? 'Ücretsiz' : '[Kargo ücreti]',
+total: fmt(subtotal),
+shipPct: Math.min(100, Math.round((subtotal / free) * 100)) + '%',
+shipMsg: left === 0 ? 'Kargo bedava! 900,00 TL sınırını geçtin.' : 'Ücretsiz kargo için ' + fmt(left) + ' daha ekle.'
+};
+}
+}
+</script>
+</body>
+</html>

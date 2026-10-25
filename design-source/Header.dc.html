@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>Coffee header</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600;700&amp;family=Roboto:wght@400;500;600&amp;display=swap">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="background: #1A202C; color: #F7FAFC; font-family: Roboto, system-ui, sans-serif;">
+<div style="background: #D9A86C; color: #1A202C; text-align: center; font-size: 14px; font-weight: 500; padding: 8px 16px;">900,00 TL ve üzeri alışverişlerde kargo bedava</div>
+<header style="border-bottom: 1px solid #2D3748;">
+<div style="max-width: 1200px; margin: 0 auto; padding: 18px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 24px;">
+<a href="Main.dc.html" aria-label="Coffee anasayfa" style="display: flex; align-items: center; justify-content: center; width: 168px; height: 44px; border: 1px dashed #718096; border-radius: 6px; color: #CBD5E0; font-size: 12px; text-decoration: none;">logo.png</a>
+<nav aria-label="Ana menü" style="flex: 1 1 420px; display: flex; flex-wrap: wrap; gap: 4px 28px; font-size: 15px; font-weight: 500;">
+<sc-for list="{{links}}" as="l" hint-placeholder-count="6">
+<sc-if value="{{l.on}}" hint-placeholder-val="{{false}}"><a href="{{l.href}}" aria-current="page" style="color: #D9A86C; text-decoration: none; padding: 10px 0; box-shadow: inset 0 -2px 0 #D9A86C;">{{l.label}}</a></sc-if>
+<sc-if value="{{l.off}}" hint-placeholder-val="{{true}}"><a href="{{l.href}}" style="color: #CBD5E0; text-decoration: none; padding: 10px 0;">{{l.label}}</a></sc-if>
+</sc-for>
+</nav>
+<div style="display: flex; align-items: center; gap: 8px;">
+<button type="button" aria-label="Ara" style="width: 44px; height: 44px; border: 0; border-radius: 22px; background: transparent; color: #F7FAFC; display: flex; align-items: center; justify-content: center; cursor: pointer;"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg></button>
+<a href="Account.dc.html" aria-label="Hesabım" style="width: 44px; height: 44px; border-radius: 22px; color: #F7FAFC; display: flex; align-items: center; justify-content: center;"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"></path></svg></a>
+<a href="Cart.dc.html" aria-label="Sepet" style="position: relative; width: 44px; height: 44px; border-radius: 22px; color: #F7FAFC; display: flex; align-items: center; justify-content: center;"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7h14l-1.5 12h-11z"></path><path d="M9 7a3 3 0 0 1 6 0"></path></svg><span style="position: absolute; top: 4px; right: 2px; min-width: 18px; height: 18px; border-radius: 9px; background: #D9A86C; color: #1A202C; font-size: 11px; font-weight: 600; display: flex; align-items: center; justify-content: center;">{{cartCount}}</span></a>
+<a href="Contact.dc.html" style="margin-left: 8px; padding: 11px 20px; border: 1px solid #D9A86C; border-radius: 999px; color: #D9A86C; text-decoration: none; font-weight: 500; font-size: 14px;">İletişim</a>
+</div>
+</div>
+</header>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"active":{"editor":"enum","options":["home","shop","about","dealer","blog","none"],"default":"none"},"cartCount":{"editor":"int","default":0},"$preview":{"width":1440,"height":130}}'>
+class Component extends DCLogic {
+renderVals() {
+const active = this.props.active ?? 'none';
+const items = [
+{ key: 'home', label: 'Anasayfa', href: 'Main.dc.html' },
+{ key: 'shop', label: 'Mağaza', href: 'Shop.dc.html' },
+{ key: 'about', label: 'Neden Biz?', href: 'About.dc.html' },
+{ key: 'dealer', label: 'Bayilik', href: 'Dealer.dc.html' },
+{ key: 'blog', label: 'Blog', href: 'Blog.dc.html' }
+];
+return {
+cartCount: this.props.cartCount ?? 0,
+links: items.map((i) => ({ ...i, on: i.key === active, off: i.key !== active }))
+};
+}
+}
+</script>
+</body>
+</html>

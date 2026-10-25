@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>Mağaza</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600;700&amp;family=Roboto:wght@400;500;600&amp;display=swap">
+<style>
+body{margin:0;background:#1A202C}
+a{color:#8A5A2B}a:hover{color:#6B4420}
+</style>
+</helmet>
+<div style="background: #F7FAFC; color: #1A202C; font-family: Roboto, system-ui, sans-serif; font-size: 16px; line-height: 1.6;">
+<dc-import name="Header" active="shop" hint-size="100%,130px"></dc-import>
+
+<section style="background: #1A202C; color: #F7FAFC;">
+<div style="max-width: 1200px; margin: 0 auto; padding: 64px 24px 72px; display: flex; flex-direction: column; gap: 12px;">
+<p style="margin: 0; font-size: 14px; color: #CBD5E0;"><a href="Main.dc.html" style="color: #CBD5E0;">Anasayfa</a> / Mağaza</p>
+<h1 style="margin: 0; font-family: 'Roboto Slab', Georgia, serif; font-size: 56px; line-height: 1.1; font-weight: 700;">Mağaza</h1>
+<p style="margin: 0; max-width: 560px; color: #CBD5E0; font-size: 18px;">Midnight Bloom serisinin beş harmanı. Orta koyu kavrum, kakao ve karamel notaları.</p>
+</div>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: 40px 24px 96px; display: flex; flex-direction: column; gap: 28px;">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;">
+<div role="group" aria-label="Filtre" style="display: flex; flex-wrap: wrap; gap: 8px;">
+<sc-for list="{{chips}}" as="c" hint-placeholder-count="2">
+<sc-if value="{{c.on}}" hint-placeholder-val="{{false}}"><button type="button" aria-pressed="true" onClick="{{c.pick}}" style="min-height: 44px; padding: 0 20px; border-radius: 999px; border: 1px solid #1A202C; background: #1A202C; color: #F7FAFC; font: inherit; font-size: 14px; font-weight: 500; cursor: pointer;">{{c.label}}</button></sc-if>
+<sc-if value="{{c.off}}" hint-placeholder-val="{{true}}"><button type="button" aria-pressed="false" onClick="{{c.pick}}" style="min-height: 44px; padding: 0 20px; border-radius: 999px; border: 1px solid #CBD5E0; background: #FFFFFF; color: #1A202C; font: inherit; font-size: 14px; font-weight: 500; cursor: pointer;">{{c.label}}</button></sc-if>
+</sc-for>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px;">
+<span style="color: #4A5568; font-size: 14px;">{{countLabel}}</span>
+<label style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: #4A5568;">Sırala
+<select style="min-height: 44px; padding: 0 12px; border: 1px solid #CBD5E0; border-radius: 10px; background: #FFFFFF; color: #1A202C; font: inherit; font-size: 14px;">
+<option>Varsayılan sıralama</option>
+<option>En çok satılanlar</option>
+<option>En yeniler</option>
+<option>Fiyat: düşükten yükseğe</option>
+<option>Fiyat: yüksekten düşüğe</option>
+</select>
+</label>
+</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 28px;">
+<sc-for list="{{products}}" as="p" hint-placeholder-count="5">
+<article style="background: #FFFFFF; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 1px 2px rgba(26,32,44,0.08);">
+<a href="Product.dc.html" aria-label="{{p.name}}" style="position: relative; aspect-ratio: 300 / 343; background: #EDF2F7; display: flex; align-items: center; justify-content: center; text-decoration: none;">
+<span style="border: 1px dashed #718096; border-radius: 6px; padding: 6px 10px; color: #4A5568; font-size: 12px;">{{p.img}}</span>
+<sc-if value="{{p.sale}}" hint-placeholder-val="{{false}}"><span style="position: absolute; top: 12px; left: 12px; background: #1A202C; color: #F7FAFC; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px;">İndirim</span></sc-if>
+</a>
+<div style="padding: 20px; display: flex; flex-direction: column; gap: 6px; flex: 1;">
+<h2 style="margin: 0; font-family: 'Roboto Slab', Georgia, serif; font-size: 20px; font-weight: 600;"><a href="Product.dc.html" style="color: #1A202C; text-decoration: none;">{{p.name}}</a></h2>
+<p style="margin: 0; color: #4A5568; font-size: 14px;">Orta koyu kavrum · Kakao · Karamel · Çiçeksi</p>
+<div style="display: flex; align-items: baseline; gap: 8px; margin-top: 8px;">
+<span style="font-weight: 600; font-size: 20px;">{{p.price}}</span>
+<sc-if value="{{p.sale}}" hint-placeholder-val="{{false}}"><s style="color: #4A5568; font-size: 14px;">{{p.old}}</s></sc-if>
+</div>
+<a href="Cart.dc.html" style="margin-top: 12px; min-height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 999px; background: #1A202C; color: #F7FAFC; text-decoration: none; font-weight: 500; font-size: 14px;">Sepete ekle</a>
+</div>
+</article>
+</sc-for>
+</div>
+</section>
+
+<dc-import name="Footer" hint-size="100%,480px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2300}}'>
+class Component extends DCLogic {
+renderVals() {
+const filter = (this.state && this.state.filter) || 'all';
+const all = [
+{ name: 'Midnight Bloom – A', img: 'a.png', price: '₺1.199,00', old: '₺1.350,00', sale: true },
+{ name: 'Midnight Bloom – B', img: 'b.png', price: '₺1.350,00', old: '', sale: false },
+{ name: 'Midnight Bloom – C', img: 'c.png', price: '₺1.750,00', old: '', sale: false },
+{ name: 'Midnight Bloom – D', img: 'd.png', price: '₺1.199,00', old: '₺1.350,00', sale: true },
+{ name: 'Midnight Bloom – E', img: 'e.png', price: '₺2.250,00', old: '', sale: false }
+];
+const products = filter === 'sale' ? all.filter((p) => p.sale) : all;
+const chips = [{ id: 'all', label: 'Tümü' }, { id: 'sale', label: 'İndirimdekiler' }].map((c) => ({
+...c, on: c.id === filter, off: c.id !== filter, pick: () => this.setState({ filter: c.id })
+}));
+return { products, chips, countLabel: products.length + ' ürün gösteriliyor' };
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>Blog</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600;700&amp;family=Roboto:wght@400;500;600&amp;display=swap">
+<style>
+body{margin:0;background:#1A202C}
+a{color:#D9A86C}a:hover{color:#F0C994}
+</style>
+</helmet>
+<div style="background: #1A202C; color: #F7FAFC; font-family: Roboto, system-ui, sans-serif; font-size: 16px; line-height: 1.6;">
+<dc-import name="Header" active="blog" hint-size="100%,130px"></dc-import>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: 80px 24px 48px; display: flex; flex-direction: column; gap: 14px;">
+<p style="margin: 0; color: #D9A86C; font-size: 14px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;">Blog</p>
+<h1 style="margin: 0; font-family: 'Roboto Slab', Georgia, serif; font-size: 56px; line-height: 1.1; font-weight: 700;">Kahve rehberi</h1>
+<p style="margin: 0; max-width: 560px; color: #CBD5E0; font-size: 18px;">Demleme ipuçları, çekirdeklerin hikâyesi ve evde daha iyi kahve için notlar.</p>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: 0 24px 56px;">
+<a href="Post.dc.html" style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center; background: #2D3748; border-radius: 24px; overflow: hidden; color: #F7FAFC; text-decoration: none;">
+<div style="flex: 1 1 460px; min-width: 0; aspect-ratio: 16 / 10; background: #4A5568; display: flex; align-items: center; justify-content: center;"><span style="border: 1px dashed #A0AEC0; border-radius: 6px; padding: 6px 10px; color: #E2E8F0; font-size: 12px;">Öne çıkan görsel</span></div>
+<div style="flex: 1 1 380px; min-width: 0; padding: 32px 40px 32px 8px; display: flex; flex-direction: column; gap: 14px; box-sizing: border-box;">
+<span style="align-self: flex-start; padding: 4px 12px; border-radius: 999px; background: #D9A86C; color: #1A202C; font-size: 13px; font-weight: 600;">Öne çıkan yazı</span>
+<h2 style="margin: 0; font-family: 'Roboto Slab', Georgia, serif; font-size: 34px; line-height: 1.2; font-weight: 700;">Evde Daha İyi Kahve Yapmanın 5 Altın Kuralı</h2>
+<p style="margin: 0; color: #E2E8F0;">Evde kahve yapmak bir ritüele dönüştüğünde, lezzet de kendiliğinden artar. İşte daha iyi kahve için 5 temel ipucu.</p>
+<span style="color: #D9A86C; font-weight: 500;">Devamını oku</span>
+</div>
+</a>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; padding: 0 24px 104px; display: flex; flex-direction: column; gap: 28px;">
+<div role="group" aria-label="Kategoriler" style="display: flex; flex-wrap: wrap; gap: 8px;">
+<button type="button" aria-pressed="true" style="min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1px solid #F7FAFC; background: #F7FAFC; color: #1A202C; font: inherit; font-size: 14px; font-weight: 500; cursor: pointer;">Tümü</button>
+<button type="button" aria-pressed="false" style="min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1px solid #4A5568; background: transparent; color: #F7FAFC; font: inherit; font-size: 14px; cursor: pointer;">Demleme</button>
+<button type="button" aria-pressed="false" style="min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1px solid #4A5568; background: transparent; color: #F7FAFC; font: inherit; font-size: 14px; cursor: pointer;">Çekirdek</button>
+<button type="button" aria-pressed="false" style="min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1px solid #4A5568; background: transparent; color: #F7FAFC; font: inherit; font-size: 14px; cursor: pointer;">Genel</button>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px;">
+<sc-for list="{{posts}}" as="post" hint-placeholder-count="3">
+<article style="display: flex; flex-direction: column; gap: 14px;">
+<a href="Post.dc.html" aria-label="{{post.title}}" style="aspect-ratio: 16 / 10; border-radius: 14px; background: #2D3748; display: flex; align-items: center; justify-content: center; text-decoration: none;"><span style="border: 1px dashed #718096; border-radius: 6px; padding: 6px 10px; color: #CBD5E0; font-size: 12px;">Öne çıkan görsel</span></a>
+<p style="margin: 0; color: #D9A86C; font-size: 13px; font-weight: 500;">{{post.cat}}</p>
+<h2 style="margin: 0; font-family: 'Roboto Slab', Georgia, serif; font-size: 22px; line-height: 1.3; font-weight: 600;"><a href="Post.dc.html" style="color: #F7FAFC; text-decoration: none;">{{post.title}}</a></h2>
+<p style="margin: 0; color: #CBD5E0; font-size: 15px;">{{post.excerpt}}</p>
+<a href="Post.dc.html" style="font-weight: 500; font-size: 15px;">Devamını oku</a>
+</article>
+</sc-for>
+</div>
+</section>
+
+<dc-import name="Footer" hint-size="100%,480px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2000}}'>
+class Component extends DCLogic {
+renderVals() {
+return {
+posts: [
+{ cat: 'Demleme', title: 'Filtre Kahve mi, Espresso mu? Hangisi Sana Göre?', excerpt: 'Kahve dünyasına adım atan herkesin aklındaki ilk sorulardan biri: filtre kahve mi, espresso mu?' },
+{ cat: 'Çekirdek', title: 'Kahvenin Yolculuğu: Çekirdekten Fincana', excerpt: 'Kahve, yalnızca bir içecek değil; uzun ve özenli bir yolculuğun sonucudur.' },
+{ cat: 'Genel', title: 'Tutkuyla Demlenen, Keyifle Sunulan Kahve', excerpt: 'Her fincanda bir hikâye var. Özenle seçilmiş kahve çekirdekleri, ustalıkla hazırlanan tarifler ve sıcak bir atmosfer.' }
+]
+};
+}
+}
+</script>
+</body>
+</html>
