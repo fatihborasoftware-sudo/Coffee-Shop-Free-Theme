@@ -89,6 +89,26 @@ Dark title band → featured image → article with a pull quote and a product c
 
 ## Part 2: Building it in WordPress
 
+There are two ways to do this:
+
+- **Option A: the Coffee Shop block theme (recommended).** Everything below is already built in: colors, fonts, header, footer, homepage, shop and product pages. See *Option A* right below.
+- **Option B: rebuild it yourself with Kadence + Elementor.** Follow Steps 1 to 10 after Option A.
+
+### Option A: install the Coffee Shop block theme
+
+1. Install and activate **WooCommerce** and **Contact Form 7** (Plugins → Add New).
+2. Upload `coffee-shop.zip` (see the README) in **Appearance → Themes → Add New → Upload Theme**, then click **Activate**.
+3. **Pages:** rename the WooCommerce pages to *Mağaza* (`magaza`), *Sepet* (`sepet`), *Ödeme* (`odeme`) and *Hesabım* (`hesabim`). Then create:
+   - *Anasayfa*: an empty page. Set it as the homepage in **Settings → Reading**. The theme's front page template fills it in.
+   - *Blog* (`blog`): an empty page. Set it as the posts page.
+   - *Neden Biz?* (`neden-biz`), *Bayilik* (`bayilik`) and *İletişim* (`iletisim`): choose the **Full width page** template, then insert the matching pattern from **Patterns → Coffee Shop: full pages**.
+4. **Forms:** in Contact Form 7, create two forms titled exactly **İletişim** and **Bayilik başvurusu**. The contact and dealer pages show them automatically.
+5. **Menu:** in **Appearance → Editor → Navigation**, add Anasayfa, Mağaza, Neden Biz?, Bayilik and Blog.
+6. **Logo:** in **Appearance → Editor → Patterns → Header**, set your logo in the Site Logo block. You can remove the Site Title block next to it.
+7. **Products and shipping:** follow Step 6 below.
+
+### Option B: Kadence + Elementor
+
 These steps assume a fresh WordPress install. Everything used here is free.
 
 ### Step 1: Back up first

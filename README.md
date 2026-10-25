@@ -6,7 +6,19 @@ An open source redesign of **Coffee**, a WordPress + WooCommerce coffee shop sit
 
 **New here? Read the [Setup guide](SETUP-GUIDE.md)** for screenshots of every page and step-by-step WordPress instructions.
 
-## Quick start
+## Install the WordPress theme
+
+The `theme/coffee-shop` folder is a free block theme built from the mockups. It needs WordPress 6.6 or newer. WooCommerce and Contact Form 7 are recommended.
+
+1. Build the zip with `./tools/build-theme-zip.sh`, or zip the `theme/coffee-shop` folder yourself.
+2. In WordPress, go to **Appearance → Themes → Add New → Upload Theme**, choose `coffee-shop.zip`, then click **Activate**.
+3. Follow [Part 2 of the setup guide](SETUP-GUIDE.md#part-2-building-it-in-wordpress) to create the pages and products.
+
+| Home | Shop | Product |
+|---|---|---|
+| ![Theme home](docs/theme/home.png) | ![Theme shop](docs/theme/shop.png) | ![Theme product](docs/theme/product.png) |
+
+## Quick start (mockups)
 
 1. Download this repo (**Code → Download ZIP**) or clone it.
 2. Open `mockup/index.html` in your browser.

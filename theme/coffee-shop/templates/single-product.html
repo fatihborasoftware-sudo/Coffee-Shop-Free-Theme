@@ -1,0 +1,44 @@
+<!-- wp:template-part {"slug":"header","area":"header","tagName":"header"} /-->
+
+<!-- wp:group {"tagName":"main","className":"coffee-shop-area","style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|60"},"blockGap":"2rem"}},"backgroundColor":"light","textColor":"ink","layout":{"type":"constrained","contentSize":"1200px"}} -->
+<main class="wp-block-group coffee-shop-area has-ink-color has-light-background-color has-text-color has-background" style="padding-top:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--60)">
+<!-- wp:woocommerce/breadcrumbs {"fontSize":"small"} /-->
+<!-- wp:woocommerce/store-notices /-->
+
+<!-- wp:columns {"style":{"spacing":{"blockGap":{"left":"3.5rem"}}}} -->
+<div class="wp-block-columns">
+<!-- wp:column {"width":"50%"} -->
+<div class="wp-block-column" style="flex-basis:50%">
+<!-- wp:woocommerce/product-image-gallery /-->
+</div>
+<!-- /wp:column -->
+<!-- wp:column {"width":"50%","style":{"spacing":{"blockGap":"1.25rem"}}} -->
+<div class="wp-block-column" style="flex-basis:50%">
+<!-- wp:post-terms {"term":"product_cat","className":"coffee-eyebrow","textColor":"brown","fontSize":"small"} /-->
+<!-- wp:post-title {"level":1,"style":{"typography":{"fontSize":"clamp(2.25rem, 4vw, 3rem)"}},"__woocommerceNamespace":"woocommerce/product-query/product-title"} /-->
+<!-- wp:woocommerce/product-rating {"isDescendentOfSingleProductTemplate":true} /-->
+<!-- wp:woocommerce/product-price {"isDescendentOfSingleProductTemplate":true,"style":{"typography":{"fontSize":"2rem","fontWeight":"600"}}} /-->
+<!-- wp:post-excerpt {"textColor":"body-dark","__woocommerceNamespace":"woocommerce/product-query/product-summary","excerptLength":100} /-->
+<!-- wp:woocommerce/add-to-cart-form /-->
+<!-- wp:separator {"backgroundColor":"light-2"} -->
+<hr class="wp-block-separator has-text-color has-light-2-color has-alpha-channel-opacity has-light-2-background-color has-background"/>
+<!-- /wp:separator -->
+<!-- wp:list {"className":"coffee-plain-list","textColor":"body-dark","fontSize":"small"} -->
+<ul class="wp-block-list coffee-plain-list has-body-dark-color has-text-color has-small-font-size">
+<!-- wp:list-item -->
+<li>900,00 TL ve üzeri siparişlerde ücretsiz kargo</li>
+<!-- /wp:list-item -->
+</ul>
+<!-- /wp:list -->
+</div>
+<!-- /wp:column -->
+</div>
+<!-- /wp:columns -->
+
+<!-- wp:woocommerce/product-details {"className":"is-style-minimal"} /-->
+
+<!-- wp:pattern {"slug":"woocommerce-blocks/related-products"} /-->
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","area":"footer","tagName":"footer"} /-->
